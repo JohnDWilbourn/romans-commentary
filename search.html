@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search — Romans Road Commentary</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Cinzel:wght@400;600&family=Source+Code+Pro:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold:      #b8973a;
+    --ink:       #1a1208;
+    --ink-soft:  #2a1f0e;
+    --parchment: #faf6ee;
+    --cream:     #f3ede0;
+    --rule:      #d4c49a;
+    --greek:     #5c3d1e;
+    --accent:    #7a3a1e;
+    --highlight: #fff0a0;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'EB Garamond', Georgia, serif;
+    background: var(--parchment);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--ink);
+    padding: 1.2rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    border-bottom: 2px solid var(--gold);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  header a.home {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+  }
+  header a.home:hover { opacity: 1; }
+
+  .search-bar {
+    display: flex;
+    flex: 1;
+    min-width: 220px;
+    gap: 0;
+  }
+
+  #search-input {
+    flex: 1;
+    background: #2a1f0e;
+    border: 1px solid #4a3a1e;
+    border-right: none;
+    border-radius: 4px 0 0 4px;
+    padding: 0.55rem 1rem;
+    color: #e8dfc8;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem;
+    outline: none;
+    caret-color: var(--gold);
+  }
+
+  #search-input::placeholder { color: #6a5a3a; }
+
+  #search-btn {
+    background: var(--gold);
+    color: var(--ink);
+    border: none;
+    border-radius: 0 4px 4px 0;
+    padding: 0.55rem 1.2rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  #search-btn:hover { background: #d4b45a; }
+
+  /* ── FILTER BAR ── */
+  #filter-bar {
+    background: var(--cream);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.7rem 2rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  #filter-bar label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: #7a6040;
+    margin-right: 0.3rem;
+  }
+
+  .filter-btn {
+    background: transparent;
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 0.25rem 0.7rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    color: #7a6040;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .filter-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .filter-btn.active { background: var(--ink); border-color: var(--ink); color: var(--gold); }
+
+  /* ── MAIN LAYOUT ── */
+  #layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: calc(100vh - 120px);
+  }
+
+  /* ── SIDEBAR FACETS ── */
+  #facets {
+    border-right: 1px solid var(--rule);
+    padding: 1.5rem 1.2rem;
+    background: var(--cream);
+  }
+
+  .facet-group { margin-bottom: 1.5rem; }
+
+  .facet-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .facet-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.2rem 0;
+    cursor: pointer;
+    font-size: 0.85rem;
+    color: #5a4020;
+    transition: color 0.15s;
+    user-select: none;
+  }
+  .facet-item:hover { color: var(--ink); }
+  .facet-item.active { color: var(--gold); font-weight: 600; }
+
+  .facet-count {
+    font-size: 0.75rem;
+    color: #9a8060;
+    background: var(--parchment);
+    border-radius: 10px;
+    padding: 0.1rem 0.4rem;
+    min-width: 24px;
+    text-align: center;
+  }
+
+  /* ── RESULTS AREA ── */
+  #results-area {
+    padding: 1.5rem 2rem 3rem;
+  }
+
+  #results-meta {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    color: #9a8060;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  #print-btn {
+    background: transparent;
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 0.25rem 0.8rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    color: #7a6040;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  #print-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ── RESULT GROUPS ── */
+  .result-group { margin-bottom: 2rem; }
+
+  .result-group-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 0.4rem 0.8rem;
+    background: var(--ink);
+    border-radius: 3px 3px 0 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* ── RESULT CARDS ── */
+  .result-card {
+    border: 1px solid var(--rule);
+    border-top: none;
+    background: white;
+    padding: 0.9rem 1.1rem;
+    transition: border-color 0.15s;
+  }
+  .result-card:last-child { border-radius: 0 0 3px 3px; }
+  .result-card:hover { border-color: var(--gold); }
+
+  .result-breadcrumb {
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    color: #9a8060;
+    margin-bottom: 0.3rem;
+  }
+
+  .result-breadcrumb .vol-tag {
+    background: var(--ink-soft);
+    color: var(--gold);
+    padding: 0.1rem 0.4rem;
+    border-radius: 2px;
+    font-size: 0.62rem;
+    margin-right: 0.4rem;
+  }
+
+  .result-breadcrumb .sep { margin: 0 0.3rem; color: #c4a870; }
+
+  .result-link {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    color: var(--ink);
+    text-decoration: none;
+    margin-bottom: 0.35rem;
+    line-height: 1.3;
+  }
+  .result-link:hover { color: var(--gold); }
+
+  .result-snippet {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: #3a2800;
+  }
+
+  .result-snippet mark {
+    background: var(--highlight);
+    color: var(--ink);
+    padding: 0 2px;
+    border-radius: 2px;
+    font-style: normal;
+  }
+
+  /* ── GLOSSARY CARD ── */
+  .glossary-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    gap: 0.8rem;
+    align-items: start;
+  }
+
+  .glossary-card .g-term {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .glossary-card .g-greek {
+    color: var(--greek);
+    font-size: 1rem;
+    white-space: pre-line;
+    line-height: 1.4;
+  }
+
+  .glossary-card .g-def {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: #3a2800;
+  }
+
+  /* ── VERSE BADGE ── */
+  .verse-badge {
+    display: inline-block;
+    background: var(--cream);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 0.1rem 0.4rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    margin-right: 0.3rem;
+    margin-bottom: 0.3rem;
+  }
+
+  /* ── EMPTY / LOADING STATES ── */
+  #empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: #9a8060;
+  }
+  #empty-state .big { font-size: 2.5rem; margin-bottom: 0.5rem; }
+  #empty-state p { font-style: italic; font-size: 0.95rem; }
+
+  #loading {
+    display: none;
+    text-align: center;
+    padding: 3rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+  }
+
+  /* ── PRINT STYLES ── */
+  @media print {
+    header, #filter-bar, #facets, #print-btn, #empty-state { display: none !important; }
+    #layout { grid-template-columns: 1fr; }
+    #results-area { padding: 0; }
+    body { background: white; }
+    .result-card { border: 1px solid #ccc; page-break-inside: avoid; }
+    .result-group { page-break-inside: avoid; }
+    .result-group-title { background: #333 !important; -webkit-print-color-adjust: exact; }
+
+    #results-meta::before {
+      content: "Romans Road Commentary — Search Results";
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    #layout { grid-template-columns: 1fr; }
+    #facets { border-right: none; border-bottom: 1px solid var(--rule); padding: 1rem; }
+    .facet-group { display: inline-flex; gap: 0.4rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.5rem; }
+    .facet-title { margin-bottom: 0; border: none; }
+    #results-area { padding: 1rem 1rem 3rem; }
+    header { padding: 0.8rem 1rem; }
+    .glossary-card { grid-template-columns: 1fr 1fr; }
+    .glossary-card .g-def { grid-column: 1 / -1; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="home" href="index.html">&#8592; Romans Road</a>
+  <div class="search-bar">
+    <input type="text" id="search-input" placeholder="Search verse, Greek term, doctrine, phrase…" autocomplete="off" spellcheck="false">
+    <button id="search-btn">Search</button>
+  </div>
+</header>
+
+<div id="filter-bar">
+  <label>Filter:</label>
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="vol1">Volume I</button>
+  <button class="filter-btn" data-filter="vol2">Volume II</button>
+  <button class="filter-btn" data-filter="greek">Greek</button>
+  <button class="filter-btn" data-filter="hebrew">Hebrew</button>
+  <button class="filter-btn" data-filter="verse">Verse Refs</button>
+  <button class="filter-btn" data-filter="glossary">Glossary</button>
+</div>
+
+<div id="layout">
+  <aside id="facets">
+    <div class="facet-group">
+      <div class="facet-title">By Type</div>
+      <div class="facet-item active" data-facet="type" data-val="all">All results <span class="facet-count" id="fc-all">—</span></div>
+      <div class="facet-item" data-facet="type" data-val="glossary">Glossary <span class="facet-count" id="fc-glossary">—</span></div>
+      <div class="facet-item" data-facet="type" data-val="quote">Block Quotes <span class="facet-count" id="fc-quote">—</span></div>
+      <div class="facet-item" data-facet="type" data-val="body">Commentary <span class="facet-count" id="fc-body">—</span></div>
+    </div>
+    <div class="facet-group">
+      <div class="facet-title">By Volume</div>
+      <div class="facet-item active" data-facet="vol" data-val="all">Both Volumes <span class="facet-count" id="fc-vols">—</span></div>
+      <div class="facet-item" data-facet="vol" data-val="vol1">Volume I <span class="facet-count" id="fc-vol1">—</span></div>
+      <div class="facet-item" data-facet="vol" data-val="vol2">Volume II <span class="facet-count" id="fc-vol2">—</span></div>
+    </div>
+    <div class="facet-group">
+      <div class="facet-title">Script</div>
+      <div class="facet-item" data-facet="script" data-val="greek">Greek <span class="facet-count" id="fc-greek">—</span></div>
+      <div class="facet-item" data-facet="script" data-val="hebrew">Hebrew <span class="facet-count" id="fc-hebrew">—</span></div>
+    </div>
+  </aside>
+
+  <main id="results-area">
+    <div id="loading">Loading index…</div>
+    <div id="empty-state">
+      <div class="big">𝕽</div>
+      <p>Enter a verse reference, Greek term, Hebrew word, doctrine, or phrase.</p>
+      <p style="margin-top:0.5rem;font-size:0.82rem;color:#b0a080">
+        Examples: <em>Romans 2:1</em> &nbsp;·&nbsp; <em>δικαιοσύνη</em> &nbsp;·&nbsp; <em>dikaiosune</em> &nbsp;·&nbsp; <em>adjustment to the justice</em> &nbsp;·&nbsp; <em>GAP</em>
+      </p>
+    </div>
+    <div id="results-meta" style="display:none">
+      <span id="meta-text"></span>
+      <button id="print-btn" onclick="window.print()">&#9113; Print Results</button>
+    </div>
+    <div id="results-container"></div>
+  </main>
+</div>
+
+<script>
+'use strict';
+
+// ── STATE ──────────────────────────────────────────────────────
+let INDEX        = [];
+let activeFilter = 'all';
+let activeFacets = { type: 'all', vol: 'all', script: null };
+let lastQuery    = '';
+let lastResults  = [];
+
+// ── LOAD INDEX ─────────────────────────────────────────────────
+async function loadIndex() {
+  document.getElementById('loading').style.display = 'block';
+  try {
+    const res  = await fetch('search-index.json');
+    INDEX      = await res.json();
+    console.log(`Search index loaded: ${INDEX.length} records`);
+  } catch(e) {
+    console.error('Failed to load search index:', e);
+  }
+  document.getElementById('loading').style.display = 'none';
+}
+
+// ── QUERY TYPE DETECTION ───────────────────────────────────────
+function detectQueryType(q) {
+  const types = [];
+  // Greek Unicode
+  if (/[\u0370-\u03ff\u1f00-\u1fff]/.test(q))      types.push('greek');
+  // Hebrew Unicode
+  if (/[\u0590-\u05ff]/.test(q))                    types.push('hebrew');
+  // Transliterated Greek/Hebrew (common patterns)
+  if (/^[aeiou]?[bcdfghjklmnpqrstvwxyz]+[aeiou]/i.test(q) && q.length > 4 && !/ /.test(q)) {
+    // Could be transliteration — search glossary terms aggressively
+    types.push('transliteration');
+  }
+  // Verse reference
+  if (/\b(rom(?:ans)?\.?\s*\d+:\d+)/i.test(q))      types.push('verse');
+  // Default: phrase
+  if (types.length === 0)                            types.push('phrase');
+  return types;
+}
+
+// ── HIGHLIGHT MATCH ────────────────────────────────────────────
+function highlight(text, terms) {
+  if (!text) return '';
+  let result = text;
+  terms.forEach(term => {
+    if (!term || term.length < 2) return;
+    try {
+      const re = new RegExp(`(${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+      result = result.replace(re, '<mark>$1</mark>');
+    } catch(e) {}
+  });
+  return result;
+}
+
+// ── SNIPPET EXTRACTION ─────────────────────────────────────────
+function snippet(text, terms, maxLen = 240) {
+  if (!text) return '';
+  // Find first match position
+  let pos = -1;
+  for (const t of terms) {
+    const idx = text.toLowerCase().indexOf(t.toLowerCase());
+    if (idx !== -1 && (pos === -1 || idx < pos)) pos = idx;
+  }
+  if (pos === -1) pos = 0;
+  const start = Math.max(0, pos - 80);
+  const end   = Math.min(text.length, start + maxLen);
+  let snip    = text.slice(start, end);
+  if (start > 0)          snip = '…' + snip;
+  if (end < text.length)  snip = snip + '…';
+  return highlight(snip, terms);
+}
+
+// ── SEARCH CORE ────────────────────────────────────────────────
+function search(q) {
+  if (!q.trim() || INDEX.length === 0) return [];
+  const qLower  = q.toLowerCase().trim();
+  const terms   = qLower.split(/\s+/).filter(t => t.length > 1);
+  const types   = detectQueryType(q);
+  const results = [];
+
+  for (const rec of INDEX) {
+    // Volume filter
+    if (activeFilter === 'vol1'    && rec.vol !== 'vol1')   continue;
+    if (activeFilter === 'vol2'    && rec.vol !== 'vol2')   continue;
+    if (activeFilter === 'greek'   && !rec.greek)           continue;
+    if (activeFilter === 'hebrew'  && !rec.hebrew)          continue;
+    if (activeFilter === 'verse'   && !rec.verses?.length)  continue;
+    if (activeFilter === 'glossary'&& rec.kind !== 'glossary') continue;
+
+    // Facet filters
+    if (activeFacets.type !== 'all' && rec.kind !== activeFacets.type) continue;
+    if (activeFacets.vol  !== 'all' && rec.vol  !== activeFacets.vol)  continue;
+    if (activeFacets.script === 'greek'  && !rec.greek)  continue;
+    if (activeFacets.script === 'hebrew' && !rec.hebrew) continue;
+
+    const searchText = rec.text?.toLowerCase() || '';
+    let score = 0;
+
+    // Verse reference match — exact verse detected in record
+    if (types.includes('verse') && rec.verses?.length) {
+      const verseMatch = rec.verses.some(v =>
+        v.toLowerCase().replace(/\s+/g,'').includes(qLower.replace(/\s+/g,''))
+      );
+      if (verseMatch) score += 100;
+    }
+
+    // Greek/Hebrew exact match
+    if ((types.includes('greek') || types.includes('hebrew')) && searchText.includes(qLower)) {
+      score += 90;
+    }
+
+    // Glossary term exact match
+    if (rec.kind === 'glossary') {
+      const termLower = rec.term?.toLowerCase() || '';
+      const greekLower = rec.greek_trans?.toLowerCase() || '';
+      if (termLower === qLower || greekLower.includes(qLower)) score += 85;
+      else if (termLower.includes(qLower) || greekLower.includes(qLower)) score += 60;
+      else if (rec.definition?.toLowerCase().includes(qLower)) score += 30;
+    }
+
+    // All-terms phrase match
+    if (score === 0) {
+      const allMatch = terms.every(t => searchText.includes(t));
+      if (allMatch) score += terms.length > 1 ? 50 : 20;
+      else {
+        const matchCount = terms.filter(t => searchText.includes(t)).length;
+        if (matchCount > 0) score += matchCount * 8;
+      }
+    }
+
+    // Boost glossary entries
+    if (rec.kind === 'glossary' && score > 0) score += 15;
+    // Boost block quotes
+    if (rec.kind === 'quote'    && score > 0) score += 10;
+    // Boost section/chapter matches
+    if (rec.chapter?.toLowerCase().includes(qLower)) score += 20;
+    if (rec.section?.toLowerCase().includes(qLower)) score += 15;
+
+    if (score > 0) results.push({ rec, score, terms });
+  }
+
+  return results
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 120);
+}
+
+// ── RENDER RESULTS ─────────────────────────────────────────────
+function renderResults(results, q) {
+  const container = document.getElementById('results-container');
+  const meta      = document.getElementById('results-meta');
+  const empty     = document.getElementById('empty-state');
+  const metaText  = document.getElementById('meta-text');
+
+  if (results.length === 0) {
+    container.innerHTML = '';
+    meta.style.display  = 'none';
+    empty.style.display = 'block';
+    empty.innerHTML = `<div class="big">∅</div><p>No results for <em>${q}</em></p><p style="margin-top:0.5rem;font-size:0.82rem;color:#b0a080">Try a different spelling, transliteration, or broader phrase.</p>`;
+    updateFacetCounts([]);
+    return;
+  }
+
+  empty.style.display = 'none';
+  meta.style.display  = 'flex';
+
+  const types   = detectQueryType(q);
+  const typeStr = types.join(', ');
+  metaText.textContent = `${results.length} result${results.length !== 1 ? 's' : ''} for "${q}" — detected: ${typeStr}`;
+
+  // Group by kind
+  const groups = { glossary: [], quote: [], body: [] };
+  results.forEach(r => {
+    const k = r.rec.kind;
+    if (groups[k]) groups[k].push(r);
+    else groups.body.push(r);
+  });
+
+  updateFacetCounts(results);
+
+  let html = '';
+  const groupDefs = [
+    { key: 'glossary', label: 'Glossary Entries' },
+    { key: 'quote',    label: 'Block Quotations — ESV' },
+    { key: 'body',     label: 'Commentary Passages' },
+  ];
+
+  for (const { key, label } of groupDefs) {
+    const grp = groups[key];
+    if (!grp.length) continue;
+
+    html += `<div class="result-group">`;
+    html += `<div class="result-group-title"><span>${label}</span><span>${grp.length} result${grp.length !== 1 ? 's' : ''}</span></div>`;
+
+    for (const { rec, terms } of grp) {
+      const vol      = rec.vol === 'vol1' ? 'Volume I' : 'Volume II';
+      const file     = rec.vol === 'vol1' ? 'Romans_Road.html' : 'Romans_Road_2.html';
+      const anchor   = rec.section_id || rec.chapter_id || '';
+      const href     = `${file}#${anchor}`;
+      const chapter  = rec.chapter || '';
+      const section  = rec.section || '';
+
+      const breadcrumb = `
+        <div class="result-breadcrumb">
+          <span class="vol-tag">${vol}</span>
+          ${chapter ? `<span>${highlight(chapter, terms)}</span>` : ''}
+          ${section ? `<span class="sep">›</span><span>${highlight(section, terms)}</span>` : ''}
+        </div>`;
+
+      if (key === 'glossary') {
+        const verseBadges = rec.verses?.map(v =>
+          `<span class="verse-badge">${v}</span>`).join('') || '';
+
+        html += `
+          <div class="result-card">
+            ${breadcrumb}
+            <div class="glossary-card">
+              <div class="g-term">${highlight(rec.term || '', terms)}</div>
+              <div class="g-greek">${highlight(rec.greek_trans || '', terms)}</div>
+              <div class="g-def">${highlight(rec.definition || '', terms)}</div>
+            </div>
+            ${verseBadges ? `<div style="margin-top:0.5rem">${verseBadges}</div>` : ''}
+          </div>`;
+      } else {
+        const verseBadges = rec.verses?.map(v =>
+          `<span class="verse-badge">${v}</span>`).join('') || '';
+
+        html += `
+          <div class="result-card">
+            ${breadcrumb}
+            <a class="result-link" href="${href}" target="_blank">
+              ${section || chapter || 'View in commentary →'}
+            </a>
+            ${verseBadges ? `<div style="margin-bottom:0.4rem">${verseBadges}</div>` : ''}
+            <div class="result-snippet">${snippet(rec.text, terms)}</div>
+          </div>`;
+      }
+    }
+
+    html += `</div>`;
+  }
+
+  container.innerHTML = html;
+}
+
+// ── FACET COUNTS ───────────────────────────────────────────────
+function updateFacetCounts(results) {
+  const counts = { all: results.length, glossary: 0, quote: 0, body: 0, vol1: 0, vol2: 0, greek: 0, hebrew: 0 };
+  results.forEach(({ rec }) => {
+    if (counts[rec.kind] !== undefined) counts[rec.kind]++;
+    if (counts[rec.vol]  !== undefined) counts[rec.vol]++;
+    if (rec.greek)  counts.greek++;
+    if (rec.hebrew) counts.hebrew++;
+  });
+  document.getElementById('fc-all').textContent     = counts.all;
+  document.getElementById('fc-glossary').textContent= counts.glossary;
+  document.getElementById('fc-quote').textContent   = counts.quote;
+  document.getElementById('fc-body').textContent    = counts.body;
+  document.getElementById('fc-vols').textContent    = counts.all;
+  document.getElementById('fc-vol1').textContent    = counts.vol1;
+  document.getElementById('fc-vol2').textContent    = counts.vol2;
+  document.getElementById('fc-greek').textContent   = counts.greek;
+  document.getElementById('fc-hebrew').textContent  = counts.hebrew;
+}
+
+// ── EVENT WIRING ───────────────────────────────────────────────
+function runSearch() {
+  const q = document.getElementById('search-input').value.trim();
+  if (!q) return;
+  lastQuery   = q;
+  lastResults = search(q);
+  renderResults(lastResults, q);
+}
+
+document.getElementById('search-btn').addEventListener('click', runSearch);
+document.getElementById('search-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') runSearch();
+});
+
+// Filter buttons
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeFilter = btn.dataset.filter;
+    if (lastQuery) runSearch();
+  });
+});
+
+// Facet items
+document.querySelectorAll('.facet-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const facet = item.dataset.facet;
+    const val   = item.dataset.val;
+    // Deactivate siblings
+    document.querySelectorAll(`.facet-item[data-facet="${facet}"]`).forEach(i => i.classList.remove('active'));
+    item.classList.add('active');
+
+    if (facet === 'script') {
+      activeFacets.script = activeFacets.script === val ? null : val;
+      item.classList.toggle('active', activeFacets.script === val);
+    } else {
+      activeFacets[facet] = val;
+    }
+    if (lastQuery) runSearch();
+  });
+});
+
+// Prefill from URL param
+const urlQ = new URLSearchParams(window.location.search).get('q');
+if (urlQ) {
+  document.getElementById('search-input').value = urlQ;
+}
+
+// Boot
+loadIndex().then(() => {
+  if (urlQ) runSearch();
+});
+</script>
+</body>
+</html>

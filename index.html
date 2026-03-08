@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#b8973a">
+<title>Romans Road — A Verse-by-Verse Commentary</title>
+<link rel="manifest" href="manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  body { display: flex; align-items: center; justify-content: center; min-height: 100vh; flex-direction: column; }
+  .landing { text-align: center; max-width: 580px; padding: 3rem 2rem; }
+  .landing h1 { font-family: 'Cinzel', serif; font-size: 2.2rem; color: var(--ink); letter-spacing: 0.08em; margin-bottom: 0.4rem; }
+  .landing .subtitle { font-style: italic; color: #7a6040; font-size: 1.1rem; margin-bottom: 0.8rem; }
+  .landing .rule { width: 80px; height: 2px; background: var(--gold); margin: 1.2rem auto; }
+  .landing .byline { font-size: 0.9rem; color: #9a8060; letter-spacing: 0.05em; margin-bottom: 2.5rem; }
+  .vol-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 2rem; }
+  .vol-card { display: block; border: 1px solid var(--rule); border-radius: 6px; padding: 1.5rem 1.2rem; text-decoration: none; background: var(--cream); transition: border-color 0.2s, box-shadow 0.2s; }
+  .vol-card:hover { border-color: var(--gold); box-shadow: 0 4px 16px rgba(184,151,58,0.15); }
+  .vol-card .vol-label { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.4rem; }
+  .vol-card .vol-title { font-family: 'Cinzel', serif; font-size: 1rem; color: var(--ink); margin-bottom: 0.4rem; }
+  .vol-card .vol-desc { font-size: 0.85rem; color: #7a6040; font-style: italic; line-height: 1.4; }
+  .landing footer { font-size: 0.75rem; color: #b0a080; letter-spacing: 0.05em; }
+</style>
+</head>
+<body>
+<div class="landing">
+  <h1>Romans Road</h1>
+  <p class="subtitle">A Verse-by-Verse Commentary on the Epistle to the Romans</p>
+  <div class="rule"></div>
+  <p class="byline">Based on the teaching of R.B. Thieme Jr.</p>
+
+  <div class="vol-grid">
+    <a class="vol-card" href="Romans_Road.html">
+      <div class="vol-label">Volume I</div>
+      <div class="vol-title">Romans 1</div>
+      <div class="vol-desc">35 chapters · 52 glossary tables<br>The Justice of God</div>
+    </a>
+    <a class="vol-card" href="Romans_Road_2.html">
+      <div class="vol-label">Volume II</div>
+      <div class="vol-title">Romans 2</div>
+      <div class="vol-desc">18 chapters · 40 glossary tables<br>The Righteousness of God</div>
+    </a>
+  </div>
+
+  <footer>Romans Road Commentary &copy; 2025</footer>
+</div>
+<script src="nav.js"></script>
+</body>
+</html>

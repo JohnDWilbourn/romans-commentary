@@ -1,0 +1,28 @@
+{
+  "name": "Romans Road — A Verse-by-Verse Commentary",
+  "short_name": "Romans Road",
+  "description": "A comprehensive verse-by-verse commentary on the Epistle to the Romans",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#1a1208",
+  "theme_color": "#b8973a",
+  "orientation": "portrait-primary",
+  "categories": ["books", "education", "religion"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Volume I — Romans 1",
+      "url": "/Romans_Road.html",
+      "description": "Open Romans 1 commentary"
+    },
+    {
+      "name": "Volume II — Romans 2",
+      "url": "/Romans_Road_2.html",
+      "description": "Open Romans 2 commentary"
+    }
+  ]
+}
