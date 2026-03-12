@@ -3,7 +3,7 @@
    Caches all volumes for offline reading.
    ============================================================ */
 
-const CACHE_NAME = 'romans-road-v1';
+const CACHE_NAME = 'romans-road-v2';
 
 const CORE_ASSETS = [
   '/',
