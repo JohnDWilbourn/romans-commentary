@@ -1,50 +1,347 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#b8973a">
-<title>Romans Road — A Verse-by-Verse Commentary</title>
-<link rel="manifest" href="manifest.json">
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<style>
-  body { display: flex; align-items: center; justify-content: center; min-height: 100vh; flex-direction: column; }
-  .landing { text-align: center; max-width: 580px; padding: 3rem 2rem; }
-  .landing h1 { font-family: 'Cinzel', serif; font-size: 2.2rem; color: var(--ink); letter-spacing: 0.08em; margin-bottom: 0.4rem; }
-  .landing .subtitle { font-style: italic; color: #7a6040; font-size: 1.1rem; margin-bottom: 0.8rem; }
-  .landing .rule { width: 80px; height: 2px; background: var(--gold); margin: 1.2rem auto; }
-  .landing .byline { font-size: 0.9rem; color: #9a8060; letter-spacing: 0.05em; margin-bottom: 2.5rem; }
-  .vol-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 2rem; }
-  .vol-card { display: block; border: 1px solid var(--rule); border-radius: 6px; padding: 1.5rem 1.2rem; text-decoration: none; background: var(--cream); transition: border-color 0.2s, box-shadow 0.2s; }
-  .vol-card:hover { border-color: var(--gold); box-shadow: 0 4px 16px rgba(184,151,58,0.15); }
-  .vol-card .vol-label { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.4rem; }
-  .vol-card .vol-title { font-family: 'Cinzel', serif; font-size: 1rem; color: var(--ink); margin-bottom: 0.4rem; }
-  .vol-card .vol-desc { font-size: 0.85rem; color: #7a6040; font-style: italic; line-height: 1.4; }
-  .landing footer { font-size: 0.75rem; color: #b0a080; letter-spacing: 0.05em; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#b8973a">
+  <meta name="description" content="A verse-by-verse exegetical commentary on the Epistle to the Romans, based on the NA28 Greek text.">
+  <title>Romans Road — A Verse-by-Verse Commentary</title>
+  <link rel="manifest" href="manifest.json">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── Landing page layout overrides ── */
+    body {
+      display: block;
+      min-height: 100vh;
+      background: var(--parchment);
+    }
+
+    .landing-wrap {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Top bar ── */
+    .top-bar {
+      background: var(--ink);
+      border-bottom: 1px solid #3a2e1a;
+      padding: 0.6rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .top-bar-brand {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .top-bar-links {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+    }
+
+    .top-bar-links a {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #9a8a6a;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .top-bar-links a:hover { color: var(--gold); }
+
+    /* ── Hero ── */
+    .hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 5rem 2rem 3rem;
+      max-width: 680px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      opacity: 0.85;
+    }
+
+    .hero h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 3rem;
+      color: var(--ink);
+      letter-spacing: 0.06em;
+      line-height: 1.15;
+      margin-bottom: 0.6rem;
+      font-weight: 400;
+      border: none;
+      padding: 0;
+    }
+
+    .hero-subtitle {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: #7a6040;
+      margin-bottom: 1.6rem;
+      line-height: 1.5;
+    }
+
+    .hero-rule {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 1.8rem;
+      opacity: 0.5;
+    }
+
+    .hero-description {
+      font-family: 'EB Garamond', serif;
+      font-size: 1rem;
+      color: #5a4820;
+      line-height: 1.8;
+      max-width: 560px;
+      margin: 0 auto 2.8rem;
+    }
+
+    /* ── Volume cards ── */
+    .vol-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      width: 100%;
+      max-width: 560px;
+      margin: 0 auto 2.4rem;
+    }
+
+    .vol-card {
+      display: block;
+      border: 1px solid var(--rule);
+      padding: 1.6rem 1.4rem;
+      text-decoration: none;
+      background: var(--cream);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      text-align: left;
+    }
+
+    .vol-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 4px 20px rgba(184,151,58,0.12);
+    }
+
+    .vol-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+
+    .vol-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.03em;
+    }
+
+    .vol-meta {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.82rem;
+      color: #9a8060;
+      font-style: italic;
+      line-height: 1.45;
+    }
+
+    .vol-arrow {
+      display: inline-block;
+      margin-top: 0.8rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.7;
+    }
+
+    /* ── Reference links row ── */
+    .ref-row {
+      display: flex;
+      gap: 0.5rem 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 3rem;
+      padding-top: 0.4rem;
+      border-top: 1px solid var(--rule);
+      padding-top: 1.4rem;
+      width: 100%;
+      max-width: 560px;
+    }
+
+    .ref-row a {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.9rem;
+      color: #7a6040;
+      text-decoration: none;
+      transition: color 0.15s;
+      white-space: nowrap;
+    }
+
+    .ref-row a:hover { color: var(--gold); }
+
+    .ref-row a::before {
+      content: '→ ';
+      color: var(--gold);
+      opacity: 0.6;
+    }
+
+    /* ── Footer ── */
+    .landing-footer {
+      background: var(--ink);
+      border-top: 1px solid #3a2e1a;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+
+    .landing-footer p {
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      color: #5a4a2a;
+      text-align: center;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* ── Scripture anchor ── */
+    .anchor-verse {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.88rem;
+      font-style: italic;
+      color: #9a8060;
+      margin-bottom: 2.8rem;
+      line-height: 1.6;
+    }
+
+    .anchor-verse cite {
+      display: block;
+      font-style: normal;
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.7;
+      margin-top: 0.3rem;
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2.1rem; }
+      .vol-grid { grid-template-columns: 1fr; max-width: 100%; }
+      .top-bar-links { gap: 1rem; }
+      .top-bar-links .hide-mobile { display: none; }
+      .ref-row { max-width: 100%; }
+      .hero { padding: 3.5rem 1.4rem 2rem; }
+    }
+  </style>
 </head>
 <body>
-<div class="landing">
-  <h1>Romans Road</h1>
-  <p class="subtitle">A Verse-by-Verse Commentary on the Epistle to the Romans</p>
-  <div class="rule"></div>
-  <p class="byline">Based on the teaching of R.B. Thieme Jr.</p>
+<div class="landing-wrap">
 
-  <div class="vol-grid">
-    <a class="vol-card" href="Romans_Road.html">
-      <div class="vol-label">Volume I</div>
-      <div class="vol-title">Romans 1</div>
-      <div class="vol-desc">35 chapters · 52 glossary tables<br>The Justice of God</div>
-    </a>
-    <a class="vol-card" href="Romans_Road_2.html">
-      <div class="vol-label">Volume II</div>
-      <div class="vol-title">Romans 2</div>
-      <div class="vol-desc">18 chapters · 40 glossary tables<br>The Righteousness of God</div>
-    </a>
-  </div>
+  <!-- Top bar -->
+  <nav class="top-bar">
+    <a class="top-bar-brand" href="index.html">Romans Road</a>
+    <ul class="top-bar-links">
+      <li><a href="Romans_Road.html">Volume I</a></li>
+      <li><a href="Romans_Road_2.html">Volume II</a></li>
+      <li><a href="search.html">Search</a></li>
+      <li class="hide-mobile"><a href="greek-guide.html">Greek Guide</a></li>
+    </ul>
+  </nav>
 
-  <footer>Romans Road Commentary &copy; 2025</footer>
+  <!-- Hero -->
+  <main class="hero">
+
+    <div class="hero-eyebrow">A Verse-by-Verse Exegetical Commentary</div>
+
+    <h1>Romans Road</h1>
+
+    <p class="hero-subtitle">The Epistle of Paul to the Romans</p>
+
+    <div class="hero-rule"></div>
+
+    <p class="hero-description">
+      This commentary works through Paul's letter to the Romans verse by verse,
+      with continuous attention to the Greek text of the NA28 critical edition.
+      Each chapter develops the exegesis in full — grammatical analysis,
+      doctrinal content, historical background, and application —
+      from Romans 1:1 through the conclusion of the epistle.
+      It is written for the serious reader who wants to know
+      what the text actually says and what it means.
+    </p>
+
+    <p class="anchor-verse">
+      "And this is eternal life: that they may know You,<br>the only true God, and Jesus Christ whom You have sent."
+      <cite>John 17:3 — ESV</cite>
+    </p>
+
+    <!-- Volume cards -->
+    <div class="vol-grid">
+      <a class="vol-card" href="Romans_Road.html">
+        <div class="vol-label">Volume I</div>
+        <div class="vol-title">Romans 1</div>
+        <div class="vol-meta">
+          35 chapters &middot; 52 glossary tables<br>
+          The Justice of God
+        </div>
+        <span class="vol-arrow">Enter Volume I &rarr;</span>
+      </a>
+      <a class="vol-card" href="Romans_Road_2.html">
+        <div class="vol-label">Volume II</div>
+        <div class="vol-title">Romans 2</div>
+        <div class="vol-meta">
+          18 chapters &middot; 40 glossary tables<br>
+          The Indictment of Moralism
+        </div>
+        <span class="vol-arrow">Enter Volume II &rarr;</span>
+      </a>
+    </div>
+
+    <!-- Reference links -->
+    <div class="ref-row">
+      <a href="greek-guide.html">Guide to the Greek New Testament</a>
+      <a href="search.html">Search the Commentary</a>
+      <a href="greek-guide.html#why-greek">About This Text</a>
+      <a href="greek-guide.html#resources">For Further Study</a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="landing-footer">
+    <p>Romans Road Commentary &copy; 2026 John David Wilbourn &nbsp;&middot;&nbsp; Based on the NA28 / SBLGNT critical text &nbsp;&middot;&nbsp; ESV quotations</p>
+  </footer>
+
 </div>
 <script src="nav.js"></script>
 </body>
