@@ -622,9 +622,9 @@ function renderResults(results, q) {
 
   let html = '';
   const groupDefs = [
-    { key: 'glossary', label: 'Glossary Entries' },
     { key: 'quote',    label: 'Block Quotations — ESV' },
     { key: 'body',     label: 'Commentary Passages' },
+    { key: 'glossary', label: 'Glossary Entries' },
   ];
 
   for (const { key, label } of groupDefs) {
@@ -656,6 +656,7 @@ function renderResults(results, q) {
         html += `
           <div class="result-card">
             ${breadcrumb}
+            <a class="result-link" href="${href}" target="_blank">View in commentary &rarr;</a>
             <div class="glossary-card">
               <div class="g-term">${highlight(rec.term || '', terms)}</div>
               <div class="g-greek">${highlight(rec.greek_trans || '', terms)}</div>
