@@ -193,6 +193,7 @@ body {
 /* ── MAIN CONTENT ───────────────────────────────────────────── */
 #main {
   flex: 1;
+  min-width: 0;                   /* ADD THIS */
   max-width: var(--content-max);
   margin: 0 auto;
   padding: 3rem 3.5rem 6rem;
@@ -277,7 +278,7 @@ blockquote.esv-quote {
   margin: 2rem 0;
   border: 1px solid var(--rule);
   border-radius: 4px;
-  overflow: hidden;
+  overflow-x: auto;               /* CHANGE overflow: hidden → overflow-x: auto */
 }
 
 .glossary-label {
