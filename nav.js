@@ -47,26 +47,30 @@
 
   // ── ACTIVE SECTION HIGHLIGHT ───────────────────────────────
   function initSectionObserver() {
-    const headings  = document.querySelectorAll('h1[id], h2[id], h3[id]');
-    const navLinks  = document.querySelectorAll('#nav-list a');
+  const headings = document.querySelectorAll('h1[id], h2[id], h3[id]');
+  const navLinks = document.querySelectorAll('#nav-list a');
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          navLinks.forEach(a => a.classList.remove('active'));
-          const active = document.querySelector(
-            `#nav-list a[href="#${entry.target.id}"]`
-          );
-          if (active) {
-            active.classList.add('active');
-            active.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-          }
-        }
-      });
-    }, { rootMargin: '-20% 0px -70% 0px' });
+  // Default to first nav link active on load
+  if (navLinks.length > 0) navLinks[0].classList.add('active');
 
-    headings.forEach(h => observer.observe(h));
-  }
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      // Only fire if heading is entering from the top (scrolling down)
+      // or is genuinely in the reading zone
+      navLinks.forEach(a => a.classList.remove('active'));
+      const active = document.querySelector(
+        `#nav-list a[href="#${entry.target.id}"]`
+      );
+      if (active) {
+        active.classList.add('active');
+        active.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      }
+    });
+  }, { rootMargin: '-10% 0px -85% 0px', threshold: 0 });
+
+  headings.forEach(h => observer.observe(h));
+}
 
   // ── SCROLL TO TOP ──────────────────────────────────────────
   function initScrollTop() {
