@@ -70,55 +70,48 @@ class CommentaryParser(HTMLParser):
         self.entries = []
         self.counter = 0
 
-        # State
-        self.in_body = False          # True once we pass <div class="content"> or <main>
-        self.in_nav = False
+        self.in_main = False
+        self.nav_depth = 0
+        self.skip_depth = 0
+        self.inner_skip_tags = {"script", "style"}
+
         self.current_tag = None
-        self.current_attrs = {}
         self.capture = False
         self.buffer = []
 
-        # Chapter / section tracking
+        self.heading_tag = None
+        self.heading_id = None
+        self.heading_class = None
+
         self.current_chapter = ""
         self.current_chapter_id = ""
         self.current_section = ""
         self.current_section_id = ""
 
-        # Heading state
-        self.heading_tag = None
-        self.heading_id = None
-        self.heading_class = None
-
-        # Nesting depth for tags we skip
-        self.skip_depth = 0
-        self.skip_tags = {"script", "style", "nav", "header", "footer"}
-
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
 
-        # Track nav to suppress nav text
-        if tag == "nav" or attrs.get("class") in ("nav", "sidebar", "toc"):
-            self.in_nav = True
+        if tag == "nav":
+            self.nav_depth += 1
+            return
+
+        if self.nav_depth > 0:
+            return
+
+        if tag == "main":
+            self.in_main = True
+            return
+
+        if not self.in_main:
+            return
+
+        if tag in self.inner_skip_tags:
             self.skip_depth += 1
             return
 
         if self.skip_depth > 0:
-            self.skip_depth += 1
             return
 
-        if tag in self.skip_tags:
-            self.skip_depth += 1
-            return
-
-        # Detect content area
-        cls = attrs.get("class", "")
-        if tag in ("main", "article") or attrs.get("id") == "main" or "content" in cls or "commentary" in cls:
-            self.in_body = True
-
-        if not self.in_body:
-            return
-
-        # Headings
         if tag in ("h1", "h2", "h3", "h4"):
             self.heading_tag = tag
             self.heading_id = attrs.get("id", "")
@@ -126,24 +119,29 @@ class CommentaryParser(HTMLParser):
             self.capture = True
             self.buffer = []
             self.current_tag = tag
-            self.current_attrs = attrs
             return
 
-        # Paragraphs and block elements
         if tag in ("p", "blockquote", "li", "td", "th"):
             self.capture = True
             self.buffer = []
             self.current_tag = tag
-            self.current_attrs = attrs
 
     def handle_endtag(self, tag):
-        if self.skip_depth > 0:
-            self.skip_depth -= 1
-            if self.skip_depth == 0:
-                self.in_nav = False
+        if tag == "nav":
+            self.nav_depth = max(0, self.nav_depth - 1)
             return
 
-        if not self.in_body:
+        if self.nav_depth > 0:
+            return
+
+        if not self.in_main:
+            return
+
+        if tag in self.inner_skip_tags:
+            self.skip_depth = max(0, self.skip_depth - 1)
+            return
+
+        if self.skip_depth > 0:
             return
 
         if tag in ("h1", "h2", "h3", "h4") and self.capture and self.heading_tag == tag:
@@ -151,9 +149,10 @@ class CommentaryParser(HTMLParser):
             if not text:
                 return
 
-            # Update chapter/section tracking
-            if tag == "h1" and "chapter" in (self.heading_class or "") or \
-               (self.heading_id and self.heading_id.startswith("chapter-")):
+            if tag == "h1" and (
+                "chapter" in (self.heading_class or "").lower() or
+                (self.heading_id and self.heading_id.startswith("chapter-"))
+            ):
                 self.current_chapter = text
                 self.current_chapter_id = self.heading_id or self._slugify(text)
                 self.current_section = ""
@@ -162,43 +161,40 @@ class CommentaryParser(HTMLParser):
                 self.current_section = text
                 self.current_section_id = self.heading_id or self._slugify(text)
 
-            # Emit heading as entry
             self._emit(text, "heading")
             self.heading_tag = None
+            return
 
-        elif tag in ("p", "blockquote", "li", "td", "th") and self.capture and self.current_tag == tag:
+        if tag in ("p", "blockquote", "li", "td", "th") and self.capture and self.current_tag == tag:
             text = self._flush()
             if text:
                 kind = "blockquote" if tag == "blockquote" else "body"
                 self._emit(text, kind)
 
     def handle_data(self, data):
-        if self.capture and self.skip_depth == 0:
+        if self.capture and self.nav_depth == 0 and self.skip_depth == 0:
             self.buffer.append(data)
 
     def handle_entityref(self, name):
-        entities = {"amp": "&", "lt": "<", "gt": ">", "quot": '"',
-                    "apos": "'", "nbsp": " ", "mdash": "—", "ndash": "–",
-                    "ldquo": "\u201C", "rdquo": "\u201D",
-                    "lsquo": "\u2018", "rsquo": "\u2019"}
-        if self.capture:
+        entities = {
+            "amp": "&", "lt": "<", "gt": ">", "quot": '"',
+            "apos": "'", "nbsp": " ", "mdash": "—", "ndash": "–",
+            "ldquo": "\u201C", "rdquo": "\u201D",
+            "lsquo": "\u2018", "rsquo": "\u2019",
+        }
+        if self.capture and self.nav_depth == 0:
             self.buffer.append(entities.get(name, ""))
 
     def handle_charref(self, name):
-        if self.capture:
+        if self.capture and self.nav_depth == 0:
             try:
-                if name.startswith("x"):
-                    char = chr(int(name[1:], 16))
-                else:
-                    char = chr(int(name))
+                char = chr(int(name[1:], 16) if name.startswith("x") else int(name))
                 self.buffer.append(char)
             except (ValueError, OverflowError):
                 pass
 
     def _flush(self):
-        text = "".join(self.buffer).strip()
-        # Collapse whitespace
-        text = re.sub(r'\s+', ' ', text)
+        text = re.sub(r'\s+', ' ', "".join(self.buffer)).strip()
         self.buffer = []
         self.capture = False
         self.current_tag = None
@@ -208,7 +204,7 @@ class CommentaryParser(HTMLParser):
         if not text or len(text) < 3:
             return
         self.counter += 1
-        entry = {
+        self.entries.append({
             "id": f"{self.vol}-{self.counter}",
             "vol": self.vol,
             "vol_label": self.vol_label,
@@ -221,16 +217,12 @@ class CommentaryParser(HTMLParser):
             "verses": extract_verses(text),
             "greek": has_greek(text),
             "hebrew": has_hebrew(text),
-        }
-        self.entries.append(entry)
+        })
 
     @staticmethod
     def _slugify(text):
-        slug = text.lower()
-        slug = re.sub(r'[^\w\s-]', '', slug)
-        slug = re.sub(r'[\s_]+', '-', slug)
-        slug = slug.strip('-')
-        return slug
+        slug = re.sub(r'[^\w\s-]', '', text.lower())
+        return re.sub(r'[\s_]+', '-', slug).strip('-')
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
