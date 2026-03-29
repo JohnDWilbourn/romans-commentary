@@ -397,7 +397,7 @@
   <button class="filter-btn" data-filter="greek">Greek</button>
   <button class="filter-btn" data-filter="hebrew">Hebrew</button>
   <button class="filter-btn" data-filter="verse">Verse Refs</button>
-  <button class="filter-btn" data-filter="glossary">Glossary</button>
+  <button class="filter-btn" data-filter="blockquote">Block Quotes</button>
 </div>
 
 <div id="layout">
@@ -405,8 +405,8 @@
     <div class="facet-group">
       <div class="facet-title">By Type</div>
       <div class="facet-item active" data-facet="type" data-val="all">All results <span class="facet-count" id="fc-all">—</span></div>
-      <div class="facet-item" data-facet="type" data-val="glossary">Glossary <span class="facet-count" id="fc-glossary">—</span></div>
-      <div class="facet-item" data-facet="type" data-val="quote">Block Quotes <span class="facet-count" id="fc-quote">—</span></div>
+      <div class="facet-item" data-facet="type" data-val="heading">Headings <span class="facet-count" id="fc-heading">—</span></div>
+      <div class="facet-item" data-facet="type" data-val="blockquote">Block Quotes <span class="facet-count" id="fc-blockquote">—</span></div>
       <div class="facet-item" data-facet="type" data-val="body">Commentary <span class="facet-count" id="fc-body">—</span></div>
     </div>
     <div class="facet-group">
@@ -611,7 +611,7 @@ function renderResults(results, q) {
   metaText.textContent = `${results.length} result${results.length !== 1 ? 's' : ''} for "${q}" — detected: ${typeStr}`;
 
   // Group by kind
-  const groups = { glossary: [], quote: [], body: [] };
+  const groups = { glossary: [], blockquote: [], body: [], heading: [] };
   results.forEach(r => {
     const k = r.rec.kind;
     if (groups[k]) groups[k].push(r);
@@ -622,7 +622,8 @@ function renderResults(results, q) {
 
   let html = '';
   const groupDefs = [
-    { key: 'quote',    label: 'Block Quotations — ESV' },
+    { key: 'heading',    label: 'Chapter & Section Headings' },
+    { key: 'blockquote', label: 'Block Quotations' },
     { key: 'body',     label: 'Commentary Passages' },
     { key: 'glossary', label: 'Glossary Entries' },
   ];
@@ -688,7 +689,7 @@ function renderResults(results, q) {
 
 // ── FACET COUNTS ───────────────────────────────────────────────
 function updateFacetCounts(results) {
-  const counts = { all: results.length, glossary: 0, quote: 0, body: 0, vol1: 0, vol2: 0, greek: 0, hebrew: 0 };
+  const counts = { all: results.length, heading: 0, blockquote: 0, body: 0, vol1: 0, vol2: 0, greek: 0, hebrew: 0 };
   results.forEach(({ rec }) => {
     if (counts[rec.kind] !== undefined) counts[rec.kind]++;
     if (counts[rec.vol]  !== undefined) counts[rec.vol]++;
@@ -696,8 +697,8 @@ function updateFacetCounts(results) {
     if (rec.hebrew) counts.hebrew++;
   });
   document.getElementById('fc-all').textContent     = counts.all;
-  document.getElementById('fc-glossary').textContent= counts.glossary;
-  document.getElementById('fc-quote').textContent   = counts.quote;
+  document.getElementById('fc-heading').textContent   = counts.heading;
+  document.getElementById('fc-blockquote').textContent = counts.blockquote;
   document.getElementById('fc-body').textContent    = counts.body;
   document.getElementById('fc-vols').textContent    = counts.all;
   document.getElementById('fc-vol1').textContent    = counts.vol1;
