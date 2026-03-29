@@ -112,7 +112,7 @@ class CommentaryParser(HTMLParser):
 
         # Detect content area
         cls = attrs.get("class", "")
-        if tag in ("main", "article") or "content" in cls or "commentary" in cls:
+        if tag in ("main", "article") or attrs.get("id") == "main" or "content" in cls or "commentary" in cls:
             self.in_body = True
 
         if not self.in_body:
