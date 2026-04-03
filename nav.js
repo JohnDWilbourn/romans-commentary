@@ -19,6 +19,13 @@
       ]
     },
     {
+      label: 'Growth Lessons',
+      items: [
+        { label: 'Spiritual Growth Lessons', url: 'https://lessons.intelligencereport.info/index.html' },
+        { label: 'Search lessons',            url: 'https://lessons.intelligencereport.info/search.html' },
+      ]
+    },
+    {
       label: 'Illuminations',
       url: '/illuminations.html',
       items: [
@@ -263,8 +270,11 @@
   // ── SERVICE WORKER REGISTRATION ────────────────────────────
   function initServiceWorker() {
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js')
-        .then(reg => console.log('SW registered:', reg.scope))
+      navigator.serviceWorker.register('/sw.js', { updateViaCache: 'none' })
+        .then(reg => {
+          reg.update();
+          console.log('SW registered:', reg.scope);
+        })
         .catch(err => console.warn('SW registration failed:', err));
     }
   }
