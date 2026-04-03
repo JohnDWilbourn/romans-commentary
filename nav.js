@@ -44,10 +44,21 @@
     },
   ];
 
+  // ── SITE TOP NAV HEIGHT (CSS var --site-top-nav-h for sidebar / progress bar) ──
+  function updateSiteTopNavHeight() {
+    const el = document.getElementById('site-top-nav');
+    if (!el) return;
+    const h = Math.ceil(el.getBoundingClientRect().height);
+    document.documentElement.style.setProperty('--site-top-nav-h', h + 'px');
+  }
+
   // ── SITE NAV INJECTOR ──────────────────────────────────────
   function initSiteNav() {
     // Don't inject twice
     if (document.getElementById('site-top-nav')) return;
+
+    // Landing page already has a horizontal .top-bar; avoid duplicate nav
+    if (document.querySelector('.landing-wrap')) return;
 
     const nav = document.createElement('nav');
     nav.id = 'site-top-nav';
@@ -126,6 +137,13 @@
 
     // Inject at top of body
     document.body.insertBefore(nav, document.body.firstChild);
+
+    updateSiteTopNavHeight();
+    window.addEventListener('resize', updateSiteTopNavHeight);
+    if (typeof ResizeObserver !== 'undefined') {
+      const ro = new ResizeObserver(updateSiteTopNavHeight);
+      ro.observe(nav);
+    }
   }
 
   // ── NAV SEARCH FILTER ──────────────────────────────────────

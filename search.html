@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Search — Romans Road Commentary</title>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Cinzel:wght@400;600&family=Source+Code+Pro:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 <style>
   :root {
     --gold:      #b8973a;
@@ -26,6 +27,11 @@
     background: var(--parchment);
     color: var(--ink);
     min-height: 100vh;
+  }
+
+  /* Site nav from nav.js sits above; offset sticky search header */
+  #site-top-nav + header {
+    top: var(--site-top-nav-h, 48px);
   }
 
   /* ── HEADER ── */
@@ -132,7 +138,7 @@
     max-width: 100%;
     margin: 0 auto;
     min-height: calc(100vh - 120px);
-	overflow: hidden;
+    overflow-x: hidden;
   }
 
   /* ── SIDEBAR FACETS ── */
@@ -394,6 +400,7 @@
   <button class="filter-btn active" data-filter="all">All</button>
   <button class="filter-btn" data-filter="vol1">Volume I</button>
   <button class="filter-btn" data-filter="vol2">Volume II</button>
+  <button class="filter-btn" data-filter="vol3">Volume III</button>
   <button class="filter-btn" data-filter="greek">Greek</button>
   <button class="filter-btn" data-filter="hebrew">Hebrew</button>
   <button class="filter-btn" data-filter="verse">Verse Refs</button>
@@ -411,9 +418,10 @@
     </div>
     <div class="facet-group">
       <div class="facet-title">By Volume</div>
-      <div class="facet-item active" data-facet="vol" data-val="all">Both Volumes <span class="facet-count" id="fc-vols">—</span></div>
+      <div class="facet-item active" data-facet="vol" data-val="all">All volumes <span class="facet-count" id="fc-vols">—</span></div>
       <div class="facet-item" data-facet="vol" data-val="vol1">Volume I <span class="facet-count" id="fc-vol1">—</span></div>
       <div class="facet-item" data-facet="vol" data-val="vol2">Volume II <span class="facet-count" id="fc-vol2">—</span></div>
+      <div class="facet-item" data-facet="vol" data-val="vol3">Volume III <span class="facet-count" id="fc-vol3">—</span></div>
     </div>
     <div class="facet-group">
       <div class="facet-title">Script</div>
@@ -441,6 +449,13 @@
 
 <script>
 'use strict';
+
+function volumeMeta(vol) {
+  if (vol === 'vol1') return { label: 'Volume I', file: 'Romans_Road.html' };
+  if (vol === 'vol2') return { label: 'Volume II', file: 'Romans_Road_2.html' };
+  if (vol === 'vol3') return { label: 'Volume III', file: 'Romans_Road_3.html' };
+  return { label: 'Volume I', file: 'Romans_Road.html' };
+}
 
 // ── STATE ──────────────────────────────────────────────────────
 let INDEX        = [];
@@ -525,6 +540,7 @@ function search(q) {
     // Volume filter
     if (activeFilter === 'vol1'    && rec.vol !== 'vol1')   continue;
     if (activeFilter === 'vol2'    && rec.vol !== 'vol2')   continue;
+    if (activeFilter === 'vol3'    && rec.vol !== 'vol3')   continue;
     if (activeFilter === 'greek'   && !rec.greek)           continue;
     if (activeFilter === 'hebrew'  && !rec.hebrew)          continue;
     if (activeFilter === 'verse'   && !rec.verses?.length)  continue;
@@ -636,10 +652,9 @@ function renderResults(results, q) {
     html += `<div class="result-group-title"><span>${label}</span><span>${grp.length} result${grp.length !== 1 ? 's' : ''}</span></div>`;
 
     for (const { rec, terms } of grp) {
-      const vol      = rec.vol === 'vol1' ? 'Volume I' : 'Volume II';
-      const file     = rec.vol === 'vol1' ? 'Romans_Road.html' : 'Romans_Road_2.html';
+      const { label: vol, file } = volumeMeta(rec.vol);
       const anchor   = rec.section_id || rec.chapter_id || '';
-      const href     = `${file}#${anchor}`;
+      const href     = anchor ? `${file}#${encodeURIComponent(anchor)}` : file;
       const chapter  = rec.chapter || '';
       const section  = rec.section || '';
 
@@ -689,7 +704,7 @@ function renderResults(results, q) {
 
 // ── FACET COUNTS ───────────────────────────────────────────────
 function updateFacetCounts(results) {
-  const counts = { all: results.length, heading: 0, blockquote: 0, body: 0, vol1: 0, vol2: 0, greek: 0, hebrew: 0 };
+  const counts = { all: results.length, heading: 0, blockquote: 0, body: 0, vol1: 0, vol2: 0, vol3: 0, greek: 0, hebrew: 0 };
   results.forEach(({ rec }) => {
     if (counts[rec.kind] !== undefined) counts[rec.kind]++;
     if (counts[rec.vol]  !== undefined) counts[rec.vol]++;
@@ -703,6 +718,7 @@ function updateFacetCounts(results) {
   document.getElementById('fc-vols').textContent    = counts.all;
   document.getElementById('fc-vol1').textContent    = counts.vol1;
   document.getElementById('fc-vol2').textContent    = counts.vol2;
+  document.getElementById('fc-vol3').textContent    = counts.vol3;
   document.getElementById('fc-greek').textContent   = counts.greek;
   document.getElementById('fc-hebrew').textContent  = counts.hebrew;
 }
@@ -761,5 +777,6 @@ loadIndex().then(() => {
   if (urlQ) runSearch();
 });
 </script>
+<script src="nav.js"></script>
 </body>
 </html>
