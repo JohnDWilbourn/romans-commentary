@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Romans 1:16–17 — The Pivot: From Salvation Gospel to the Living Gospel of Doctrine</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --crimson:    #7a1a1a;
+    --crimson-lt: #a02020;
+    --gold:       #b8972a;
+    --gold-lt:    #d4b84a;
+    --ink:        #1a1410;
+    --ink-mid:    #2e2620;
+    --ink-soft:   #4a3f35;
+    --parchment:  #f8f3ec;
+    --parch-dark: #ede4d6;
+    --parch-mid:  #f3ece0;
+    --white:      #fffdf9;
+    --rule:       #c4a96e;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'EB Garamond', Georgia, serif;
+    background: var(--parchment);
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.85;
+  }
+
+  /* ── DECORATIVE HEADER ───────────────────────────────────────── */
+  .masthead {
+    background: var(--ink);
+    color: var(--parchment);
+    text-align: center;
+    padding: 70px 40px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .masthead::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 60px,
+        rgba(180,155,80,0.04) 60px,
+        rgba(180,155,80,0.04) 61px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 60px,
+        rgba(180,155,80,0.04) 60px,
+        rgba(180,155,80,0.04) 61px
+      );
+  }
+  .masthead-ornament {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.78em;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    opacity: 0.9;
+  }
+  .masthead h1 {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: clamp(1.6em, 4vw, 2.8em);
+    color: var(--white);
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+    margin-bottom: 16px;
+  }
+  .masthead h1 span {
+    color: var(--gold-lt);
+  }
+  .masthead-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.25em;
+    color: rgba(248,243,236,0.75);
+    margin-top: 14px;
+    letter-spacing: 0.02em;
+  }
+  .gold-rule {
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 22px auto;
+  }
+
+  /* ── LAYOUT ──────────────────────────────────────────────────── */
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 40px 100px;
+  }
+
+  /* ── PIVOT BANNER ────────────────────────────────────────────── */
+  .pivot-banner {
+    background: var(--crimson);
+    color: var(--white);
+    padding: 32px 40px;
+    margin: 0 0 56px;
+    position: relative;
+    border-radius: 2px;
+  }
+  .pivot-banner::before {
+    content: '✦';
+    position: absolute;
+    top: -14px; left: 50%; transform: translateX(-50%);
+    background: var(--parchment);
+    color: var(--crimson);
+    font-size: 1.4em;
+    width: 30px; height: 30px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    border: 2px solid var(--crimson);
+  }
+  .pivot-banner p {
+    font-family: 'Cinzel', serif;
+    font-size: 1em;
+    letter-spacing: 0.06em;
+    line-height: 1.7;
+    text-align: center;
+    margin: 0;
+  }
+  .pivot-banner strong {
+    color: var(--gold-lt);
+    font-weight: 600;
+  }
+
+  /* ── VERSE BLOCK ─────────────────────────────────────────────── */
+  .verse-block {
+    border-left: 5px solid var(--crimson);
+    background: var(--white);
+    padding: 28px 36px;
+    margin: 40px 0;
+    border-radius: 0 6px 6px 0;
+    box-shadow: 4px 4px 18px rgba(0,0,0,0.07);
+  }
+  .verse-block .ref {
+    font-family: 'Cinzel', serif;
+    font-size: 0.78em;
+    letter-spacing: 0.2em;
+    color: var(--crimson);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .verse-block .greek {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.15em;
+    color: var(--ink-soft);
+    font-style: italic;
+    display: block;
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+  .verse-block .translation {
+    font-size: 1.12em;
+    color: var(--ink);
+    font-style: italic;
+    line-height: 1.7;
+  }
+  .verse-block .note {
+    margin-top: 10px;
+    font-size: 0.88em;
+    color: var(--ink-soft);
+    font-style: normal;
+  }
+
+  /* ── SECTION HEADS ───────────────────────────────────────────── */
+  .section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72em;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 6px;
+  }
+  h2 {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 1.55em;
+    color: var(--crimson);
+    margin: 64px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--rule);
+    letter-spacing: 0.04em;
+  }
+  h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.38em;
+    color: var(--ink);
+    margin: 36px 0 14px;
+    font-style: italic;
+  }
+  h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 0.88em;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--crimson-lt);
+    margin: 28px 0 10px;
+    text-transform: uppercase;
+  }
+
+  p { margin: 1.3em 0; font-size: 1.04em; color: var(--ink-mid); }
+
+  /* ── GREEK INLINE ────────────────────────────────────────────── */
+  .gk {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.08em;
+    color: var(--crimson);
+    font-style: italic;
+  }
+  .gk-def {
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  /* ── KEY TERM PILL ───────────────────────────────────────────── */
+  .pill {
+    display: inline-block;
+    background: rgba(122,26,26,0.08);
+    border: 1px solid rgba(122,26,26,0.2);
+    color: var(--crimson);
+    font-family: 'Cinzel', serif;
+    font-size: 0.78em;
+    letter-spacing: 0.08em;
+    padding: 2px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  /* ── EXEGESIS CARD ───────────────────────────────────────────── */
+  .exegesis-card {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-top: 4px solid var(--crimson);
+    border-radius: 4px;
+    padding: 28px 32px;
+    margin: 24px 0;
+    box-shadow: 0 3px 14px rgba(0,0,0,0.06);
+  }
+  .exegesis-card .greek-head {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.45em;
+    color: var(--crimson);
+    font-style: italic;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .exegesis-card .parse {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72em;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--parch-dark);
+  }
+  .exegesis-card ul {
+    margin: 0; padding: 0; list-style: none;
+  }
+  .exegesis-card li {
+    padding: 8px 0 8px 20px;
+    position: relative;
+    font-size: 1.02em;
+    color: var(--ink-mid);
+    border-bottom: 1px solid var(--parch-dark);
+  }
+  .exegesis-card li:last-child { border-bottom: none; }
+  .exegesis-card li::before {
+    content: '▸';
+    position: absolute; left: 0;
+    color: var(--gold);
+    font-size: 0.85em;
+    top: 10px;
+  }
+  .exegesis-card li strong { color: var(--crimson); font-weight: 600; }
+
+  /* ── PIVOT DIAGRAM ───────────────────────────────────────────── */
+  .pivot-diagram {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    gap: 0;
+    margin: 40px 0;
+    align-items: stretch;
+  }
+  .pivot-side {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    padding: 28px 24px;
+    border-radius: 4px;
+  }
+  .pivot-side.left { border-radius: 4px 0 0 4px; border-right: none; }
+  .pivot-side.right { border-radius: 0 4px 4px 0; border-left: none; background: var(--parch-dark); }
+  .pivot-center {
+    background: var(--crimson);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: var(--white);
+    font-family: 'Cinzel', serif;
+    font-size: 0.65em;
+    letter-spacing: 0.12em;
+    text-align: center;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    padding: 12px 0;
+  }
+  .pivot-side-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72em;
+    letter-spacing: 0.2em;
+    color: var(--crimson);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .pivot-side ul {
+    list-style: none; padding: 0; margin: 0;
+  }
+  .pivot-side li {
+    padding: 6px 0 6px 16px;
+    position: relative;
+    font-size: 0.97em;
+    color: var(--ink-mid);
+    border-bottom: 1px solid rgba(180,155,80,0.2);
+  }
+  .pivot-side li:last-child { border-bottom: none; }
+  .pivot-side li::before {
+    content: '—';
+    position: absolute; left: 0;
+    color: var(--rule);
+    font-size: 0.8em;
+  }
+
+  /* ── TABLE ───────────────────────────────────────────────────── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 28px 0;
+    font-size: 0.97em;
+    box-shadow: 0 3px 14px rgba(0,0,0,0.07);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  thead tr {
+    background: var(--ink);
+    color: var(--white);
+  }
+  thead th {
+    padding: 14px 18px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.78em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: left;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+  thead th:last-child { border-right: none; }
+  tbody tr { border-bottom: 1px solid var(--parch-dark); }
+  tbody tr:nth-child(even) { background: var(--parch-mid); }
+  tbody tr:nth-child(odd) { background: var(--white); }
+  tbody td {
+    padding: 13px 18px;
+    color: var(--ink-mid);
+    vertical-align: top;
+    border-right: 1px solid var(--parch-dark);
+  }
+  tbody td:last-child { border-right: none; }
+  tbody td:first-child {
+    font-family: 'Cinzel', serif;
+    font-size: 0.82em;
+    letter-spacing: 0.06em;
+    color: var(--crimson);
+    font-weight: 600;
+  }
+  .phase-num {
+    display: inline-flex;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--crimson);
+    color: var(--white);
+    font-family: 'Cinzel', serif;
+    font-size: 0.85em;
+    font-weight: 700;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ── DOCTRINE BLOCK ──────────────────────────────────────────── */
+  .doctrine-block {
+    background: var(--ink);
+    color: var(--parchment);
+    padding: 36px 40px;
+    margin: 40px 0;
+    border-radius: 4px;
+    position: relative;
+  }
+  .doctrine-block::before {
+    content: '"';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8em;
+    color: var(--gold);
+    opacity: 0.15;
+    position: absolute;
+    top: -20px; left: 20px;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .doctrine-block p {
+    color: rgba(248,243,236,0.9);
+    font-style: italic;
+    font-size: 1.1em;
+    line-height: 1.85;
+    position: relative;
+    margin: 0;
+  }
+  .doctrine-block .attrib {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72em;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-top: 14px;
+    display: block;
+    font-style: normal;
+  }
+
+  /* ── PRINCIPLE LIST ──────────────────────────────────────────── */
+  .principle-list {
+    counter-reset: prin;
+    list-style: none;
+    padding: 0; margin: 24px 0;
+  }
+  .principle-list li {
+    counter-increment: prin;
+    padding: 14px 18px 14px 58px;
+    position: relative;
+    margin-bottom: 10px;
+    background: var(--white);
+    border-left: 3px solid var(--rule);
+    border-radius: 0 4px 4px 0;
+    font-size: 1.02em;
+    color: var(--ink-mid);
+    line-height: 1.7;
+  }
+  .principle-list li::before {
+    counter-content: counter(prin);
+    content: counter(prin);
+    position: absolute;
+    left: 14px; top: 50%; transform: translateY(-50%);
+    width: 28px; height: 28px;
+    background: var(--crimson);
+    color: var(--white);
+    font-family: 'Cinzel', serif;
+    font-size: 0.82em;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .principle-list li strong { color: var(--crimson); }
+
+  /* ── FLOW DIAGRAM ────────────────────────────────────────────── */
+  .flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin: 36px 0;
+    flex-wrap: wrap;
+  }
+  .flow-node {
+    background: var(--white);
+    border: 2px solid var(--crimson);
+    border-radius: 6px;
+    padding: 16px 20px;
+    text-align: center;
+    min-width: 130px;
+    flex: 0 0 auto;
+  }
+  .flow-node .label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72em;
+    letter-spacing: 0.12em;
+    color: var(--crimson);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .flow-node .value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1em;
+    font-style: italic;
+    color: var(--ink);
+  }
+  .flow-node.center-node {
+    background: var(--crimson);
+    border-color: var(--crimson);
+  }
+  .flow-node.center-node .label { color: var(--gold-lt); }
+  .flow-node.center-node .value { color: var(--white); }
+  .flow-arrow {
+    font-size: 1.6em;
+    color: var(--gold);
+    padding: 0 8px;
+    flex: 0 0 auto;
+  }
+
+  /* ── HABAKKUK BOX ────────────────────────────────────────────── */
+  .hab-box {
+    border: 2px solid var(--gold);
+    background: linear-gradient(135deg, var(--white) 0%, var(--parch-mid) 100%);
+    border-radius: 6px;
+    padding: 30px 36px;
+    margin: 36px 0;
+    text-align: center;
+    position: relative;
+  }
+  .hab-box::before {
+    content: 'Habakkuk 2:4';
+    font-family: 'Cinzel', serif;
+    font-size: 0.72em;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    position: absolute;
+    top: -11px;
+    left: 50%; transform: translateX(-50%);
+    background: var(--parch-mid);
+    padding: 0 12px;
+  }
+  .hab-box .heb {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.5em;
+    font-style: italic;
+    color: var(--crimson);
+    display: block;
+    margin-bottom: 8px;
+  }
+  .hab-box .trans {
+    font-size: 1.08em;
+    font-style: italic;
+    color: var(--ink-soft);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .hab-box .corrected {
+    font-family: 'Cinzel', serif;
+    font-size: 0.88em;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    display: block;
+    padding-top: 10px;
+    border-top: 1px solid rgba(180,155,80,0.3);
+  }
+
+  /* ── MALADJUSTMENT GRID ──────────────────────────────────────── */
+  .mal-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 28px 0;
+  }
+  .mal-card {
+    background: var(--white);
+    border-top: 4px solid var(--crimson);
+    border: 1px solid var(--rule);
+    border-top-width: 4px;
+    padding: 20px 18px;
+    border-radius: 4px;
+  }
+  .mal-card .type {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75em;
+    letter-spacing: 0.15em;
+    color: var(--crimson);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .mal-card ul {
+    list-style: none; padding: 0; margin: 0;
+  }
+  .mal-card li {
+    padding: 5px 0 5px 14px;
+    position: relative;
+    font-size: 0.93em;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .mal-card li::before {
+    content: '↳';
+    position: absolute; left: 0;
+    color: var(--rule);
+    font-size: 0.85em;
+  }
+
+  /* ── CLOSING ─────────────────────────────────────────────────── */
+  .closing-rule {
+    text-align: center;
+    margin: 60px 0 40px;
+    position: relative;
+  }
+  .closing-rule::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--rule), transparent);
+  }
+  .closing-rule span {
+    background: var(--parchment);
+    padding: 0 20px;
+    position: relative;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.2em;
+    color: var(--gold);
+  }
+
+  /* ── FOOTER ──────────────────────────────────────────────────── */
+  footer {
+    background: var(--ink);
+    color: rgba(248,243,236,0.5);
+    text-align: center;
+    padding: 28px 20px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.7em;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 680px) {
+    .page { padding: 40px 20px 80px; }
+    .pivot-diagram { grid-template-columns: 1fr; }
+    .pivot-center { writing-mode: horizontal-tb; transform: none; padding: 14px; }
+    .pivot-side.left, .pivot-side.right { border-radius: 4px; border: 1px solid var(--rule); }
+    .mal-grid { grid-template-columns: 1fr; }
+    .flow { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .masthead { padding: 50px 24px 44px; }
+  }
+</style>
+</head>
+<body>
+<a style="display:block;text-align:center;padding:14px;background:#ede4d6;border-bottom:1px solid #c4a96e;font-family:'Cinzel',serif;font-size:0.8rem;letter-spacing:0.1em;color:#7a1a1a;text-decoration:none;" href="../illuminations.html">← Return to Illuminations</a>
+
+
+<!-- ── MASTHEAD ─────────────────────────────────────────────────── -->
+<div class="masthead">
+  <div class="masthead-ornament">Epistle-Oriented Doctrinal Exegesis · R.B. Thieme Jr.</div>
+  <div class="gold-rule"></div>
+  <h1>Romans 1:<span>16–17</span></h1>
+  <div class="gold-rule"></div>
+  <div class="masthead-sub">The Pivot: From the Gospel of Salvation to the Living Gospel of Doctrine</div>
+</div>
+
+<!-- ── PAGE ─────────────────────────────────────────────────────── -->
+<div class="page">
+
+  <!-- PIVOT BANNER -->
+  <div class="pivot-banner">
+    <p>
+      <strong>Romans 1:17 is the hinge of the entire epistle.</strong><br>
+      Here the Gospel of Salvation — passive faith in the finished work of Christ — transitions into<br>
+      the Living Gospel of Doctrine: the active, aggressive metabolization of the Word<br>
+      that builds the Edification Complex of the Soul and advances the believer<br>
+      through the Protocol Plan of God.
+    </p>
+  </div>
+
+  <!-- THE TWO VERSES -->
+  <div class="verse-block">
+    <span class="ref">Romans 1:16 · Corrected Translation</span>
+    <span class="greek">Οὐ γὰρ ἐπαισχύνομαι τὸ εὐαγγέλιον · δύναμις γὰρ θεοῦ ἐστιν εἰς σωτηρίαν παντὶ τῷ πιστεύοντι, Ἰουδαίῳ τε πρῶτον καὶ Ἕλληνι.</span>
+    <span class="translation">"For I am not ashamed of the good news, for it is the ability of God for the purpose of salvation to anyone who believes — to the Jew foremost, and likewise to the Gentile."</span>
+  </div>
+
+  <div class="verse-block">
+    <span class="ref">Romans 1:17 · Corrected Translation</span>
+    <span class="greek">Δικαιοσύνη γὰρ θεοῦ ἐν αὐτῷ ἀποκαλύπτεται ἐκ πίστεως εἰς πίστιν · καθὼς γέγραπται · ὁ δὲ δίκαιος ἐκ πίστεως ζήσεται.</span>
+    <span class="translation">"For therein is the justice of God revealed from faith to doctrine; as it stands written: The vindicated one shall live by means of doctrine."</span>
+    <span class="note">δικαιοσύνη θεοῦ = the justice of God (judicial thinking of the judge, not mere righteousness) · ἐκ πίστεως = from faith (salvation adjustment, ablative case, active sense) · εἰς πίστιν = to doctrine (maturity adjustment, accusative case, passive sense — that which is believed)</span>
+  </div>
+
+
+  <!-- ── I. THE PIVOT ───────────────────────────────────────────── -->
+  <span class="section-label">Part One</span>
+  <h2>The Pivot Point: Two Gospels, One Epistle</h2>
+
+  <p>The epistle of Romans is organized in two movements. Verses 1 through 16 address the <strong>Gospel of Salvation</strong> — the good news that Christ died for sin, that the justice of God has been propitiated at the cross, and that any human being who believes in the Lord Jesus Christ makes an instantaneous, non-meritorious adjustment to the justice of God, receiving eternal life and all 36 irrevocable blessings of positional sanctification. This is <em>passive faith</em>: the soul receives what God provides. Nothing is added, nothing is earned. Faith plus nothing.</p>
+
+  <p>Romans 1:17 is the hinge. Here Paul introduces the second movement — the <strong>Living Gospel of Doctrine</strong> — which governs everything from Romans 1:17 through Romans 16. This is not a new gospel but the same gospel applied to the entire arc of the believer's temporal life: the active, aggressive, daily metabolization of Bible doctrine in the right lobe of the soul. This is <em>active faith</em>: the soul goes out and takes in what the justice of God has made available through the teaching of the Word.</p>
+
+  <div class="pivot-diagram">
+    <div class="pivot-side left">
+      <span class="pivot-side-label">Gospel of Salvation · Romans 1:1–16</span>
+      <ul>
+        <li>Passive faith — believe and receive</li>
+        <li>Instantaneous — one non-meritorious act</li>
+        <li>Object: Lord Jesus Christ</li>
+        <li>Result: eternal life + 36 irrevocable blessings</li>
+        <li>Mechanism: faith alone, nothing added</li>
+        <li>Phase: initial adjustment to justice of God</li>
+        <li>Tense of πιστεύω: aorist (once-for-all act)</li>
+      </ul>
+    </div>
+    <div class="pivot-center">ROMANS 1:17 · THE PIVOT</div>
+    <div class="pivot-side right">
+      <span class="pivot-side-label">Living Gospel of Doctrine · Romans 1:17–16</span>
+      <ul>
+        <li>Active faith — metabolize and advance</li>
+        <li>Progressive — daily function of GAP</li>
+        <li>Object: the body of doctrine (πίστιν, passive)</li>
+        <li>Result: Edification Complex → Supergrace → Ultra-supergrace</li>
+        <li>Mechanism: perception, metabolization, application</li>
+        <li>Phase: maturity adjustment to justice of God</li>
+        <li>Tense of ζήσεται: future middle (sustained life)</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>The statement <em>the vindicated one shall live by means of doctrine</em> is not a soteriological statement. It does not say the unbeliever is saved by doctrine. It says that the δίκαιος — the one already vindicated, already adjusted to the justice of God at salvation — shall live, shall keep living, shall experience the full content of spiritual life, by the ongoing metabolization of doctrine. The Habakkuk 2:4 citation closes the argument: from the eighth century BC prophet to the apostle writing to Rome in AD 58, this has always been the principle. The mechanism does not change. Only the dispensational context changes.</p>
+
+
+  <!-- ── II. EXEGESIS ───────────────────────────────────────────── -->
+  <span class="section-label">Part Two</span>
+  <h2>Exegesis of Romans 1:17</h2>
+
+  <h3>The Justice of God Revealed</h3>
+
+  <div class="exegesis-card">
+    <span class="greek-head">δικαιοσύνη θεοῦ</span>
+    <span class="parse">Nominative singular · Possessive genitive · The Justice of God</span>
+    <ul>
+      <li><strong>Root:</strong> δίκη (Homeric: law, right, what is due) + δίκαιος (adjective: just) + <strong>σύνη</strong> (Attic abstract suffix coined by Solon, 5th c. BC) — the <em>thinking of the judge</em>, objectively allotting to each what is due</li>
+      <li><strong>Not</strong> the righteousness of God as a moral attribute — the static translation misses the judicial, dynamic, administrative character of the word</li>
+      <li><strong>Solon's definition:</strong> δικαιοσύνη = perfect law perfectly enforced by a judge thinking objectively — this is the word Paul uses for God's entire administrative relationship with the human race</li>
+      <li><strong>Josephus and Philo</strong> both use δικαιοσύνη θεοῦ as a technical phrase specifically for the <em>justice</em> of God — Paul inherits established Koine usage</li>
+      <li><strong>Correct concept:</strong> The justice of God is free to bless us without compromising His character — because Christ bore every sin at the cross and God's justice judged them all. This is what "justification by faith" has always meant, inadequately stated</li>
+    </ul>
+  </div>
+
+  <div class="exegesis-card">
+    <span class="greek-head">ἀποκαλύπτεται</span>
+    <span class="parse">Present passive indicative · Perfective present · ἀπό + καλύπτω · Is Revealed</span>
+    <ul>
+      <li><strong>Compound:</strong> ἀπό (away from) + καλύπτω (to hide, veil) = to be away from being hidden — to uncover, bring into the light</li>
+      <li><strong>Perfective present:</strong> what was revealed in the past (at the cross, in the Abrahamic covenant, in the prophetic tradition) now has present, active results — the justice of God is being revealed right now in Rome through this letter</li>
+      <li><strong>Passive voice:</strong> the justice of God is the recipient of revelation — it is revealed through the gospel, through the communication of doctrine, not by its own initiative</li>
+      <li><strong>Continuous:</strong> every time doctrine is taught and received, the justice of God is revealed afresh — revelation is not a completed historical event but an ongoing present reality</li>
+    </ul>
+  </div>
+
+  <h3>From Faith to Doctrine</h3>
+
+  <div class="exegesis-card">
+    <span class="greek-head">ἐκ πίστεως εἰς πίστιν</span>
+    <span class="parse">Two prepositional phrases · The Full Arc of Phase Two · From Faith to Doctrine</span>
+    <ul>
+      <li><strong>ἐκ πίστεως</strong> — ἐκ + <em>ablative</em> of πίστις: πίστις in the <em>active</em> sense = the act of believing. Faith as the non-meritorious mechanism of the <strong>salvation adjustment</strong>. The once-for-all moment of trusting Christ. Starting point of phase two</li>
+      <li><strong>εἰς πίστιν</strong> — εἰς + <em>accusative</em> of πίστις: πίστις in the <em>passive</em> sense = that which causes trust, the body of doctrine, <em>what is believed</em>. The maturity adjustment through consistent GAP intake. Direction and goal of all of phase two</li>
+      <li><strong>The full arc:</strong> from the instant of saving faith all the way to maximum adjustment to the justice of God through doctrine in the soul — this is phase two, from the new birth to departure by rapture or physical death</li>
+      <li><strong>The five principles:</strong> (1) persistence in perception; (2) the reason for life after salvation = perpetuate adjustment through doctrine; (3) doctrine in the soul = means of spiritual growth; (4) spiritual momentum → supergrace A/B → ultra-supergrace; (5) maturity adjustment frees justice of God to provide maximum blessing</li>
+    </ul>
+  </div>
+
+  <div class="flow">
+    <div class="flow-node">
+      <span class="label">ἐκ πίστεως</span>
+      <span class="value">Saving Faith</span>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node center-node">
+      <span class="label">Phase Two</span>
+      <span class="value">Daily GAP</span>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node">
+      <span class="label">εἰς πίστιν</span>
+      <span class="value">Doctrine in Soul</span>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node">
+      <span class="label">Maturity</span>
+      <span class="value">Supergrace / Ultra</span>
+    </div>
+  </div>
+
+  <h3>The Habakkuk Documentation</h3>
+
+  <div class="hab-box">
+    <span class="heb">ὁ δὲ δίκαιος ἐκ πίστεως ζήσεται</span>
+    <span class="trans">But the righteous shall live by faith — Habakkuk 2:4 LXX</span>
+    <span class="corrected">Corrected: "The vindicated one shall live by means of doctrine."</span>
+  </div>
+
+  <div class="exegesis-card">
+    <span class="greek-head">ὁ δίκαιος · ζήσεται</span>
+    <span class="parse">The Vindicated Believer · Future Middle Indicative · Sustained Spiritual Life</span>
+    <ul>
+      <li><strong>δίκαιος:</strong> not merely righteous in a moral sense — the <em>vindicated</em> one, the one who has made the adjustment to the justice of God and been declared righteous through imputation. In the context of Paul's argument: the believer who has made the <em>maturity adjustment</em>, not just the salvation adjustment</li>
+      <li><strong>ζήσεται:</strong> future middle of ζάω — shall live, shall keep on living. Middle voice: the believer himself sustains the action, produces the living. Not a one-time act but a continuous state of doctrinal vitality</li>
+      <li><strong>ἐκ πίστεως here:</strong> by means of doctrine (the passive sense of πίστις) — the vindicated one lives by the ongoing metabolization of what is believed, the body of doctrine</li>
+      <li><strong>Habakkuk's dispensational universality:</strong> written in the 8th century BC, quoted by Paul in AD 58, quoted again in Galatians 3:11 and Hebrews 10:38 — the faith-doctrine principle spans every dispensation. The mechanism never changes</li>
+    </ul>
+  </div>
+
+
+  <!-- ── III. THE EDIFICATION COMPLEX ──────────────────────────── -->
+  <span class="section-label">Part Three</span>
+  <h2>The Living Gospel: Metabolization and the Edification Complex</h2>
+
+  <p>The transition at Romans 1:17 introduces what the Thieme corpus calls the <strong>Edification Complex of the Soul</strong> — the structural result of consistent doctrinal metabolization in the right lobe. This is the biblical content of what it means for the δίκαιος to <em>live</em> by doctrine. It is not merely knowing doctrine intellectually; it is the transfer of epignōsis (metabolized knowledge) from the left lobe (where information is received) to the right lobe (where it becomes the thinking of the soul, the frame of reference for all of life).</p>
+
+  <h3>The Grace Apparatus for Perception (GAP)</h3>
+
+  <p>The mechanism by which doctrine is metabolized is the <strong>Grace Apparatus for Perception</strong>. The sequence: the pastor-teacher communicates doctrine under the filling of the Holy Spirit → the student hears with positive volition → the Holy Spirit illuminates the doctrinal content → gnōsis (academic knowledge) is transferred through the human spirit to the right lobe → it becomes epignōsis (metabolized doctrine, applied knowledge, the thinking of the mature believer). This is the daily mechanism of adjustment to the justice of God in the maturity phase. Without it, life is possible — but the δίκαιος does not live by it. Life without doctrinal metabolization is biological existence; life by doctrine is the full spiritual vitality Paul describes.</p>
+
+  <h3>The Protocol Plan and the Divine Dynasphere</h3>
+
+  <p>The Living Gospel of Romans 1:17 forward is the doctrinal infrastructure of what the Protocol Plan of God requires of the believer in the Church Age. The <strong>Divine Dynasphere</strong> — the operational sphere in which the believer functions under the filling of the Holy Spirit with doctrine in the right lobe — is the context in which the justice of God is free to bless. Outside the Dynasphere (through carnality, reversionism, or maladjustment) the justice of God can only discipline. Inside it, the justice of God is fully free.</p>
+
+  <p>The <strong>Divine Establishment</strong> is the broader framework: the doctrinal principles governing individual freedom, national stability, the military, free enterprise, and the divine institutions. These too are part of the Living Gospel — the mature believer whose right lobe is saturated with doctrine thinks correctly about all of life: his own spiritual advance, his nation's relationship to the justice of God, the pivot-and-spin-off dynamic that determines whether nations are blessed or disciplined.</p>
+
+  <h3>The Metabolization Process: Active vs. Passive Faith</h3>
+
+  <div class="doctrine-block">
+    <p>Salvation faith is passive — the soul opens its hand and receives what God freely provides through the cross. The hand contributes nothing; the merit is entirely in the object (Christ). But doctrinal faith is active — the soul goes out, aggressively pursues the Word, submits to academic discipline, sits under authoritative teaching, and metabolizes what it receives into the thinking of the right lobe. The vindicated one does not <em>wait</em> to be nourished by doctrine; he actively, daily, persistently takes it in. This is the bread of life principle: bread does not nourish unless eaten, digested, metabolized. Doctrine in the ear is not doctrine in the soul.</p>
+    <span class="attrib">The Principle of Doctrinal Metabolization · Romans 1:17 · ἐκ πίστεως ζήσεται</span>
+  </div>
+
+  <ol class="principle-list">
+    <li><strong>Persistence:</strong> ἐκ πίστεως εἰς πίστιν — from faith to doctrine — describes not an event but a direction, a continuous movement. The present tense of ζήσεται's root (progressive aspect in the future middle) confirms: the living is ongoing, not completed.</li>
+    <li><strong>The right lobe:</strong> epignōsis, metabolized doctrine, builds the Edification Complex in the right lobe — the storage and application center of the soul. This is the building the Holy Spirit constructs through the teaching of the Word over time.</li>
+    <li><strong>Authority orientation:</strong> the Living Gospel requires submission to the pastor-teacher with genuine academic discipline. No other mechanism transfers doctrine from the communication of one human spirit to the metabolization of another.</li>
+    <li><strong>Filling of the Spirit:</strong> GAP functions only when the believer is inside the Divine Dynasphere — filled with the Spirit. Carnality breaks the perception apparatus. Rebound restores it instantly. The rebound adjustment is therefore the prerequisite for the maturity adjustment.</li>
+    <li><strong>National impact:</strong> the mature believer whose soul is built by doctrinal metabolization is the pivot on which national blessing turns. The Living Gospel of Romans 1:17 is not only personal; it is historical. The δίκαιος who lives by doctrine is the agent through whom the justice of God maintains the national client status.</li>
+  </ol>
+
+
+  <!-- ── IV. THE THREE ADJUSTMENTS ─────────────────────────────── -->
+  <span class="section-label">Part Four</span>
+  <h2>The Three Adjustments to the Justice of God</h2>
+
+  <p>Romans 1:17 introduces the full framework of adjustments that the remainder of the epistle develops. All three are present in the verse: salvation adjustment (ἐκ πίστεως), rebound adjustment (presupposed in the continuity of fellowship required for GAP), and maturity adjustment (εἰς πίστιν, the progressive accumulation of doctrine). The justice of God is the exclusive channel for all three.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Phase</th>
+        <th>Adjustment</th>
+        <th>Mechanism</th>
+        <th>Timing</th>
+        <th>Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="phase-num">1</span> Salvation</td>
+        <td>Faith in Christ</td>
+        <td>Non-meritorious belief — πιστεύω (aorist)</td>
+        <td>Instantaneous</td>
+        <td>Eternal life · 36 irrevocable blessings · positional sanctification</td>
+      </tr>
+      <tr>
+        <td><span class="phase-num">2</span> Rebound</td>
+        <td>Confession of sin</td>
+        <td>ὁμολογέω — naming sins to God (already judged at cross)</td>
+        <td>Instantaneous</td>
+        <td>Restoration to fellowship · filling of Spirit · GAP resumes</td>
+      </tr>
+      <tr>
+        <td><span class="phase-num">3</span> Maturity</td>
+        <td>Doctrinal intake</td>
+        <td>Daily GAP — gnōsis → epignōsis → Edification Complex</td>
+        <td>Progressive · time</td>
+        <td>Supergrace A → Supergrace B → Ultra-supergrace · God glorified and pleased</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>The first two adjustments are instantaneous and non-meritorious. The third is progressive and requires the believer's sustained positive volition over time — it cannot be shortcut, accelerated by emotional experience, or substituted by religious activity. The justice of God rewards the patient, disciplined assimilation of doctrine with a progressive increase in blessing capacity. <em>Isaiah 30:18:</em> the Lord waits to be gracious — He is impatient to bless. The only thing that opens the channel is adjustment.</p>
+
+
+  <!-- ── V. MALADJUSTMENT ───────────────────────────────────────── -->
+  <span class="section-label">Part Five</span>
+  <h2>Maladjustment: The Counter-Movement</h2>
+
+  <p>The Living Gospel of Romans 1:17 operates against a counter-movement: maladjustment to the justice of God. Where the three adjustments free the justice of God to bless, maladjustment frees the justice of God only to discipline. There is no neutral position. The justice of God adjusts to the human being in one direction or the other: blessing or cursing, always according to the same standard.</p>
+
+  <div class="mal-grid">
+    <div class="mal-card">
+      <span class="type">Salvation Maladjustment</span>
+      <ul>
+        <li>Negative volition at gospel hearing</li>
+        <li>Rejection of Christ as Savior</li>
+        <li>Temporal: Romans 1:18–32 pattern</li>
+        <li>Eternal: lake of fire (not for sins — for rejection of Christ)</li>
+        <li>All sins judged at cross — only unbelief condemns</li>
+      </ul>
+    </div>
+    <div class="mal-card">
+      <span class="type">Rebound Maladjustment</span>
+      <ul>
+        <li>Failure to name sins to God</li>
+        <li>Carnality → grieves the Spirit (Eph 4:30)</li>
+        <li>Reversionism → quenches the Spirit (1 Thess 5:19)</li>
+        <li>Warning → intensive → dying discipline</li>
+        <li>GAP disabled — no doctrinal advance possible</li>
+      </ul>
+    </div>
+    <div class="mal-card">
+      <span class="type">Maturity Maladjustment</span>
+      <ul>
+        <li>Rejection / apathy toward Bible teaching</li>
+        <li>Evil as anti-doctrine invades right lobe</li>
+        <li>Reversionism — the Christian counterpart to heathenism</li>
+        <li>In eternity: loss of decorations / rewards</li>
+        <li>The spin-off that invites national discipline</li>
+      </ul>
+    </div>
+  </div>
+
+
+  <!-- ── VI. SYNTHESIS ─────────────────────────────────────────── -->
+  <span class="section-label">Part Six</span>
+  <h2>Synthesis: The Thesis of the Epistle</h2>
+
+  <p>Romans 1:17 is the thesis statement not only of the epistle but of the believer's entire temporal life. The justice of God — propitiated at the cross, freed to bless without compromise — is revealed in the good news: first at the salvation point (ἐκ πίστεως) as the initial act of non-meritorious faith, then perpetually through the doctrinal life (εἰς πίστιν) as the daily metabolization of the Word in the right lobe. Habakkuk saw it in the 8th century BC; Paul proclaims it to Rome in AD 58; it is the same principle in every dispensation.</p>
+
+  <p>The Living Gospel is not a supplement to the salvation gospel. It is the salvation gospel applied to all of life. The same justice of God that was freed to save by the work of Christ at the cross is freed to bless — maximally, without compromise to any divine attribute — by the consistent advance of the mature believer through the function of GAP. The vindicated one shall live by means of doctrine: this is not a possibility, not an aspiration, not a program. It is the judicial decree of the justice of God. The δίκαιος who takes in doctrine daily and metabolizes it into the right lobe will live — will experience the full capacity for life, the full blessing of God, the full expression of what the Protocol Plan provides — by no other mechanism.</p>
+
+  <div class="doctrine-block">
+    <p>The justice of God is the watchdog of the divine essence — ensuring that all blessing reaches the human race without compromising sovereignty, righteousness, love, omnipotence, or any other attribute of God. The cross propitiated this justice completely. The result: the justice of God is now free — free to save the unbeliever who believes, free to restore the believer who rebounds, free to bless beyond measure the believer who metabolizes doctrine to maturity. This is the good news. This is the ability of God. This is what Romans is about.</p>
+    <span class="attrib">Romans 1:16–17 · δικαιοσύνη θεοῦ ἀποκαλύπτεται · ἐκ πίστεως εἰς πίστιν</span>
+  </div>
+
+  <!-- CLOSING ORNAMENT -->
+  <div class="closing-rule"><span>✦</span></div>
+
+  <!-- REFERENCE TABLE -->
+  <span class="section-label">Quick Reference</span>
+  <h2>Key Terms and Doctrinal References</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Greek Term</th>
+        <th>Corrected Rendering</th>
+        <th>Doctrinal Content</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>δικαιοσύνη θεοῦ</td>
+        <td>The justice of God</td>
+        <td>Judicial thinking of the divine judge; watchdog of the divine essence; exclusive channel of all blessing/cursing; Solon's -σύνη suffix; Josephus and Philo usage</td>
+      </tr>
+      <tr>
+        <td>ἀποκαλύπτεται</td>
+        <td>Is revealed (perfective present)</td>
+        <td>Past revelation with present results; continuously revealed through gospel proclamation; passive — revealed through doctrine, not by God's initiative apart from teaching</td>
+      </tr>
+      <tr>
+        <td>ἐκ πίστεως</td>
+        <td>From faith</td>
+        <td>Ablative case; active sense of πίστις; the act of believing; salvation adjustment; once-for-all, instantaneous, non-meritorious</td>
+      </tr>
+      <tr>
+        <td>εἰς πίστιν</td>
+        <td>To/into doctrine</td>
+        <td>Accusative case; passive sense of πίστις; the body of what is believed; maturity adjustment through GAP; daily, progressive, sustained</td>
+      </tr>
+      <tr>
+        <td>δίκαιος</td>
+        <td>The vindicated one</td>
+        <td>Not merely "righteous" morally — the one declared righteous through imputation; the one who has made the maturity adjustment to the justice of God</td>
+      </tr>
+      <tr>
+        <td>ζήσεται</td>
+        <td>Shall live (future middle)</td>
+        <td>Sustained spiritual vitality produced by the believer himself through doctrinal metabolization; not biological existence but full experiential life under the blessing of the justice of God</td>
+      </tr>
+      <tr>
+        <td>δύναμις θεοῦ</td>
+        <td>The ability of God</td>
+        <td>Capacity, competence — not raw power; the gospel is the revelation of what God is competent to do for the believer who adjusts; the ability expressed through justice</td>
+      </tr>
+      <tr>
+        <td>GAP</td>
+        <td>Grace Apparatus for Perception</td>
+        <td>The Spirit-illuminated mechanism by which doctrine is transferred from teaching to gnōsis to epignōsis in the right lobe; requires filling of the Spirit; produces the Edification Complex</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Cross-Reference</th>
+        <th>Content</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Habakkuk 2:4</td>
+        <td>OT documentation of the doctrine-life principle; quoted in Romans 1:17, Galatians 3:11, Hebrews 10:38 — dispensationally universal</td>
+      </tr>
+      <tr>
+        <td>Isaiah 30:18</td>
+        <td>The Lord waits to be gracious — impatient to bless; all blessing through justice; waiting = daily GAP function</td>
+      </tr>
+      <tr>
+        <td>1 Corinthians 2:16</td>
+        <td>The mind of Christ communicated through Bible doctrine; the basis for right-lobe thinking</td>
+      </tr>
+      <tr>
+        <td>Hebrews 4:12</td>
+        <td>The Word of God alive and powerful — ζῶν καὶ ἐνεργής; doctrine as the living instrument of the justice of God</td>
+      </tr>
+      <tr>
+        <td>Ephesians 4:30</td>
+        <td>Grieve not the Holy Spirit — carnality's effect; rebound as the mechanism of restoration</td>
+      </tr>
+      <tr>
+        <td>1 John 1:9</td>
+        <td>Rebound formula: ὁμολογέω — He is faithful and just to forgive because the sin was already judged at the cross</td>
+      </tr>
+      <tr>
+        <td>Romans 8:1</td>
+        <td>No condemnation to those in Christ Jesus — product of the salvation adjustment; confirms that cursing is reserved for the maladjusted</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div><!-- /page -->
+
+<footer>
+  Romans 1:16–17 · Epistle-Oriented Doctrinal Exegesis · R.B. Thieme Jr. · Berachah Church Houston
+</footer>
+
+</body>
+</html>
