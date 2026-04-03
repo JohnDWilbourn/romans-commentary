@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guide to the Greek New Testament — Romans Road Commentary</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --crimson:   #7a1a1a;
+  --gold:      #b8972a;
+  --gold-lt:   #d4b84a;
+  --ink:       #1a1410;
+  --ink-mid:   #2e2620;
+  --ink-soft:  #4a3f35;
+  --parchment: #f8f3ec;
+  --parch-dk:  #ede4d6;
+  --parch-mid: #f3ece0;
+  --white:     #fffdf9;
+  --rule:      #c4a96e;
+  --navy:      #1f3564;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'EB Garamond',Georgia,serif;background:var(--parchment);color:var(--ink);font-size:17px;line-height:1.85;}
+
+/* ── SITE BAR ── */
+#site-bar{position:sticky;top:0;z-index:200;background:#1a1410;display:flex;justify-content:center;flex-wrap:wrap;border-bottom:2px solid #b8972a;}
+#site-bar a{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.14em;color:rgba(248,243,236,0.7);text-decoration:none;padding:11px 18px;border-right:1px solid rgba(184,151,42,0.25);text-transform:uppercase;transition:color 0.2s,background 0.2s;}
+#site-bar a:first-child{border-left:1px solid rgba(184,151,42,0.25);}
+#site-bar a:hover,#site-bar a.active{color:#d4b84a;background:rgba(184,151,42,0.08);}
+
+/* ── MASTHEAD ── */
+.masthead{background:var(--ink);color:var(--parchment);text-align:center;padding:70px 40px 60px;position:relative;overflow:hidden;}
+.masthead::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(180,155,80,0.04) 60px,rgba(180,155,80,0.04) 61px),repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(180,155,80,0.04) 60px,rgba(180,155,80,0.04) 61px);}
+.masthead-inner{position:relative;z-index:1;max-width:820px;margin:0 auto;}
+.series-label{font-family:'Cinzel',serif;font-size:0.78rem;letter-spacing:0.22em;color:var(--gold);text-transform:uppercase;margin-bottom:18px;}
+.masthead h1{font-family:'Cinzel',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:600;color:var(--white);line-height:1.2;margin-bottom:14px;}
+.masthead .rule-gold{width:80px;height:1px;background:var(--gold);margin:0 auto 20px;}
+.masthead .subtitle{font-size:1.05rem;color:rgba(248,243,236,0.75);max-width:620px;margin:0 auto;font-style:italic;}
+
+/* ── LAYOUT ── */
+.page-wrap{display:flex;max-width:1200px;margin:0 auto;padding:0 20px;}
+.toc-sidebar{width:240px;flex-shrink:0;padding:40px 20px 40px 0;}
+.toc-sidebar .toc-inner{position:sticky;top:60px;}
+.toc-sidebar h3{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.16em;color:var(--gold);text-transform:uppercase;margin-bottom:16px;}
+.toc-sidebar ul{list-style:none;}
+.toc-sidebar ul li{margin-bottom:2px;}
+.toc-sidebar ul li a{font-size:0.88rem;color:var(--ink-soft);text-decoration:none;display:block;padding:5px 8px;border-left:2px solid transparent;transition:all 0.2s;line-height:1.4;}
+.toc-sidebar ul li a:hover{color:var(--crimson);border-left-color:var(--gold);}
+.toc-sidebar ul li a.active{color:var(--crimson);border-left-color:var(--crimson);background:rgba(122,26,26,0.04);}
+.toc-sidebar ul li.sub a{padding-left:18px;font-size:0.82rem;}
+
+.content{flex:1;min-width:0;padding:50px 0 100px 40px;border-left:1px solid var(--rule);}
+
+/* ── SECTIONS ── */
+.section{margin-bottom:70px;}
+h2.section-title{font-family:'Cinzel',serif;font-size:1.2rem;font-weight:600;color:var(--crimson);letter-spacing:0.06em;margin-bottom:6px;padding-bottom:12px;border-bottom:1px solid var(--rule);}
+h2.section-title .section-num{color:var(--gold);margin-right:10px;font-size:0.9rem;}
+h3.subsection{font-family:'EB Garamond',serif;font-size:1.05rem;font-weight:700;color:var(--ink-mid);margin:32px 0 10px;}
+p{margin-bottom:1.2em;}
+.greek{font-style:italic;color:var(--crimson);}
+strong{font-weight:600;}
+
+/* ── CALL-OUT BOX ── */
+.callout{background:var(--parch-dk);border-left:3px solid var(--gold);padding:20px 24px;margin:24px 0;border-radius:2px;}
+.callout .label{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.16em;color:var(--gold);text-transform:uppercase;margin-bottom:8px;}
+
+/* ── CASE TABLE ── */
+.case-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:0.95rem;}
+.case-table th{background:var(--ink);color:var(--parchment);font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.1em;padding:10px 14px;text-align:left;}
+.case-table td{padding:10px 14px;border-bottom:1px solid var(--rule);vertical-align:top;}
+.case-table tr:nth-child(even) td{background:var(--parch-mid);}
+.case-table .case-name{font-family:'Cinzel',serif;font-size:0.82rem;color:var(--crimson);white-space:nowrap;}
+.case-table .greek-ex{font-style:italic;color:var(--crimson);}
+
+/* ── GREEK ALPHABET ── */
+.alpha-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin:24px 0;}
+.alpha-card{background:var(--white);border:1px solid var(--rule);padding:12px 16px;border-radius:2px;}
+.alpha-card .letter{font-size:1.6rem;font-style:italic;color:var(--crimson);line-height:1;}
+.alpha-card .name{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.1em;color:var(--gold);text-transform:uppercase;margin:4px 0 2px;}
+.alpha-card .sound{font-size:0.85rem;color:var(--ink-soft);}
+
+/* ── LIVE EXAMPLES ── */
+.live-examples{margin:28px 0;}
+.live-examples .ex-label{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.16em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.live-examples .ex-label::after{content:'';flex:1;height:1px;background:var(--rule);}
+.ex-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;}
+.ex-card{background:var(--white);border:1px solid var(--rule);border-top:2px solid var(--crimson);padding:16px 18px;font-size:0.92rem;}
+.ex-card .ex-greek{font-style:italic;color:var(--crimson);font-size:1.05rem;margin-bottom:4px;}
+.ex-card .ex-translit{color:var(--gold);font-size:0.85rem;font-style:italic;margin-bottom:6px;}
+.ex-card .ex-def{color:var(--ink-soft);line-height:1.6;}
+.ex-card .ex-source{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.1em;color:var(--rule);text-transform:uppercase;margin-top:8px;}
+.ex-loading{color:var(--ink-soft);font-style:italic;font-size:0.9rem;padding:16px 0;}
+
+/* ── VERBAL ASPECT ── */
+.aspect-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin:24px 0;}
+.aspect-card{background:var(--white);border:1px solid var(--rule);padding:18px;}
+.aspect-card .aspect-name{font-family:'Cinzel',serif;font-size:0.78rem;letter-spacing:0.1em;color:var(--crimson);text-transform:uppercase;margin-bottom:6px;}
+.aspect-card .aspect-image{font-style:italic;color:var(--ink-soft);font-size:0.88rem;margin-bottom:8px;}
+.aspect-card p{font-size:0.9rem;color:var(--ink-soft);margin:0;}
+
+/* ── BLOCKQUOTE ── */
+blockquote{border-left:3px solid var(--rule);padding:14px 20px;margin:20px 0;color:var(--ink-soft);font-style:italic;}
+blockquote cite{display:block;font-style:normal;font-size:0.82rem;color:var(--gold);margin-top:8px;font-family:'Cinzel',serif;letter-spacing:0.06em;}
+
+/* ── RESOURCES ── */
+.resource-list{list-style:none;margin:16px 0;}
+.resource-list li{padding:14px 0;border-bottom:1px solid var(--rule);display:flex;gap:20px;align-items:baseline;}
+.resource-list li:last-child{border-bottom:none;}
+.resource-list .res-title{font-weight:600;color:var(--ink-mid);min-width:260px;}
+.resource-list .res-note{color:var(--ink-soft);font-size:0.92rem;}
+
+@media(max-width:780px){
+  .page-wrap{flex-direction:column;}
+  .toc-sidebar{width:100%;padding:20px 0 0;}
+  .toc-sidebar .toc-inner{position:static;}
+  .content{padding:30px 0 60px;border-left:none;border-top:1px solid var(--rule);}
+  .aspect-row{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div id="site-bar">
+  <a href="index.html">Home</a>
+  <a href="Romans_Road.html">Volume I</a>
+  <a href="Romans_Road_2.html">Volume II</a>
+  <a href="Romans_Road_3.html">Volume III</a>
+  <a href="illuminations.html">Illuminations</a>
+  <a href="search.html">Search</a>
+  <a href="greek-guide.html" class="active">Greek Guide</a>
+</div>
+
+<div class="masthead">
+  <div class="masthead-inner">
+    <div class="series-label">Romans Road Commentary</div>
+    <h1>Guide to the Greek New Testament</h1>
+    <div class="rule-gold"></div>
+    <div class="subtitle">Grammar, usage, and the exegetical tools that make this commentary possible — illustrated with live examples drawn from the text itself.</div>
+  </div>
+</div>
+
+<div class="page-wrap">
+
+  <!-- TOC SIDEBAR -->
+  <aside class="toc-sidebar">
+    <div class="toc-inner">
+      <h3>Contents</h3>
+      <ul id="toc-list">
+        <li><a href="#why-greek">I. Why Greek</a></li>
+        <li><a href="#alphabet">II. Alphabet &amp; Pronunciation</a></li>
+        <li><a href="#cases">III. The Eight-Case System</a></li>
+        <li class="sub"><a href="#case-nominative">Nominative</a></li>
+        <li class="sub"><a href="#case-genitive">Genitive</a></li>
+        <li class="sub"><a href="#case-ablative">Ablative</a></li>
+        <li class="sub"><a href="#case-dative">Dative</a></li>
+        <li class="sub"><a href="#case-locative">Locative</a></li>
+        <li class="sub"><a href="#case-instrumental">Instrumental</a></li>
+        <li class="sub"><a href="#case-accusative">Accusative</a></li>
+        <li class="sub"><a href="#case-vocative">Vocative</a></li>
+        <li><a href="#verbal">IV. Verbal Aspect</a></li>
+        <li><a href="#constructions">V. Key Constructions</a></li>
+        <li><a href="#reading-glossary">VI. Reading the Glossary</a></li>
+        <li><a href="#resources">VII. For Further Study</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+
+    <!-- I. WHY GREEK -->
+    <div class="section" id="why-greek">
+      <h2 class="section-title"><span class="section-num">I.</span>Why Greek</h2>
+      <p>Every English translation of the New Testament is already an interpretation. The translator has made hundreds of decisions about what the Greek means before a reader sees a single word. Some of those decisions are correct. Some compress the meaning. Some — in theologically critical passages — lose the point entirely.</p>
+      <p>The New Testament was written in <em>Koine Greek</em> — the common dialect of the Hellenistic world from roughly 300 BC to AD 300. It is not classical Attic Greek, and it is not modern Greek. It is the language of trade, administration, and everyday communication across the Roman Empire, and it is the language Paul chose deliberately when he wrote to the church at Rome.</p>
+      <p>Greek is a highly inflected language. Where English relies on word order to express grammatical relationships — <em>the dog bit the man</em> versus <em>the man bit the dog</em> — Greek uses <strong>case endings</strong> attached to the noun itself. This means word order in Greek is flexible and carries rhetorical rather than grammatical weight. It also means the grammatical relationship between every word in a sentence is marked explicitly, in a way that English simply cannot reproduce.</p>
+
+      <div class="callout">
+        <div class="label">The Cost of Translation</div>
+        <p>Romans 1:17 contains the phrase <span class="greek">δικαιοσύνη θεοῦ</span>. The KJV renders it <em>righteousness of God</em>. But <span class="greek">δικαιοσύνη</span> does not primarily mean moral righteousness — it means <em>adjustment to a standard</em>, specifically the fulfillment of obligation and the administration of justice. The phrase is better rendered <em>the justice of God</em>. That single translation decision changes the organizing principle of the entire epistle.</p>
+      </div>
+
+      <p>This commentary works from the <strong>Nestle-Aland 28th Edition (NA28)</strong> — the critical text produced by the Institut für Neutestamentliche Textforschung in Münster, representing the scholarly consensus on the original Greek text based on manuscript evidence. The NA28 is the standard reference text for academic New Testament study. Where the NA28 differs from the Textus Receptus (the Byzantine majority text underlying the KJV), those differences are noted and their doctrinal implications explained.</p>
+      <p>The grammatical framework throughout this commentary follows <strong>Daniel B. Wallace's</strong> <em>Greek Grammar Beyond the Basics</em> (Zondervan, 1996) — the standard intermediate grammar for serious New Testament study. Wallace uses an eight-case system that makes grammatical distinctions invisible in a five-case analysis. Those distinctions matter.</p>
+    </div>
+
+    <!-- II. ALPHABET -->
+    <div class="section" id="alphabet">
+      <h2 class="section-title"><span class="section-num">II.</span>Alphabet &amp; Pronunciation</h2>
+      <p>The Greek alphabet has 24 letters. The pronunciation guide below follows the reconstructed Koine pronunciation used in academic settings — not modern Greek, which has shifted significantly.</p>
+
+      <div class="alpha-grid">
+        <div class="alpha-card"><div class="letter">Αα</div><div class="name">Alpha</div><div class="sound">a as in f<em>a</em>ther</div></div>
+        <div class="alpha-card"><div class="letter">Ββ</div><div class="name">Beta</div><div class="sound">b as in <em>b</em>ook</div></div>
+        <div class="alpha-card"><div class="letter">Γγ</div><div class="name">Gamma</div><div class="sound">g as in <em>g</em>o; before γ,κ,ξ,χ: ng</div></div>
+        <div class="alpha-card"><div class="letter">Δδ</div><div class="name">Delta</div><div class="sound">d as in <em>d</em>og</div></div>
+        <div class="alpha-card"><div class="letter">Εε</div><div class="name">Epsilon</div><div class="sound">e as in b<em>e</em>d (short)</div></div>
+        <div class="alpha-card"><div class="letter">Ζζ</div><div class="name">Zeta</div><div class="sound">dz or z</div></div>
+        <div class="alpha-card"><div class="letter">Ηη</div><div class="name">Eta</div><div class="sound">e as in th<em>ey</em> (long)</div></div>
+        <div class="alpha-card"><div class="letter">Θθ</div><div class="name">Theta</div><div class="sound">th as in <em>th</em>in</div></div>
+        <div class="alpha-card"><div class="letter">Ιι</div><div class="name">Iota</div><div class="sound">i as in mach<em>i</em>ne</div></div>
+        <div class="alpha-card"><div class="letter">Κκ</div><div class="name">Kappa</div><div class="sound">k as in <em>k</em>ing</div></div>
+        <div class="alpha-card"><div class="letter">Λλ</div><div class="name">Lambda</div><div class="sound">l as in <em>l</em>ight</div></div>
+        <div class="alpha-card"><div class="letter">Μμ</div><div class="name">Mu</div><div class="sound">m as in <em>m</em>an</div></div>
+        <div class="alpha-card"><div class="letter">Νν</div><div class="name">Nu</div><div class="sound">n as in <em>n</em>ight</div></div>
+        <div class="alpha-card"><div class="letter">Ξξ</div><div class="name">Xi</div><div class="sound">x as in a<em>x</em>e</div></div>
+        <div class="alpha-card"><div class="letter">Οο</div><div class="name">Omicron</div><div class="sound">o as in n<em>o</em>t (short)</div></div>
+        <div class="alpha-card"><div class="letter">Ππ</div><div class="name">Pi</div><div class="sound">p as in <em>p</em>en</div></div>
+        <div class="alpha-card"><div class="letter">Ρρ</div><div class="name">Rho</div><div class="sound">r (slightly trilled)</div></div>
+        <div class="alpha-card"><div class="letter">Σσς</div><div class="name">Sigma</div><div class="sound">s as in <em>s</em>un; ς final</div></div>
+        <div class="alpha-card"><div class="letter">Ττ</div><div class="name">Tau</div><div class="sound">t as in <em>t</em>op</div></div>
+        <div class="alpha-card"><div class="letter">Υυ</div><div class="name">Upsilon</div><div class="sound">u as in Fr. <em>tu</em></div></div>
+        <div class="alpha-card"><div class="letter">Φφ</div><div class="name">Phi</div><div class="sound">ph as in <em>ph</em>one</div></div>
+        <div class="alpha-card"><div class="letter">Χχ</div><div class="name">Chi</div><div class="sound">ch as in Sc. lo<em>ch</em></div></div>
+        <div class="alpha-card"><div class="letter">Ψψ</div><div class="name">Psi</div><div class="sound">ps as in li<em>ps</em></div></div>
+        <div class="alpha-card"><div class="letter">Ωω</div><div class="name">Omega</div><div class="sound">o as in t<em>o</em>ne (long)</div></div>
+      </div>
+
+      <h3 class="subsection">The φθ- Combination</h3>
+      <p>The combination <span class="greek">φθ</span> (phi + theta) deserves special attention because it appears in one of the most doctrinally significant words in Romans 1:29. Greek speakers could produce this sound fluently — a bilabial fricative followed immediately by a dental fricative — but non-Greek speakers could not. The word <span class="greek">φθόνος</span> (phthonos, jealousy) opens with this combination. Its near-homophone <span class="greek">φόνος</span> (phonos, murder) does not. The one-letter difference between jealousy and murder — the θ — is visible in how the words sound. See the <a href="illuminations/chapter_33.html">Chapter 33 Illumination</a> for the full paranomasia analysis.</p>
+    </div>
+
+    <!-- III. EIGHT CASES -->
+    <div class="section" id="cases">
+      <h2 class="section-title"><span class="section-num">III.</span>The Eight-Case System</h2>
+      <p>Traditional Greek grammars describe five cases: nominative, genitive, dative, accusative, and vocative. Wallace's <em>Greek Grammar Beyond the Basics</em> uses an eight-case system that distinguishes functions which the five-case system conflates under a single label. The additional three cases — ablative, locative, and instrumental — are not new forms. They share endings with the genitive and dative respectively. What distinguishes them is <em>function</em>, and function is what drives meaning.</p>
+      <p>This distinction matters exegetically. When the five-case system labels something as a genitive, it leaves open a range of possible relationships. When the eight-case system identifies it as an ablative — the case of separation and source — the doctrinal content narrows precisely.</p>
+
+      <table class="case-table" id="cases-overview">
+        <thead><tr><th>Case</th><th>Core Idea</th><th>Key Question</th><th>Example from Commentary</th></tr></thead>
+        <tbody>
+          <tr><td class="case-name" id="case-nominative">Nominative</td><td>Subject; predication</td><td>Who/what is doing or being?</td><td><span class="greek-ex">δικαιοσύνη θεοῦ</span> — justice of God (Rom 1:17, subject of revelation)</td></tr>
+          <tr><td class="case-name" id="case-genitive">Genitive</td><td>Description; kind; relationship</td><td>What kind? Of what?</td><td><span class="greek-ex">φθόνου, φόνου</span> — full of jealousy, full of murder (Rom 1:29, descriptive genitives)</td></tr>
+          <tr><td class="case-name" id="case-ablative">Ablative</td><td>Separation; source; origin</td><td>From what? Out of what?</td><td><span class="greek-ex">ἐκ πίστεως</span> — out of faith / from faith (Rom 1:17, ablative of source)</td></tr>
+          <tr><td class="case-name" id="case-dative">Dative</td><td>Indirect object; personal interest</td><td>To/for whom?</td><td><span class="greek-ex">τῷ θεῷ</span> — to God, for God (dative of indirect object)</td></tr>
+          <tr><td class="case-name" id="case-locative">Locative</td><td>Position; sphere; location</td><td>Where? In what sphere?</td><td><span class="greek-ex">ἐν Χριστῷ</span> — in Christ (locative of sphere — positional union)</td></tr>
+          <tr><td class="case-name" id="case-instrumental">Instrumental</td><td>Means; association; agency</td><td>By means of what? In association with?</td><td><span class="greek-ex">πονηρίᾳ, πλεονεξίᾳ, κακίᾳ</span> — by a state of evil, by inordinate desire, by the function of evil (Rom 1:29)</td></tr>
+          <tr><td class="case-name" id="case-accusative">Accusative</td><td>Direct object; extent; respect</td><td>What receives the action?</td><td><span class="greek-ex">μεστούς</span> — full of (accusative of general reference, structural marker in Rom 1:29)</td></tr>
+          <tr><td class="case-name" id="case-vocative">Vocative</td><td>Direct address</td><td>Who is being addressed?</td><td><span class="greek-ex">ὦ ἄνθρωπε</span> — O man (Rom 2:1, direct address introducing indictment of moralism)</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <div class="label">Wallace on the Ablative</div>
+        <p>The ablative shares its ending with the genitive in most Greek nouns, which is why traditional five-case grammars collapse them. But the ablative answers a different question. The genitive asks <em>what kind</em> or <em>of what</em>. The ablative asks <em>from what source</em>. In Romans 1:17, <span class="greek">ἐκ πίστεως</span> is an ablative of source: righteousness/justice proceeding <em>out of</em> faithfulness to doctrine — not merely <em>by means of</em> faith. The preposition <span class="greek">ἐκ</span> makes the ablative function explicit.</p>
+      </div>
+
+      <!-- Live examples pulled from commentary -->
+      <div class="live-examples" id="case-live-examples">
+        <div class="ex-label">Live Examples from the Commentary</div>
+        <div id="case-examples-container">
+          <div class="ex-loading">Loading examples from the commentary…</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IV. VERBAL ASPECT -->
+    <div class="section" id="verbal">
+      <h2 class="section-title"><span class="section-num">IV.</span>Verbal Aspect</h2>
+      <p>Greek verbs encode two separate things simultaneously: <strong>tense</strong> (when the action occurs) and <strong>aspect</strong> (how the action is viewed by the speaker). Aspect is the more fundamental category. English has tense but very limited aspect. Greek has both, and the aspect choice is often the theologically critical decision.</p>
+
+      <div class="aspect-row">
+        <div class="aspect-card">
+          <div class="aspect-name">Aorist</div>
+          <div class="aspect-image">A point. A snapshot.</div>
+          <p>Views the action as a whole, without reference to its duration or internal development. The most common past tense in narrative. In doctrinal contexts the aorist often indicates a completed, unrepeatable event — salvation, justification, the cross.</p>
+        </div>
+        <div class="aspect-card">
+          <div class="aspect-name">Present</div>
+          <div class="aspect-image">A line in progress.</div>
+          <p>Views the action as ongoing, repeated, or in process. The historical present views a past event with the vividness of the present. The customary present describes habitual action. Aspect, not time, is the point.</p>
+        </div>
+        <div class="aspect-card">
+          <div class="aspect-name">Perfect</div>
+          <div class="aspect-image">A completed act with present results.</div>
+          <p>The most theologically loaded tense in the Greek New Testament. A past completed action whose results continue into the present. <span class="greek">γέγραπται</span> — it stands written (and the writing still stands). Used for the cross, for justification, for permanent status.</p>
+        </div>
+      </div>
+
+      <h3 class="subsection">The Constative Aorist</h3>
+      <p>The constative aorist is particularly important in Romans. It views an entire process or extended action as a single whole — not emphasizing its completion but its totality. When Paul uses the constative aorist in Romans 1:24 — <span class="greek">παρέδωκεν</span> — he is describing the entire process of divine judicial abandonment as a single completed act of judgment. The constative aorist says: this thing, in all its complexity and duration, is treated as one event.</p>
+
+      <h3 class="subsection">The Nomic Future</h3>
+      <p>The nomic future states a general principle that holds universally and without exception — a law of the moral or spiritual universe. In Romans 1:17, the citation from Habakkuk 2:4 uses the future indicative <span class="greek">ζήσεται</span>: <em>the righteous man shall live</em>. The nomic future here does not predict a future event — it states an invariable correlation: wherever the condition of doctrinal faithfulness is met, the result of full spiritual life follows without exception. See the <a href="illuminations/romans_1_16-17.html">Romans 1:16–17 Illumination</a> for the full analysis.</p>
+
+      <h3 class="subsection">The Middle Voice</h3>
+      <p>Greek has three voices: active (subject performs the action), passive (subject receives the action), and middle (subject performs the action with personal involvement or reflexive interest in the result). The middle voice is frequently lost in English translation. In Romans 1:17, <span class="greek">ζήσεται</span> is middle voice — the righteous man's living is his own active, sustained engagement, not something done to him or for him. The middle voice confirms that this living is the believer's own production.</p>
+    </div>
+
+    <!-- V. KEY CONSTRUCTIONS -->
+    <div class="section" id="constructions">
+      <h2 class="section-title"><span class="section-num">V.</span>Key Constructions</h2>
+
+      <h3 class="subsection">The Four Conditional Classes</h3>
+      <p>English flattens all four Greek conditional classes into the word <em>if</em>. This is a systematic distortion source. The four classes are not interchangeable — each encodes a different relationship between condition and conclusion.</p>
+      <table class="case-table">
+        <thead><tr><th>Class</th><th>Greek Form</th><th>What It Assumes</th><th>Doctrinal Use</th></tr></thead>
+        <tbody>
+          <tr><td class="case-name">First Class</td><td>εἰ + indicative (prot.) / any mood (apod.)</td><td>Condition assumed true for argument's sake</td><td>"If God is for us — and He is — who can be against us?" (Rom 8:31)</td></tr>
+          <tr><td class="case-name">Second Class</td><td>εἰ + past indicative / ἄν + past indicative</td><td>Condition assumed contrary to fact</td><td>"If you were Abraham's children — but you are not — you would do what Abraham did"</td></tr>
+          <tr><td class="case-name">Third Class</td><td>ἐάν + subjunctive / any mood</td><td>Condition uncertain but probable or possible</td><td>General principles, exhortations, doctrinal possibilities</td></tr>
+          <tr><td class="case-name">Fourth Class</td><td>εἰ + optative / ἄν + optative</td><td>Condition remote, merely conceivable</td><td>Rare in NT; polite requests, hypothetical possibilities</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="subsection">ὥστε + Infinitive</h3>
+      <p>The construction <span class="greek">ὥστε</span> + infinitive expresses result — what actually follows from a preceding action or condition. In Romans 1:20, <span class="greek">εἰς τὸ εἶναι αὐτοὺς ἀναπολογήτους</span> — <em>resulting in their being without excuse</em> — the infinitive of result establishes that the inexcusability is the actual outcome of the universal revelation of God in creation, not merely the intended outcome. Result clauses carry significant doctrinal weight in Paul's argument.</p>
+
+      <h3 class="subsection">The Genitive Absolute</h3>
+      <p>A participial phrase in the genitive case whose subject is grammatically independent of the main clause. Used to set temporal, causal, or circumstantial background for the main action. Frequent in Paul's transitional passages.</p>
+
+      <h3 class="subsection">Paranomasia</h3>
+      <p>Deliberate wordplay based on sound similarity. Paul uses paranomasia for rhetorical and theological purposes — the sonic relationship between words encodes a conceptual relationship. The most significant instance in Romans is <span class="greek">φθόνου / φόνου</span> in 1:29 — jealousy and murder differ by one letter, and that phonetic proximity is Paul's way of making the causal relationship visible in the sound of the language. See the <a href="illuminations/chapter_33.html">Chapter 33 Illumination</a>.</p>
+    </div>
+
+    <!-- VI. READING THE GLOSSARY -->
+    <div class="section" id="reading-glossary">
+      <h2 class="section-title"><span class="section-num">VI.</span>Reading the Glossary Tables</h2>
+      <p>Every chapter in this commentary ends with a glossary table. The table has three columns:</p>
+      <table class="case-table">
+        <thead><tr><th>Column</th><th>Contents</th><th>How to Read It</th></tr></thead>
+        <tbody>
+          <tr><td class="case-name">Term</td><td>The transliteration — Latin characters representing the Greek sounds</td><td>Use this to pronounce the word and track it across chapters</td></tr>
+          <tr><td class="case-name">Greek / Transliteration</td><td>The Greek Unicode form on line 1; the transliteration with morphological note on line 2</td><td>The morphological note (e.g., <em>constative aorist active indicative</em>) tells you the grammatical form</td></tr>
+          <tr><td class="case-name">Definition</td><td>The full lexical and contextual definition with doctrinal application</td><td>Read the entire entry — the definition explains both what the word means and why that meaning matters in this passage</td></tr>
+        </tbody>
+      </table>
+      <p>The glossary is cumulative. Terms introduced in Volume I reappear in Volumes II and III with deepening context. <span class="greek">δικαιοσύνη</span> first appears in Volume I Chapter 1 with its full lexical history. By Volume III it appears as a known quantity. Track the development of key terms across volumes using the <a href="search.html">search function</a>.</p>
+
+      <!-- Live glossary examples pulled from commentary -->
+      <div class="live-examples" id="glossary-live-examples">
+        <div class="ex-label">From the Commentary Glossaries</div>
+        <div id="glossary-examples-container">
+          <div class="ex-loading">Loading glossary examples…</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VII. RESOURCES -->
+    <div class="section" id="resources">
+      <h2 class="section-title"><span class="section-num">VII.</span>For Further Study</h2>
+      <p>This commentary assumes no prior knowledge of Greek. But for readers who want to go deeper, these resources represent the standard tools used in serious New Testament study.</p>
+
+      <ul class="resource-list">
+        <li>
+          <span class="res-title">Wallace, Daniel B. — <em>Greek Grammar Beyond the Basics</em></span>
+          <span class="res-note">Zondervan, 1996. The standard intermediate Greek grammar. The eight-case system and all grammatical categories used in this commentary follow Wallace. Essential for anyone moving beyond introductory Greek.</span>
+        </li>
+        <li>
+          <span class="res-title">Mounce, William D. — <em>Basics of Biblical Greek</em></span>
+          <span class="res-note">Zondervan. The standard introductory textbook. Start here if you have no prior Greek. Mounce's workbook and vocabulary cards are useful supplements.</span>
+        </li>
+        <li>
+          <span class="res-title">Nestle-Aland 28th Edition (NA28)</span>
+          <span class="res-note">Deutsche Bibelgesellschaft. The critical Greek text used throughout this commentary. Available in print with apparatus and in digital form via Logos, Accordance, and Bibleworks. The apparatus documents manuscript variants.</span>
+        </li>
+        <li>
+          <span class="res-title">STEP Bible — stepbible.org</span>
+          <span class="res-note">Free web-based tool for interlinear Hebrew and Greek with morphological tagging. Highly recommended for looking up grammatical forms without owning a grammar. Strong's numbers, NASB95 base text.</span>
+        </li>
+        <li>
+          <span class="res-title">Louw &amp; Nida — <em>Greek-English Lexicon of the New Testament Based on Semantic Domains</em></span>
+          <span class="res-note">United Bible Societies. Organizes Greek vocabulary by meaning rather than alphabetically. Useful for tracing the semantic range of a word and understanding why one translation choice rather than another.</span>
+        </li>
+        <li>
+          <span class="res-title">BDAG — <em>A Greek-English Lexicon of the New Testament</em></span>
+          <span class="res-note">Bauer, Danker, Arndt, Gingrich. The authoritative NT Greek lexicon. The standard scholarly reference for word meanings, usage history, and extra-biblical parallels.</span>
+        </li>
+      </ul>
+    </div>
+
+  </main>
+</div>
+
+<script>
+// ── DYNAMIC CONTENT ENGINE ──────────────────────────────────────────────────
+// Fetches Greek glossary entries from published commentary volumes
+// and distributes them as live examples throughout the guide.
+
+const VOLUMES = [
+  { url: 'Romans_Road.html',   label: 'Vol. I' },
+  { url: 'Romans_Road_2.html', label: 'Vol. II' },
+  { url: 'Romans_Road_3.html', label: 'Vol. III' },
+];
+
+// Case keywords to match against transliteration/definition text
+const CASE_KEYWORDS = {
+  nominative:   ['nominative','subject','predicate nominative'],
+  genitive:     ['genitive','possession','description','partitive'],
+  ablative:     ['ablative','separation','source','ek ','ἐκ'],
+  dative:       ['dative','indirect object','dative of'],
+  locative:     ['locative','sphere','position','location'],
+  instrumental: ['instrumental','association','means','by means'],
+  accusative:   ['accusative','direct object','extent','general reference'],
+  vocative:     ['vocative','direct address','address'],
+};
+
+let allEntries = [];
+let loaded = 0;
+
+function parseGlossaryFromHTML(html, volLabel) {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, 'text/html');
+  const rows = doc.querySelectorAll('.glossary-table tbody tr:not(.header-row)');
+  const entries = [];
+  rows.forEach(row => {
+    const cells = row.querySelectorAll('td');
+    if (cells.length < 3) return;
+    const term    = cells[0].textContent.trim();
+    const greek   = cells[1].innerHTML.trim();
+    const greekText = cells[1].textContent.trim();
+    const def     = cells[2].textContent.trim();
+    if (!term || !def) return;
+    // Only include entries with actual Greek Unicode
+    const hasGreek = [...greekText].some(c => c.charCodeAt(0) > 0x0370 && c.charCodeAt(0) < 0x2000);
+    if (!hasGreek) return;
+    // Extract Greek and transliteration from the cell (two lines)
+    const lines = greekText.split('\n').map(l => l.trim()).filter(Boolean);
+    const greekForm = lines[0] || '';
+    const translit  = lines[1] || term;
+    entries.push({ term, greekForm, translit, def, vol: volLabel });
+  });
+  return entries;
+}
+
+function renderExamples(containerId, entries, count = 6) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  if (!entries.length) {
+    container.innerHTML = '<div class="ex-loading">No examples found.</div>';
+    return;
+  }
+  // Shuffle and pick
+  const shuffled = entries.sort(() => 0.5 - Math.random()).slice(0, count);
+  const html = '<div class="ex-cards">' + shuffled.map(e => `
+    <div class="ex-card">
+      <div class="ex-greek">${e.greekForm}</div>
+      <div class="ex-translit">${e.translit}</div>
+      <div class="ex-def">${e.def.slice(0, 160)}${e.def.length > 160 ? '…' : ''}</div>
+      <div class="ex-source">${e.vol}</div>
+    </div>
+  `).join('') + '</div>';
+  container.innerHTML = html;
+}
+
+function onAllLoaded() {
+  // Case examples — pick entries whose definition mentions case terminology
+  const caseEntries = allEntries.filter(e => {
+    const text = (e.translit + ' ' + e.def).toLowerCase();
+    return Object.values(CASE_KEYWORDS).some(kws => kws.some(kw => text.includes(kw)));
+  });
+  renderExamples('case-examples-container', caseEntries.length > 6 ? caseEntries : allEntries, 6);
+
+  // Glossary examples — any entries with substantive definitions
+  const glossEntries = allEntries.filter(e => e.def.length > 60);
+  renderExamples('glossary-examples-container', glossEntries, 8);
+}
+
+// Fetch each volume
+VOLUMES.forEach(vol => {
+  fetch(vol.url)
+    .then(r => r.ok ? r.text() : Promise.reject(r.status))
+    .then(html => {
+      const entries = parseGlossaryFromHTML(html, vol.label);
+      allEntries = allEntries.concat(entries);
+      loaded++;
+      if (loaded === VOLUMES.length) onAllLoaded();
+    })
+    .catch(() => {
+      loaded++;
+      if (loaded === VOLUMES.length) onAllLoaded();
+    });
+});
+
+// ── TOC ACTIVE HIGHLIGHT ────────────────────────────────────────────────────
+const sections = document.querySelectorAll('.section[id]');
+const tocLinks = document.querySelectorAll('#toc-list a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      tocLinks.forEach(a => a.classList.remove('active'));
+      const active = document.querySelector(`#toc-list a[href="#${entry.target.id}"]`);
+      if (active) {
+        active.classList.add('active');
+        active.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      }
+    }
+  });
+}, { rootMargin: '-10% 0px -85% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
