@@ -41,8 +41,15 @@ body {
   background: var(--parchment);
   color: var(--ink);
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
   overflow-x: hidden;
+}
+
+#layout-wrap {
+  display: flex;
+  flex: 1;
+  min-height: 0;
 }
 
 /* ── SIDEBAR ────────────────────────────────────────────────── */
@@ -51,9 +58,9 @@ body {
   min-width: var(--sidebar-w);
   background: var(--ink);
   color: #e8dfc8;
-  height: 100vh;
+  height: calc(100vh - 44px);
   position: sticky;
-  top: 0;
+  top: 44px;
   overflow-y: auto;
   padding: 0 0 2rem 0;
   z-index: 100;
@@ -455,6 +462,7 @@ blockquote.esv-quote {
 /* ── MOBILE ─────────────────────────────────────────────────── */
 @media (max-width: 900px) {
   body { display: block; }
+  #layout-wrap { display: block; }
 
   #sidebar {
     position: fixed;
