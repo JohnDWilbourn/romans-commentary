@@ -38,6 +38,11 @@ self.addEventListener('activate', event => {
           .map(key => caches.delete(key))
       )
     ).then(() => self.clients.claim())
+     .then(() => {
+       self.clients.matchAll({ type: 'window' }).then(clients => {
+         clients.forEach(client => client.navigate(client.url));
+       });
+     })
   );
 });
 
