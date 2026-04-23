@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eternal Security — Ten Approaches · Illuminations</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1410;
+    --parchment: #f7f3ec;
+    --gold: #b8860b;
+    --rule: #c8b89a;
+    --muted: #6b5f52;
+    --accent-bg: #f0ebe0;
+    --bar-bg: #1a1410;
+    --bar-text: #f7f3ec;
+    --table-head: #ede8df;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 300;
+    line-height: 1.75;
+  }
+
+  .top-bar {
+    background: var(--bar-bg);
+    color: var(--bar-text);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 48px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .top-bar-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  .top-bar-links { list-style: none; display: flex; gap: 1.75rem; }
+  .top-bar-links a {
+    color: var(--bar-text);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+  .top-bar-links a:hover { opacity: 1; color: var(--gold); }
+
+  .page {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 6rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-size: 0.82rem;
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    margin-bottom: 2rem;
+  }
+
+  .back-link:hover { text-decoration: underline; }
+
+  .meta-line {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+
+  header {
+    border-top: 3px solid var(--gold);
+    border-bottom: 1px solid var(--rule);
+    padding: 2rem 0 2rem;
+    margin-bottom: 3rem;
+  }
+
+  header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+
+  header .subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+  }
+
+  .intro-block {
+    background: var(--bar-bg);
+    color: var(--bar-text);
+    padding: 1.5rem 2rem;
+    margin: 1.5rem 0 2.5rem;
+    border-radius: 4px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    line-height: 1.8;
+    color: #e8e0d0;
+  }
+
+  .part-header {
+    margin: 3rem 0 1.5rem;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.5rem;
+  }
+
+  .part-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.35rem;
+  }
+
+  .part-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .approach-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 400;
+    color: var(--gold);
+    line-height: 1;
+    float: left;
+    margin-right: 1rem;
+    margin-top: -0.2rem;
+  }
+
+  h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 2rem 0 0.75rem;
+    clear: both;
+  }
+
+  p {
+    margin-bottom: 1.1rem;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    clear: both;
+  }
+
+  .approach-block {
+    background: var(--accent-bg);
+    border-left: 3px solid var(--gold);
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 4px 4px 0;
+    overflow: hidden;
+  }
+
+  .approach-block .approach-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .approach-block .approach-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+
+  .approach-block .approach-refs {
+    font-size: 0.82rem;
+    color: var(--gold);
+    font-style: italic;
+    margin-bottom: 0.75rem;
+  }
+
+  .approach-block .approach-body {
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  .greek-display {
+    background: var(--bar-bg);
+    color: var(--bar-text);
+    padding: 1.25rem 1.5rem;
+    margin: 1.25rem 0;
+    border-radius: 4px;
+  }
+
+  .greek-display .greek-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    line-height: 1.8;
+    margin-bottom: 0.5rem;
+    color: #e8e0d0;
+  }
+
+  .greek-display .corrected {
+    font-size: 0.9rem;
+    color: var(--gold);
+    line-height: 1.6;
+    margin-bottom: 0.4rem;
+  }
+
+  .greek-display .parse-notes {
+    font-size: 0.82rem;
+    color: #9a8f82;
+    margin-top: 0.4rem;
+    line-height: 1.6;
+  }
+
+  .scripture-block {
+    background: var(--accent-bg);
+    border-left: 3px solid var(--rule);
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .scripture-block.key { border-left-color: var(--gold); }
+
+  .ref {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.35rem;
+  }
+
+  .verse {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.7;
+    margin-bottom: 0.4rem;
+  }
+
+  .note {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.88rem;
+  }
+
+  th {
+    background: var(--table-head);
+    font-weight: 600;
+    text-align: left;
+    padding: 0.6rem 0.85rem;
+    border-bottom: 2px solid var(--rule);
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  td {
+    padding: 0.55rem 0.85rem;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  tr:last-child td { border-bottom: none; }
+
+  .hinge-block {
+    background: var(--ink);
+    color: var(--bar-text);
+    padding: 1.75rem 2rem;
+    margin: 3rem 0;
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  .hinge-block .hinge-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+
+  .hinge-block .hinge-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    line-height: 1.9;
+    color: var(--bar-text);
+  }
+
+  .divider {
+    text-align: center;
+    color: var(--gold);
+    font-size: 1.2rem;
+    margin: 2.5rem 0;
+    letter-spacing: 0.3em;
+  }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding-top: 1.5rem;
+    margin-top: 4rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+
+  footer a { color: var(--gold); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<nav class="top-bar">
+  <a class="top-bar-brand" href="https://commentary.intelligencereport.info">Romans Road Commentary</a>
+  <ul class="top-bar-links">
+    <li><a href="https://commentary.intelligencereport.info/illuminations.html">Illuminations</a></li>
+    <li><a href="https://commentary.intelligencereport.info/search.html">Search</a></li>
+    <li><a href="https://lessons.intelligencereport.info">Lessons</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+  <a class="back-link" href="https://commentary.intelligencereport.info/illuminations.html">← Return to Illuminations</a>
+
+  <div class="meta-line">Epistle-Oriented Doctrinal Exegesis &nbsp;·&nbsp; Romans Road Commentary</div>
+
+  <header>
+    <h1>Eternal Security</h1>
+    <div class="subtitle">Ten Approaches to the Absolute Assurance of the Believer's Salvation</div>
+  </header>
+
+  <div class="intro-block">
+    The believer who is preoccupied with the loss of salvation — always questioning, doubting, reaffirming his faith — squanders his opportunity and cannot move forward in the Christian life. The settled issue of salvation is the platform the advance is built on, not the subject the advance circles back to. The ten approaches that follow establish that platform from every doctrinal angle simultaneously. No single approach is the complete argument. All ten together form a case so comprehensive that no objection — theological, experiential, or grammatical — can stand against the full weight of it. The student who works through all ten will not need to return to this question. He will leave it behind and advance.
+  </div>
+
+  <!-- APPROACH I -->
+  <div class="approach-block">
+    <span class="approach-label">Approach I</span>
+    <div class="approach-title">The Positional Approach — Union with Christ</div>
+    <div class="approach-refs">Romans 8:1 · Ephesians 1:3–6 · Jude 1</div>
+    <div class="approach-body">
+      <p>Every believer is in union with Christ — ἐν Χριστῷ, the positional sphere established by the fourth and fifth imputations at salvation. The imputed righteousness of Christ, the imputed eternal life, the indwelling Spirit, the sealing — all of these are positional realities that exist in the sphere of the believer's union with Christ. The position is not the believer's achievement. It is the judicial declaration of the justice of God based on the finished work of the cross. The position cannot be revoked without revoking the justice of the God who established it — which would require God to act unjustly, which is impossible.</p>
+      <p>There is therefore now no condemnation for those who are in Christ Jesus — Romans 8:1. The no condemnation is positional. It applies to everyone who is in Christ, regardless of their experiential condition at any given moment. The carnal believer is still in Christ. The reversionistic believer is still in Christ. The believer feeding pigs in a far country is still in Christ. The position does not fluctuate with performance. It was established by grace and is maintained by the integrity of the God whose grace established it.</p>
+    </div>
+  </div>
+
+  <div class="scripture-block key">
+    <div class="ref">Ephesians 1:3–6</div>
+    <div class="verse">"Blessed be the God and Father of our Lord Jesus Christ, who has blessed us in Christ with every spiritual blessing in the heavenly places, even as he chose us in him before the foundation of the world… In love he predestined us for adoption to himself as sons through Jesus Christ, according to the purpose of his will, to the praise of his glorious grace, with which he has blessed us in the Beloved."</div>
+    <div class="note">Chosen in him before the foundation of the world — the positional union precedes the physical existence of the believer in time. The position was established in the eternal counsel of God before the believer was formed in the womb, before the fall, before the cross. The cross executed what the eternal counsel decreed. The imputation credited what the cross accomplished. The position is as old as the eternal purpose of God — which means it is as permanent as the God whose purpose it expresses.</div>
+  </div>
+
+  <!-- APPROACH II -->
+  <div class="approach-block">
+    <span class="approach-label">Approach II</span>
+    <div class="approach-title">The Logical Approach — From the Greater to the Lesser</div>
+    <div class="approach-refs">Romans 5:9–10, 15, 17, 20 · Romans 8:32</div>
+    <div class="approach-body">
+      <p>The logical argument from Romans 5 and 8 is the most straightforward case for eternal security in the New Testament. If God did the most for us when we were His enemies — sent His Son to the cross, executed the propitiation, imputed His righteousness to the undeserving sinner — then it follows with logical necessity that He will do much more for us as members of His royal family. The argument runs from the greater to the lesser. The greater provision was made for the enemy. The lesser provision — maintaining the relationship already established — is made for the son.</p>
+      <p>He who did not spare His own Son but gave Him up for us all — how will He not also with Him graciously give us all things? The cross is the proof that God will not withhold what He has already committed to providing. To abandon the believer after the cross would be to do less for the son than He did for the enemy. The integrity of God does not permit the regression.</p>
+    </div>
+  </div>
+
+  <div class="scripture-block key">
+    <div class="ref">Romans 5:10</div>
+    <div class="verse">"For if while we were enemies we were reconciled to God by the death of his Son, much more, now that we are reconciled, shall we be saved by his life."</div>
+    <div class="note">Much more — πολλῷ μᾶλλον, the logical intensification Paul uses five times in Romans 5. The logic is irrefutable on its own terms: if God reconciled enemies, He will certainly preserve sons. The reconciliation was the hard thing — the propitiation required, the penalty executed, the barrier removed. The preservation is the easy thing by comparison — maintaining what the hard thing already accomplished. The God who did the hard thing will not fail to do the easy thing. The logic of grace runs in one direction only — toward more, not less.</div>
+  </div>
+
+  <!-- APPROACH III -->
+  <div class="approach-block">
+    <span class="approach-label">Approach III</span>
+    <div class="approach-title">The Anthropomorphic Approach — The Hand That Holds</div>
+    <div class="approach-refs">Psalm 37:24 · John 10:28</div>
+    <div class="approach-body">
+      <p>The anthropomorphic approach describes the security in terms of physical holding — God's hand gripping the believer with a grip the believer cannot break and no external force can pry open. The image is not decorative. It is the precise description of a relationship in which the power resides entirely in the One who holds, not in the one who is held. The believer may stumble and fall — Psalm 37:24 acknowledges this directly — but he will not be hurled headlong because the LORD holds his hand.</p>
+      <p>The hand that holds is the hand of omnipotence — the same hand that set the stars in place with the movement of a finger. No power in the created order can overcome it. The security is not the believer's grip on God. It is God's grip on the believer — and the God who holds is greater than all.</p>
+    </div>
+  </div>
+
+  <div class="scripture-block key">
+    <div class="ref">John 10:28–29</div>
+    <div class="verse">"I give them eternal life, and they will never perish, and no one will snatch them out of my hand. My Father, who has given them to me, is greater than all, and no one is able to snatch them out of the Father's hand."</div>
+    <div class="note">Two hands — the Son's and the Father's. No one shall snatch — οὐχ ἁρπάσει, seize by force. The verb describes violent, forcible seizure. No created being, no spiritual power, no human volition operating in rebellion, no combination of forces in the created order can overcome the grip of both hands simultaneously. The security is doubly Trinitarian — held by the Son who merited the relationship and by the Father who initiated it. The Spirit who seals adds the third hand. The believer is held by the full weight of the Trinitarian character.</div>
+  </div>
+
+  <!-- APPROACH IV -->
+  <div class="approach-block">
+    <span class="approach-label">Approach IV</span>
+    <div class="approach-title">The Experiential Approach — God Remains Faithful When We Do Not</div>
+    <div class="approach-refs">2 Timothy 2:12–13</div>
+    <div class="approach-body">
+      <p>The experiential approach addresses the most honest objection to eternal security — the believer who has failed catastrophically, who has denied Christ under pressure, who has lived in sustained carnality, who has functionally abandoned the spiritual life. The answer is not to minimize the failure. It is to maximize the faithfulness of God. If we are faithless, He remains faithful — for He cannot deny Himself.</p>
+      <p>The security does not depend on the believer's faithfulness. It depends on the immutability of God whose character makes faithlessness impossible for Him. God cannot deny Himself — οὐ δύναται ἀρνήσασθαι ἑαυτόν. The cannot is not a limitation imposed from outside. It is the expression of the absolute consistency of the divine character with itself. The God who established the relationship cannot act contrary to the character that established it. The believer's faithlessness does not change the divine character. It changes the believer's experience of the relationship — fellowship interrupted, filling lost, advance halted — but not the relationship itself.</p>
+    </div>
+  </div>
+
+  <div class="scripture-block key">
+    <div class="ref">2 Timothy 2:13</div>
+    <div class="verse">"…if we are faithless, he remains faithful — for he cannot deny himself."</div>
+    <div class="note">He cannot deny himself — the most theologically precise statement of eternal security in terms of the divine character. The security is not the believer's achievement. It is the impossibility of God acting contrary to His own nature. The immutable God who established the relationship at salvation is the same God present at every subsequent moment — the same love, the same righteousness, the same faithfulness, the same veracity. None of these attributes can be suspended in response to the believer's failure without God ceasing to be what He is. The security is as permanent as the divine character. Which is to say — it is eternal.</div>
+  </div>
+
+  <!-- APPROACH V -->
+  <div class="approach-block">
+    <span class="approach-label">Approach V</span>
+    <div class="approach-title">The Family Approach — Once a Son, Always a Son</div>
+    <div class="approach-refs">John 1:12 · Galatians 3:26 · Revelation 21:7</div>
+    <div class="approach-body">
+      <p>The family approach is the most experientially accessible argument for eternal security — and the most personally compelling. The child of God cannot change his spiritual birth any more than he can change his physical birth. Physical birth establishes a relationship of sonship that no subsequent behavior can undo. A son who disgraces his family is still his father's son. A son who runs to a far country is still his father's son. A son who denies his father publicly is still his father's son. The relationship established by birth is not contingent on the conduct that follows it.</p>
+      <p>The new birth establishes the same kind of relationship in the spiritual realm. Born into the royal family of God — τέκνα θεοῦ, children of God — the believer cannot be unborn. The spiritual birth that the Spirit accomplished at salvation is as irreversible as the physical birth that preceded it. Once a son of God, always a son of God. The prodigal was always the father's son. He came home to the father who had been watching for him. The sonship was never in question.</p>
+    </div>
+  </div>
+
+  <div class="scripture-block key">
+    <div class="ref">John 1:12</div>
+    <div class="verse">"But to all who did receive him, who believed in his name, he gave the right to become children of God."</div>
+    <div class="note">The right — ἐξουσίαν, authority, legal right. The sonship is a legal status established by the authority of God at the moment of faith. It is not a relationship maintained by ongoing performance. It is a status granted once, irrevocably, by the God who has the authority to grant it and the character to maintain what He has granted. The child of God who fails is still a child of God under divine discipline. The child of God who advances is still a child of God under divine blessing. The status does not change. The experience of the status does.</div>
+  </div>
+
+  <!-- APPROACH VI -->
+  <div class="approach-block">
+    <span class="approach-label">Approach VI</span>
+    <div class="approach-title">The Body Approach — The Head Cannot Reject a Member</div>
+    <div class="approach-refs">1 Corinthians 12:21 · Colossians 1:18</div>
+    <div class="approach-body">
+      <p>The body approach draws on the ecclesiological metaphor of the Church as the body of Christ with Christ as the head. A physical body cannot function while rejecting its own members. The eye cannot say to the hand — I have no need of you. The head cannot say to the foot — you are no longer part of this body. The integrity of the body requires that every member remain connected to the head. The moment a member is separated from the head, both the member and the function it served are lost to the body.</p>
+      <p>Christ, the head of the body, cannot say to any member of the body — a believer — that He does not need him. The body metaphor describes a relationship of organic unity in which the disconnection of any member is a loss to the whole. Christ does not lose members. The head does not amputate. The body grows and is built up — Ephesians 4:16 — by the proper working of every joint and member. Every believer is a member of the body permanently. The head holds the body together. The body's integrity is the head's responsibility.</p>
+    </div>
+  </div>
+
+  <div class="scripture-block key">
+    <div class="ref">Colossians 1:18</div>
+    <div class="verse">"And he is the head of the body, the church. He is the beginning, the firstborn from the dead, that in everything he might be preeminent."</div>
+    <div class="note">The firstborn from the dead — the resurrection of Christ as the basis for the body's existence. The body came into existence because the head rose from the dead. The same resurrection life that animates the head animates the body. The everlasting life imputed to the believer at salvation is the life of the risen Christ — the life that death could not hold, the life that the grave could not keep. A member of the body animated by the resurrection life of the risen head cannot be permanently separated from that head without the life itself being revoked. The life is permanent. The union is permanent. The body is permanent.</div>
+  </div>
+
+  <!-- APPROACH VII -->
+  <div class="approach-block">
+    <span class="approach-label">Approach VII</span>
+    <div class="approach-title">The Greek Tense Approach — What the Grammar Actually Says</div>
+    <div class="approach-refs">Acts 16:31 · Ephesians 2:8–9</div>
+    <div class="approach-body">
+      <p>The Greek tense approach is the most exegetically precise argument for eternal security — and the least commonly taught. It goes directly to the grammar of the primary texts to establish from the structure of the language itself what the words mean about the nature and permanence of salvation. Two texts carry the full weight of the argument.</p>
+    </div>
+  </div>
+
+  <div class="greek-display">
+    <div class="greek-text">πίστευσον ἐπὶ τὸν κύριον Ἰησοῦν καὶ σωθήσῃ</div>
+    <div class="corrected">Acts 16:31 — "Believe on the Lord Jesus Christ and you will be saved."</div>
+    <div class="parse-notes">
+      πίστευσον · Aorist active imperative of πιστεύω · Believe — once, decisively, as a completed act &nbsp;|&nbsp;
+      σωθήσῃ · Future passive indicative of σῴζω · You will be saved — the certain future result of the single completed act of belief
+    </div>
+  </div>
+
+  <p>The aorist imperative πίστευσον commands a single, completed, once-for-all act of faith — not a process, not an ongoing condition, not a sustained performance. The aorist tense in Greek describes the action as a point in time, a completed event with no implication of continuation. To believe in Acts 16:31 is to perform one non-meritorious act of the will at one moment in time. The salvation that results — σωθήσῃ, future passive — is the certain consequence of that one act. Not a conditional consequence dependent on subsequent faithfulness. The certain consequence of the completed act.</p>
+
+  <div class="greek-display">
+    <div class="greek-text">Τῇ γὰρ χάριτί ἐστε σεσῳσμένοι διὰ πίστεως</div>
+    <div class="corrected">Ephesians 2:8 — "For by grace you are saved through faith."</div>
+    <div class="parse-notes">
+      σεσῳσμένοι · Perfect passive participle of σῴζω · Having been saved in the past with the result that you stand saved now and go on being saved permanently &nbsp;|&nbsp;
+      ἐστε · Present active indicative of εἰμί · You are — the present state is the result of the completed past action &nbsp;|&nbsp;
+      The periphrastic perfect construction (ἐστε + perfect participle) emphasizes the permanent, ongoing result of the past completed action
+    </div>
+  </div>
+
+  <p>The perfect tense of σῴζω in Ephesians 2:8 is the most grammatically decisive statement of eternal security in the New Testament. The Greek perfect tense describes a past completed action whose results are permanent and ongoing in the present. You were saved in the past — the aorist action of faith in the past — with the result that you stand saved now — and go on being saved permanently. The perfect tense does not describe a transaction that can be reversed. It describes a completed action whose ongoing result is the permanent present reality of the one who received it.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Greek Tense</th>
+        <th>Reference</th>
+        <th>Meaning for Eternal Security</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Aorist imperative — πίστευσον</td>
+        <td>Acts 16:31</td>
+        <td>Believe once, as a single completed act; the aorist describes a point action with no implication of continuation or repetition</td>
+      </tr>
+      <tr>
+        <td>Perfect passive participle — σεσῳσμένοι</td>
+        <td>Ephesians 2:8</td>
+        <td>Saved in the past with the result that you go on being saved permanently; the perfect describes the ongoing present result of a completed past action</td>
+      </tr>
+      <tr>
+        <td>Present active indicative — ἐστε</td>
+        <td>Ephesians 2:8</td>
+        <td>You are — the present state of being saved is the current and permanent result of the past completed act; the periphrastic perfect construction reinforces the permanence</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- APPROACH VIII -->
+  <div class="approach-block">
+    <span class="approach-label">Approach VIII</span>
+    <div class="approach-title">The Inheritance Approach — Incorruptible and Unchanging</div>
+    <div class="approach-refs">Ephesians 1:11 · 1 Peter 1:4–5</div>
+    <div class="approach-body">
+      <p>The inheritance approach grounds eternal security in the nature of what is waiting for the believer in heaven — an inheritance that is incorruptible, undefiled, and unfading, reserved in heaven for those who by God's power are being guarded through faith. The inheritance is not at risk. It is reserved — τετηρημένην, perfect passive participle, reserved in the past with the permanent result that it remains reserved. It is being guarded for the believer — and the believer is being guarded for it — by the power of God.</p>
+      <p>The inheritance cannot be lost because it is incorruptible — it does not decay. It cannot be defiled — no impurity can touch it. It cannot fade — time does not diminish it. And the God who reserved it is guarding the ones for whom it was reserved. The security runs in both directions — the inheritance secured for the believer, the believer secured for the inheritance. Neither can be lost without the other being lost. Both are held by the same divine power.</p>
+    </div>
+  </div>
+
+  <div class="scripture-block key">
+    <div class="ref">1 Peter 1:4–5</div>
+    <div class="verse">"…to an inheritance that is imperishable, undefiled, and unfading, kept in heaven for you, who by God's power are being guarded through faith for a salvation ready to be revealed in the last time."</div>
+    <div class="note">Being guarded — φρουρουμένους, present passive participle. The guarding is continuous — not a one-time act at salvation but an ongoing present reality. By God's power — not by the believer's faithfulness, not by the believer's sustained performance, not by any human effort. By God's power. The same omnipotence that holds the stars in place is the power that guards the believer for the inheritance that has been reserved for him. The reservation and the guarding are both on God's side of the ledger. The believer's contribution is the faith through which the guarding operates — and even that faith was a grace gift, not a human achievement.</div>
+  </div>
+
+  <!-- APPROACH IX -->
+  <div class="approach-block">
+    <span class="approach-label">Approach IX</span>
+    <div class="approach-title">The Sovereignty Approach — God's Decision to Keep</div>
+    <div class="approach-refs">2 Peter 3:9 · Jude 24</div>
+    <div class="approach-body">
+      <p>The sovereignty approach establishes eternal security in the eternal decree of the sovereign God who makes decisions that are not subject to revision. God's will is that none be lost — 2 Peter 3:9, not wishing that any should perish but that all should reach repentance. The sovereign decree that underlies salvation is not a conditional decree that is activated or deactivated by the believer's subsequent performance. It is the unchangeable will of the immutable God who only deals in permanence.</p>
+      <p>Jude 24 is the doxological capstone of the sovereignty approach — to him who is able to keep you from stumbling and to present you blameless before the presence of his glory with great joy. The ability to keep is attributed to God alone. The presentation blameless before the divine presence is not the believer's achievement. It is the sovereign God presenting to Himself what He has kept — the believer whose security was always in the hands of the One who is able to keep.</p>
+    </div>
+  </div>
+
+  <div class="scripture-block key">
+    <div class="ref">Jude 24–25</div>
+    <div class="verse">"Now to him who is able to keep you from stumbling and to present you blameless before the presence of his glory with great joy, to the only God, our Savior, through Jesus Christ our Lord, be glory, majesty, dominion, and authority, before all time and now and forever. Amen."</div>
+    <div class="note">Able to keep — δυναμένῳ φυλάξαι, the dative of the One who is capable of guarding, preserving, protecting. The ability is the omnipotence of the sovereign God. The keeping is not conditional on the believer's cooperation. It is the sovereign action of the God whose glory is the motivation — he presents the believer blameless before his own glory with great joy. The great joy is the Father's joy at receiving back what He always intended to present blameless before Himself. The sovereign decree, the omnipotence of execution, and the divine joy at completion are all on God's side. The believer is the recipient of all three.</div>
+  </div>
+
+  <!-- APPROACH X -->
+  <div class="approach-block">
+    <span class="approach-label">Approach X</span>
+    <div class="approach-title">The Sealing Ministry — The Signature of Ownership</div>
+    <div class="approach-refs">2 Corinthians 1:22 · Ephesians 1:13 · 4:30 · 2 Timothy 2:19</div>
+    <div class="approach-body">
+      <p>The sealing ministry of the Holy Spirit is the tenth and final approach — the divine signature of ownership placed on the believer at salvation, guaranteeing that the name of every believer remains in the Book of Life forever. The seal is the ἀρραβών — the down payment, the earnest money, the first installment that legally obligates the Giver to deliver the full amount. In the commercial world of the first century, the ἀρραβών was the legally binding portion of a transaction that could not be rescinded without penalty. God placed His seal on the believer — His Spirit as the living guarantee — and that seal cannot be broken without God violating His own integrity.</p>
+      <p>Do not grieve the Holy Spirit of God, by whom you were sealed for the day of redemption — Ephesians 4:30. The sealing is for the day of redemption — the Rapture, the full delivery of the inheritance, the completion of the transaction the ἀρραβών guaranteed. The sealing cannot be revoked before the day it was sealed for. The Spirit who seals is the permanent indwelling presence of God in the believer — not a temporary deposit but the living guarantee of the permanent relationship that salvation established.</p>
+    </div>
+  </div>
+
+  <div class="scripture-block key">
+    <div class="ref">Ephesians 1:13–14</div>
+    <div class="verse">"In him you also, when you heard the word of truth, the gospel of your salvation, and believed in him, were sealed with the promised Holy Spirit, who is the guarantee of our inheritance until we acquire possession of it, to the praise of his glory."</div>
+    <div class="note">The guarantee of our inheritance — ἀρραβὼν τῆς κληρονομίας ἡμῶν. The Spirit as the legally binding guarantee of the full inheritance. The seal was applied at the moment of faith — believed, were sealed, simultaneous acts in the aorist. The sealing did not wait for sustained performance. It was applied at the moment the once-for-all act of faith was completed. And the Spirit who was applied as the seal remains until the inheritance is fully delivered — until we acquire possession of it. The seal cannot be removed before the delivery it guarantees. The security of the sealing is as permanent as the Spirit who constitutes it.</div>
+  </div>
+
+  <div class="divider">✦</div>
+
+  <h3>The Ten Approaches — Summary</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Approach</th>
+        <th>Doctrinal Basis</th>
+        <th>Primary Text</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>I — Positional</td>
+        <td>Union with Christ — the position cannot be revoked without revoking the justice that established it</td>
+        <td>Romans 8:1 · Ephesians 1:3–6</td>
+      </tr>
+      <tr>
+        <td>II — Logical</td>
+        <td>If God reconciled enemies, He will certainly preserve sons — much more</td>
+        <td>Romans 5:9–10 · Romans 8:32</td>
+      </tr>
+      <tr>
+        <td>III — Anthropomorphic</td>
+        <td>The hand of omnipotence holds — the grip is God's, not the believer's</td>
+        <td>Psalm 37:24 · John 10:28–29</td>
+      </tr>
+      <tr>
+        <td>IV — Experiential</td>
+        <td>God remains faithful when the believer does not — He cannot deny Himself</td>
+        <td>2 Timothy 2:13</td>
+      </tr>
+      <tr>
+        <td>V — Family</td>
+        <td>Birth establishes sonship — the new birth cannot be reversed any more than the physical birth</td>
+        <td>John 1:12 · Galatians 3:26</td>
+      </tr>
+      <tr>
+        <td>VI — Body</td>
+        <td>The head cannot reject a member of the body — Christ does not amputate</td>
+        <td>1 Corinthians 12:21 · Colossians 1:18</td>
+      </tr>
+      <tr>
+        <td>VII — Greek Tense</td>
+        <td>Aorist of πιστεύω — believe once for all; perfect of σῴζω — saved in the past with permanent ongoing result</td>
+        <td>Acts 16:31 · Ephesians 2:8–9</td>
+      </tr>
+      <tr>
+        <td>VIII — Inheritance</td>
+        <td>Incorruptible, undefiled, unfading — reserved by God, guarded by God's power</td>
+        <td>Ephesians 1:11 · 1 Peter 1:4–5</td>
+      </tr>
+      <tr>
+        <td>IX — Sovereignty</td>
+        <td>The sovereign decree of the immutable God — His will is that none be lost</td>
+        <td>2 Peter 3:9 · Jude 24</td>
+      </tr>
+      <tr>
+        <td>X — Sealing</td>
+        <td>The ἀρραβών — the Spirit as legally binding guarantee of the full inheritance until delivery</td>
+        <td>Ephesians 1:13–14 · 4:30</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="hinge-block">
+    <div class="hinge-label">Eternal Security — The Settled Issue</div>
+    <div class="hinge-text">
+      The security is absolute.<br>
+      The argument is ten approaches deep.<br>
+      No single angle is the complete case.<br>
+      All ten together leave no ground for doubt to stand on.<br><br>
+      Positional — union with Christ, the position established by justice.<br>
+      Logical — much more for the son than was done for the enemy.<br>
+      Anthropomorphic — the hand of omnipotence holds.<br>
+      Experiential — God remains faithful when we do not.<br>
+      Family — once a son of God, always a son of God.<br>
+      Body — the head does not amputate its members.<br>
+      Greek tense — saved in the past, going on being saved permanently.<br>
+      Inheritance — reserved, incorruptible, guarded by God's power.<br>
+      Sovereignty — the immutable God's decision to keep.<br>
+      Sealing — the Spirit as the living ἀρραβών until delivery.<br><br>
+      The believer who is preoccupied with the loss of salvation<br>
+      squanders his opportunity and cannot advance.<br><br>
+      Leave this issue behind.<br>
+      The platform is permanent.<br>
+      Build on it.
+    </div>
+  </div>
+
+  <div class="divider">✦</div>
+
+  <p style="font-size: 0.82rem; color: var(--muted); text-align: center;">Eternal Security · Ten Approaches · Epistle-Oriented Doctrinal Exegesis · Romans Road Commentary</p>
+
+  <footer>
+    All Scripture quotations from the ESV unless otherwise noted. Greek text from NA28. &nbsp;·&nbsp;
+    <a href="https://commentary.intelligencereport.info/illuminations.html">Illuminations</a> &nbsp;·&nbsp;
+    <a href="https://commentary.intelligencereport.info">Romans Road Commentary</a> &nbsp;·&nbsp;
+    <a href="https://lessons.intelligencereport.info">Spiritual Growth Lessons</a><br>
+    © 2026 John David Wilbourn
+  </footer>
+
+</div>
+</body>
+</html>
