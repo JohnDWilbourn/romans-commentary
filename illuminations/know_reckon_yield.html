@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Know, Reckon, Yield — Romans 6:11–13 · Illuminations</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1410;
+    --parchment: #f7f3ec;
+    --gold: #b8860b;
+    --rule: #c8b89a;
+    --muted: #6b5f52;
+    --accent-bg: #f0ebe0;
+    --bar-bg: #1a1410;
+    --bar-text: #f7f3ec;
+    --table-head: #ede8df;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 300;
+    line-height: 1.75;
+  }
+
+  .top-bar {
+    background: var(--bar-bg);
+    color: var(--bar-text);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 48px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .top-bar-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  .top-bar-links { list-style: none; display: flex; gap: 1.75rem; }
+  .top-bar-links a {
+    color: var(--bar-text);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+  .top-bar-links a:hover { opacity: 1; color: var(--gold); }
+
+  .page {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 6rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-size: 0.82rem;
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    margin-bottom: 2rem;
+  }
+
+  .back-link:hover { text-decoration: underline; }
+
+  .meta-line {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+
+  header {
+    border-top: 3px solid var(--gold);
+    border-bottom: 1px solid var(--rule);
+    padding: 2rem 0 2rem;
+    margin-bottom: 3rem;
+  }
+
+  header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+
+  header .subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+  }
+
+  .greek-display {
+    background: var(--bar-bg);
+    color: var(--bar-text);
+    padding: 1.5rem 2rem;
+    margin: 1.5rem 0;
+    border-radius: 4px;
+  }
+
+  .greek-display .greek-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+    color: #e8e0d0;
+  }
+
+  .greek-display .corrected {
+    font-size: 0.92rem;
+    color: var(--gold);
+    line-height: 1.6;
+  }
+
+  .greek-display .parse-notes {
+    font-size: 0.82rem;
+    color: #9a8f82;
+    margin-top: 0.5rem;
+    line-height: 1.6;
+  }
+
+  .part-header {
+    margin: 3rem 0 1.5rem;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.5rem;
+  }
+
+  .part-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.35rem;
+  }
+
+  .part-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 2rem 0 0.75rem;
+  }
+
+  p {
+    margin-bottom: 1.1rem;
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  .term-block {
+    background: var(--accent-bg);
+    border-left: 3px solid var(--gold);
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .term-block .term-greek {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+
+  .term-block .term-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+
+  .term-block .term-body {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .term-block .term-body ul {
+    margin: 0.5rem 0 0.5rem 1.25rem;
+  }
+
+  .term-block .term-body li {
+    margin-bottom: 0.35rem;
+  }
+
+  .scripture-block {
+    background: var(--accent-bg);
+    border-left: 3px solid var(--rule);
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .scripture-block.key { border-left-color: var(--gold); }
+
+  .ref {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.35rem;
+  }
+
+  .verse {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.7;
+    margin-bottom: 0.4rem;
+  }
+
+  .note {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.88rem;
+  }
+
+  th {
+    background: var(--table-head);
+    font-weight: 600;
+    text-align: left;
+    padding: 0.6rem 0.85rem;
+    border-bottom: 2px solid var(--rule);
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  td {
+    padding: 0.55rem 0.85rem;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  tr:last-child td { border-bottom: none; }
+
+  .sequence-diagram {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+  }
+
+  .seq-box {
+    background: var(--bar-bg);
+    color: var(--bar-text);
+    padding: 0.75rem 1.25rem;
+    border-radius: 4px;
+    text-align: center;
+    flex: 1;
+    min-width: 140px;
+  }
+
+  .seq-box .seq-greek {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .seq-box .seq-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #9a8f82;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .seq-box .seq-desc {
+    font-size: 0.82rem;
+    color: #c8bfb0;
+    display: block;
+  }
+
+  .seq-arrow {
+    font-size: 1.5rem;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .hinge-block {
+    background: var(--ink);
+    color: var(--bar-text);
+    padding: 1.75rem 2rem;
+    margin: 3rem 0;
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  .hinge-block .hinge-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+
+  .hinge-block .hinge-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    line-height: 1.9;
+    color: var(--bar-text);
+  }
+
+  .divider {
+    text-align: center;
+    color: var(--gold);
+    font-size: 1.2rem;
+    margin: 2.5rem 0;
+    letter-spacing: 0.3em;
+  }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding-top: 1.5rem;
+    margin-top: 4rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+
+  footer a { color: var(--gold); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<nav class="top-bar">
+  <a class="top-bar-brand" href="../index.html">Romans Road Commentary</a>
+  <ul class="top-bar-links">
+    <li><a href="https://commentary.intelligencereport.info/illuminations.html">Illuminations</a></li>
+    <li><a href="https://commentary.intelligencereport.info/search.html">Search</a></li>
+    <li><a href="https://lessons.intelligencereport.info">Lessons</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+  <a class="back-link" href="https://commentary.intelligencereport.info/illuminations.html">← Return to Illuminations</a>
+
+  <div class="meta-line">Epistle-Oriented Doctrinal Exegesis &nbsp;·&nbsp; Romans Road Commentary</div>
+
+  <header>
+    <h1>Romans 6:11–13</h1>
+    <div class="subtitle">Know, Reckon, Yield — The Operational Sequence of the Spirit-Filled Life</div>
+
+    <div class="greek-display">
+      <div class="greek-text">
+        οὕτως καὶ ὑμεῖς λογίζεσθε ἑαυτοὺς εἶναι νεκροὺς μὲν τῇ ἁμαρτίᾳ ζῶντας δὲ τῷ θεῷ ἐν Χριστῷ Ἰησοῦ.<br>
+        μὴ οὖν βασιλευέτω ἡ ἁμαρτία ἐν τῷ θνητῷ ὑμῶν σώματι εἰς τὸ ὑπακούειν ταῖς ἐπιθυμίαις αὐτοῦ·<br>
+        μηδὲ παριστάνετε τὰ μέλη ὑμῶν ὅπλα ἀδικίας τῇ ἁμαρτίᾳ, ἀλλὰ παραστήσατε ἑαυτοὺς τῷ θεῷ ὡσεὶ ἐκ νεκρῶν ζῶντας καὶ τὰ μέλη ὑμῶν ὅπλα δικαιοσύνης τῷ θεῷ.
+      </div>
+      <div class="corrected">
+        "In the same way, you also — reckon yourselves to be dead indeed to sin but alive to God in Christ Jesus. Therefore do not let sin reign in your mortal body, in order to obey its lusts. And do not present your members as weapons of unrighteousness to sin, but present yourselves to God as those alive from the dead, and your members as weapons of righteousness to God."
+      </div>
+      <div class="parse-notes">
+        λογίζεσθε · Present middle imperative · Reckon for yourselves, consider as fact &nbsp;|&nbsp;
+        παριστάνετε · Present active imperative (negative) · Do not keep presenting &nbsp;|&nbsp;
+        παραστήσατε · Aorist active imperative (positive) · Present decisively, once for all &nbsp;|&nbsp;
+        ὅπλα · Accusative plural · Weapons, military instruments — not tools, not vessels
+      </div>
+    </div>
+  </header>
+
+  <p><strong>Romans 6:11–13 is not a call to passive spiritual surrender.</strong> It is a three-stage operational sequence — intelligence briefing, reckoning from that intelligence, and military-grade volitional commitment to the command structure of God. Paul wrote in the vocabulary of the Roman legion and the Greek games because those are the disciplines that produce what he is describing: the trained, informed, volitional execution of the spiritual life under divine authority.</p>
+
+  <p>The word translated <em>yield</em> in the older English versions — and softened into <em>offer</em> or <em>present</em> in modern ones — is <strong>παρίστημι</strong>. It is a military term. It means to place oneself at the disposal of a commanding officer, under his authority, for his use. The soldier who παρίστημι does not wander into range and offer himself as a possibility. He reports for duty. He knows who the commander is. He knows the objective. He places his capabilities under command. That is the word Paul used — and it is the word the student of Romans must recover from the pastoral domestication that has rendered it harmless.</p>
+
+  <div class="sequence-diagram">
+    <div class="seq-box">
+      <span class="seq-greek">οἴδατε</span>
+      <span class="seq-label">Know</span>
+      <span class="seq-desc">Romans 6:3, 6, 9<br>Doctrinal intelligence<br>Positional truth</span>
+    </div>
+    <div class="seq-arrow">→</div>
+    <div class="seq-box">
+      <span class="seq-greek">λογίζεσθε</span>
+      <span class="seq-label">Reckon</span>
+      <span class="seq-desc">Romans 6:11<br>Apply the intelligence<br>Treat as operational fact</span>
+    </div>
+    <div class="seq-arrow">→</div>
+    <div class="seq-box">
+      <span class="seq-greek">παραστήσατε</span>
+      <span class="seq-label">Yield</span>
+      <span class="seq-desc">Romans 6:13<br>Present for service<br>Military παρίστημι</span>
+    </div>
+  </div>
+
+  <!-- PART ONE -->
+  <div class="part-header">
+    <div class="part-label">Part One</div>
+    <div class="part-title">The Context: Romans 6 and the Question Paul Answers</div>
+  </div>
+
+  <p>Romans 6 opens with the question that the grace doctrine of Romans 3–5 inevitably provokes: <em>shall we continue in sin that grace may abound?</em> The objection is logical from inside the merit system — if grace covers sin, why not sin more freely? Paul's answer is not a moral lecture. It is a doctrinal argument from positional truth, and the three-stage operational sequence of verses 11–13 is the practical outworking of that argument in the daily life.</p>
+
+  <p>The argument runs: you died with Christ (verse 2). You were baptized into His death (verse 3). Your old self was crucified with Him (verse 6). Christ, raised from the dead, will never die again (verse 9). Therefore — verse 11 — <em>reckon</em> these things as true for you. And from that reckoning — verse 13 — <em>present</em> yourself to God.</p>
+
+  <p>The sequence is irreversible. You cannot reckon what you do not know. You cannot present what you have not reckoned. The believer who attempts the third stage without the first two is not practicing Romans 6. He is performing a religious gesture with no doctrinal content — which is precisely why the emotional yield of the altar call produces no lasting operational change. The emotion substituted for the knowledge. The gesture substituted for the reckoning. The third step performed while the first two were skipped.</p>
+
+  <div class="scripture-block key">
+    <div class="ref">Romans 6:2–3, 6, 9</div>
+    <div class="verse">"How can we who died to sin still live in it? Do you not know that all of us who have been baptized into Christ Jesus were baptized into his death?… We know that our old self was crucified with him in order that the body of sin might be brought to nothing, so that we would no longer be enslaved to sin… We know that Christ, being raised from the dead, will never die again; death no longer has dominion over him."</div>
+    <div class="note">Do you not know — οὐκ οἴδατε. The rhetorical question that frames the entire chapter. Paul is not asking whether they have heard this doctrine. He is pressing whether they have allowed what they know to govern how they think about themselves. The know of Romans 6 is the intelligence briefing that makes the reckoning possible. Without it the reckoning has no content to work from. Without the reckoning the παρίστημι has no foundation to stand on.</div>
+  </div>
+
+  <!-- PART TWO -->
+  <div class="part-header">
+    <div class="part-label">Part Two</div>
+    <div class="part-title">Stage One — οἴδατε: The Intelligence Briefing</div>
+  </div>
+
+  <div class="term-block">
+    <div class="term-greek">οἴδατε</div>
+    <div class="term-label">Romans 6:3, 6, 9 · Perfect active indicative · You know, you have come to know and the knowledge stands</div>
+    <div class="term-body">
+      <ul>
+        <li><strong>Root:</strong> οἶδα — to know, to perceive, to have seen and therefore to know. In Greek, οἶδα is a perfect form used as a present — the knowing is the result of a completed act of perception that now stands as permanent possession</li>
+        <li><strong>Not:</strong> γινώσκω (progressive knowing, knowledge growing through experience) — οἶδα is the settled, complete, possessed knowledge that forms the doctrinal foundation</li>
+        <li><strong>Military application:</strong> The soldier who moves into the field without the intelligence briefing is operating blind. He may be courageous. He may be disciplined. He will be ineffective — or worse, a casualty from his own side's friendly fire. οἴδατε is the briefing. It is doctrinal intelligence received, processed, and retained as operational fact</li>
+        <li><strong>Content of the knowing:</strong> (1) You died with Christ — positional identification with His death. (2) Your old self was crucified with Him — the sin nature's mastery broken. (3) Christ will never die again — the resurrection life is permanent, which means the positional life you share with Him is permanent</li>
+        <li><strong>Three times in Romans 6:</strong> verses 3, 6, 9. Paul repeats the word because the reckoning that follows it is only as stable as the knowing that grounds it. The know must be thorough before the reckon can be operative</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>The content Paul deposits in the <em>know</em> stage is positional truth — the doctrinal reality of what happened to the believer at salvation that is permanently and objectively true regardless of his experiential condition at any given moment. You died with Christ. You were buried with Him. You were raised with Him. This is not the believer's subjective experience. It is the objective record of what the justice of God accomplished through the cross and credited to the believer's account at the moment of faith.</p>
+
+  <p>This is the intelligence that the Grace Apparatus for Perception deposits in the right lobe — the metabolized doctrine that the Holy Spirit transfers from the teacher's communication to the student's soul. The know of Romans 6 is not information the believer generates from introspection. It is doctrine received from outside himself, deposited into the left lobe, transferred by the Spirit to the right lobe, and there metabolized into the permanent possession that Paul's imperative assumes. You know — and the knowledge stands.</p>
+
+  <div class="scripture-block key">
+    <div class="ref">Romans 6:6</div>
+    <div class="verse">"We know that our old self was crucified with him in order that the body of sin might be brought to nothing, so that we would no longer be enslaved to sin."</div>
+    <div class="note">The body of sin brought to nothing — καταργηθῇ, rendered inoperative, deprived of power. Not destroyed — the sin nature remains present in the physical body until death or the Rapture. But its mastery has been broken at the cross. The believer who knows this knows the most strategically important fact about his daily engagement with the sin nature: the enemy inside the wire has been stripped of its legal authority to reign. It can still press for control. It cannot demand it as its right. The know stage deposits this intelligence. The reckon stage deploys it.</div>
+  </div>
+
+  <!-- PART THREE -->
+  <div class="part-header">
+    <div class="part-label">Part Three</div>
+    <div class="part-title">Stage Two — λογίζεσθε: The Reckoning</div>
+  </div>
+
+  <div class="term-block">
+    <div class="term-greek">λογίζεσθε</div>
+    <div class="term-label">Romans 6:11 · Present middle imperative · Reckon for yourselves, continuously, as an ongoing discipline</div>
+    <div class="term-body">
+      <ul>
+        <li><strong>Root:</strong> λόγος (word, account, reason) → λογίζομαι — to calculate, to credit to an account, to treat as established fact in one's deliberate assessment. The primary commercial and accounting term of the Koine world</li>
+        <li><strong>Not:</strong> a feeling, an emotion, a mystical impression. λογίζομαι is a rational act of deliberate calculation — the same word Paul uses 34 times in Romans for the crediting of righteousness to Abraham's account (Romans 4)</li>
+        <li><strong>Middle voice:</strong> the believer reckon for himself — the reflexive element is built into the voice. This is not something done to the believer by the Spirit or by circumstances. It is the deliberate rational act of the individual who applies the known doctrine to his present condition</li>
+        <li><strong>Present imperative:</strong> continuous, habitual action. Not a one-time reckoning at a crisis point. The ongoing daily discipline of treating the positional reality as the operational reality — every morning, every moment of temptation, every engagement with the sin nature</li>
+        <li><strong>Athletic application:</strong> the Greek athlete who had trained for years λογίζεσθε from his training. He did not enter the stadium hoping his conditioning would be sufficient. He calculated from it — he knew what his body could do because he had built the capacity. The reckoning is the application of known capability to the present contest</li>
+        <li><strong>Object:</strong> ἑαυτοὺς εἶναι νεκροὺς μὲν τῇ ἁμαρτίᾳ ζῶντας δὲ τῷ θεῷ — reckon yourselves to be dead indeed to sin but alive to God. Both simultaneously. The reckoning holds the full positional reality — dead to sin's mastery, alive to God's provision — at the same time</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>λογίζομαι appears 34 times in Romans — more than in any other New Testament book. Paul uses it consistently as the term for the crediting of righteousness to Abraham in Romans 4 (it was <em>counted</em> to him as righteousness — verses 3, 5, 6, 8, 9, 10, 11, 22, 23, 24). The word is the standard accounting term for crediting something to a ledger. Paul's use of the same word in Romans 6:11 is not coincidental — the believer is being called to apply to his own account the same accounting logic that God applied to Abraham's. The righteousness was credited. Treat it as credited. The death to sin was accomplished. Treat it as accomplished.</p>
+
+  <p>The reckoning is the deliberate application of the intelligence to the present circumstance. The soldier who received the briefing reckon from it as he moves through the field — not reviewing the briefing document at every step but operating from the picture of reality it produced in his mind. The metabolized doctrine in the right lobe is the briefing internalized. The reckoning is the continuous application of that internalized picture to the moment-by-moment decisions of the spiritual life.</p>
+
+  <div class="scripture-block key">
+    <div class="ref">Romans 6:11</div>
+    <div class="verse">"So you also must reckon yourselves to be dead indeed to sin and alive to God in Christ Jesus."</div>
+    <div class="note">Dead indeed to sin — νεκροὺς μέν. The μέν…δέ construction holds two realities in balance: dead to sin's claim on the one hand, alive to God on the other. The reckoning is not the suppression of one reality in favor of the other. It is the simultaneous application of both. The believer who reckon only his deadness to sin produces a negative legalism — the endless rehearsal of what he is not. The believer who reckon only his aliveness to God without the death to sin produces a naive triumphalism that collapses at the first serious engagement with the sin nature. Both must be reckoned simultaneously — which requires the full doctrinal content of the know stage to be in place before the reckoning can be accurate.</div>
+  </div>
+
+  <!-- PART FOUR -->
+  <div class="part-header">
+    <div class="part-label">Part Four</div>
+    <div class="part-title">Stage Three — παραστήσατε: The Military Presentation</div>
+  </div>
+
+  <div class="term-block">
+    <div class="term-greek">παρίστημι / παραστήσατε</div>
+    <div class="term-label">Romans 6:13 · Aorist active imperative · Present decisively, report for duty, place under command</div>
+    <div class="term-body">
+      <ul>
+        <li><strong>Compound:</strong> παρά (alongside, at the side of) + ἵστημι (to stand, to place) = to stand alongside, to place at the side of, to present for service</li>
+        <li><strong>Primary military usage:</strong> the standard term for a soldier reporting to his commanding officer and placing himself under command. The soldier παρίστημι himself — he stands alongside the commander, places his capabilities at the commander's disposal, submits to the command structure. Active, informed, volitional, subordinate simultaneously</li>
+        <li><strong>Secondary legal usage:</strong> to present a person before a magistrate or court — the appearance before the judge with full accountability. Used in Acts 23:33, 27:24 in this legal sense</li>
+        <li><strong>Not:</strong> passive surrender, emotional yielding to a vague spiritual influence, the altar call gesture of walking forward. παρίστημι is active, informed, and deliberate — it presupposes knowledge of who the commander is and what the command structure requires</li>
+        <li><strong>Aorist active imperative (παραστήσατε):</strong> decisive, once-for-all presentation — the definitive commitment of the will to the command structure. Contrasted with the present active imperative (παριστάνετε) in the negative command — <em>do not keep presenting</em> your members to sin. The positive command is aorist: present decisively. The negative command is present: stop the ongoing pattern of presenting to sin</li>
+        <li><strong>ὅπλα — weapons:</strong> the members of the body are described as ὅπλα — military weapons, instruments of warfare. Not vessels, not tools, not offerings. Weapons. The body is military equipment. The question is under whose command it is deployed</li>
+        <li><strong>Two commanders, one decision:</strong> every member of the body is either ὅπλα ἀδικίας τῇ ἁμαρτίᾳ (weapons of unrighteousness to sin) or ὅπλα δικαιοσύνης τῷ θεῷ (weapons of righteousness to God). There is no neutral deployment. The weapons are always under someone's command</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>The translation history of παρίστημι is the translation history of a military term's domestication into religious vocabulary. The KJV rendered it <em>yield</em> — which in the English of 1611 carried the military sense of submission to a superior force but has since drifted entirely into the passive register of emotional surrender. The RSV, ESV, and NIV rendered it <em>present</em> or <em>offer</em> — which captures the directional sense but loses the military-grade authority submission that παρίστημι carried for a Roman reader.</p>
+
+  <p>Paul's reader in Rome knew exactly what παρίστημι meant. He had either served in the legions or lived his entire life in a society organized around the command structure of the legions. The soldier who παρίστημι to his commanding officer did not drift forward with a bowed head in a moment of religious feeling. He reported. He stood at attention. He placed his weapons, his training, his body, and his will at the disposal of the one who held the authority to deploy them. That is what Paul is calling the believer to do — and the word he chose makes it unmistakable in the original.</p>
+
+  <div class="scripture-block key">
+    <div class="ref">Romans 6:13</div>
+    <div class="verse">"Do not present your members as weapons of unrighteousness to sin, but present yourselves to God as those alive from the dead, and your members as weapons of righteousness to God."</div>
+    <div class="note">Weapons of righteousness — ὅπλα δικαιοσύνης. The righteousness is the same δικαιοσύνη that the fourth imputation credited to the believer at salvation — the divine righteousness now serving as the commanding officer's authority under which the weapons are deployed. The members of the body that were previously weapons of unrighteousness under the sin nature's command are now presented to God as weapons of righteousness. The command authority has changed. The weapons are the same. The deployment is entirely different. This is the military παρίστημι — the definitive transfer of operational authority from the sin nature to the sovereign God.</div>
+  </div>
+
+  <!-- PART FIVE -->
+  <div class="part-header">
+    <div class="part-label">Part Five</div>
+    <div class="part-title">Paul's Military and Athletic Vocabulary — The Native Language of Excellence</div>
+  </div>
+
+  <p>Paul used military and athletic terms not as decorative metaphors borrowed for illustrative effect but as the primary vocabulary of the culture he was writing into. The Roman citizen who read Romans in the first century AD lived in a world organized around two disciplines that brought out the best in man — the military command structure that built and sustained the empire, and the Greek athletic tradition that trained the body and the will to their highest expression of competitive excellence. These were not analogies. They were the native language of achievement, discipline, and volitional commitment under authority.</p>
+
+  <p>The military vocabulary of Romans 6 is not isolated. Paul deploys the full apparatus of military language across his epistles — ὅπλα (weapons, Romans 6:13; 13:12; 2 Corinthians 6:7; 10:4), στρατεία (military campaign, 2 Corinthians 10:4; 1 Timothy 1:18), στρατολογέω (to enlist soldiers, 2 Timothy 2:4), πανοπλία (full armor, Ephesians 6:11, 13). The Christian life is a military operation under divine command, conducted with military discipline, requiring the informed volitional submission of the entire person to the commanding officer.</p>
+
+  <div class="scripture-block key">
+    <div class="ref">2 Timothy 2:3–4</div>
+    <div class="verse">"Share in suffering as a good soldier of Christ Jesus. No soldier gets entangled in civilian pursuits, since his aim is to please the one who enlisted him."</div>
+    <div class="note">The one who enlisted him — the commanding officer whose approval is the soldier's operational objective. The good soldier does not make decisions based on what the civilians around him are doing. His frame of reference is the command structure. His motivation is the commanding officer's approval. This is the παρίστημι life — not the approval of the congregation, not the emotional satisfaction of the religious experience, but the informed, disciplined execution of the divine command from the one who enlisted the believer into His service at salvation.</div>
+  </div>
+
+  <div class="scripture-block key">
+    <div class="ref">1 Corinthians 9:24–27</div>
+    <div class="verse">"Do you not know that in a race all the runners run, but only one receives the prize? So run that you may obtain it. Every athlete exercises self-control in all things. They do it to receive a perishable wreath, but we an imperishable. So I do not run aimlessly; I do not box as one beating the air. But I discipline my body and keep it under control, lest after preaching to others I myself should be disqualified."</div>
+    <div class="note">Discipline my body and keep it under control — ὑπωπιάζω and δουλαγωγέω. The athletic vocabulary of maximum physical discipline applied to the spiritual life. The athlete does not ask his body what it wants to do. He trains it into compliance with the objective. He controls it rather than being controlled by it. The members of the body that Paul παρίστημι to God in Romans 6 are the same members he disciplines and controls in 1 Corinthians 9 — the weapons of righteousness maintained in operational condition by the same discipline that the athlete applies to his body in training. The Greek games and the Roman legion are not illustrations Paul reached for. They are the primary frame of reference for what the Spirit-filled life demands from the believer who intends to execute it.</div>
+  </div>
+
+  <p>The athletic parallel to the know-reckon-yield sequence is precise. The athlete <strong>knows</strong> his training — what his body can do, what the competition requires, what the course demands. He <strong>reckons</strong> from that knowledge as he enters the stadium — not reviewing his training notes at the starting line but operating from the capability his training has produced. And he <strong>presents</strong> himself to the contest with everything he has — the full discipline of his preparation deployed in the execution of the race. Remove any stage and the performance collapses. The untrained athlete cannot reckon capability he does not possess. The trained athlete who does not reckon from his training enters the stadium uncertain. The trained and reckoning athlete who does not commit fully to the execution fails to deploy what the first two stages prepared.</p>
+
+  <!-- PART SIX -->
+  <div class="part-header">
+    <div class="part-label">Part Six</div>
+    <div class="part-title">The Sequence in Operation — Doctrinal Implications</div>
+  </div>
+
+  <p>The know-reckon-yield sequence is not a technique for crisis management. It is the daily operational discipline of the Spirit-filled life. The believer who has received the doctrine in the know stage, who has metabolized it into the reckoning of his daily self-assessment, and who has presented himself decisively to God in the military παρίστημι is the believer who is walking in the newness of life that Romans 6:4 describes.</p>
+
+  <p>The sequence operates within the filling of the Spirit — which is the prerequisite for every stage. The know stage requires the GAP function, which requires the filling. The reckoning requires the objective thinking that the sin nature suppresses and the Spirit-filled life restores. The παρίστημι requires the volitional freedom that the carnal state has surrendered to the sin nature and the filling restores. Confession of sin that restores the filling is therefore not merely preparatory to the sequence — it is the on/off switch for the entire operational system.</p>
+
+  <div class="scripture-block key">
+    <div class="ref">Romans 6:4</div>
+    <div class="verse">"We were buried therefore with him by baptism into death, in order that, just as Christ was raised from the dead by the glory of the Father, we too might walk in newness of life."</div>
+    <div class="note">Walk in newness of life — the experiential outworking of the positional truth that the know stage deposits and the reckoning applies. The walking is ongoing — present tense, continuous action. The newness is the qualitative difference that the Spirit-filled life operating from the know-reckon-yield sequence produces in the daily experience of the believer. This is not the newness of religious emotion. It is the newness of a life that has been presented to God as weapons of righteousness and is being deployed by the commanding officer of the universe toward the eternal objectives of His plan.</div>
+  </div>
+
+  <div class="scripture-block key">
+    <div class="ref">Galatians 2:20</div>
+    <div class="verse">"I have been crucified with Christ. It is no longer I who live, but Christ who lives in me. And the life I now live in the flesh I live by faith in the Son of God, who loved me and gave himself for me."</div>
+    <div class="note">I have been crucified with Christ — the know of Galatians 2:20, the same positional truth Paul deposits in Romans 6:6. It is no longer I who live but Christ who lives in me — the reckoning applied to the self-assessment: the old self crucified, the new self alive to God. The life I now live in the flesh I live by faith — the παρίστημι expressed as the ongoing daily commitment to operate from faith in the One who loved and gave. The entire Romans 6 sequence compressed into one verse — and written in Paul's own first-person testimony rather than the imperative of instruction. He was not prescribing a technique he had not himself executed.</div>
+  </div>
+
+  <div class="hinge-block">
+    <div class="hinge-label">Know · Reckon · Yield — The Operational Summary</div>
+    <div class="hinge-text">
+      Paul did not call the believer to passive spiritual surrender.<br>
+      He called him to the informed, disciplined, volitional execution<br>
+      of the command structure of the Spirit-filled life.<br><br>
+      <strong>Know</strong> — οἴδατε.<br>
+      Receive the intelligence briefing.<br>
+      You died with Christ. Your old self was crucified with Him.<br>
+      Christ, raised, will never die again.<br>
+      The sin nature's mastery has been broken.<br>
+      This is not your experience. It is your position.<br>
+      Receive it as the objective fact it is.<br><br>
+      <strong>Reckon</strong> — λογίζεσθε.<br>
+      Apply the intelligence to your present condition.<br>
+      Calculate from it. Treat it as operational fact.<br>
+      Dead to sin's claim. Alive to God's provision. Both simultaneously.<br>
+      The accounting has been done by the justice of God.<br>
+      Agree with the ledger.<br><br>
+      <strong>Present</strong> — παραστήσατε.<br>
+      Report for duty.<br>
+      Stand alongside the commanding officer.<br>
+      Place your members — your weapons — under His command.<br>
+      Not vessels offered at an altar in a moment of religious feeling.<br>
+      Weapons presented to a commanding officer by an informed,<br>
+      trained, volitionally committed soldier<br>
+      who knows what the objective is<br>
+      and has decided to execute it.<br><br>
+      The sequence is irreversible.<br>
+      The reckoning rests on the knowing.<br>
+      The presentation rests on the reckoning.<br>
+      Skip a stage and the system fails.<br>
+      Execute all three and walk in the newness of life<br>
+      that the risen Christ opened the path to<br>
+      and the Spirit of God sustains.
+    </div>
+  </div>
+
+  <div class="divider">✦</div>
+
+  <h3>Quick Reference — Key Terms</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Greek Term</th>
+        <th>Corrected Rendering</th>
+        <th>Doctrinal Content</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>οἴδατε</td>
+        <td>You know (settled, complete)</td>
+        <td>Perfect active indicative used as present; possessed knowledge standing as permanent result of completed perception; the doctrinal intelligence briefing — positional truth metabolized into the right lobe through GAP</td>
+      </tr>
+      <tr>
+        <td>λογίζεσθε</td>
+        <td>Reckon for yourselves (continuous)</td>
+        <td>Present middle imperative; accounting term — to credit to an account, to treat as established fact; 34 occurrences in Romans; used for the crediting of righteousness to Abraham (Romans 4); the deliberate rational application of known doctrine to present condition</td>
+      </tr>
+      <tr>
+        <td>παραστήσατε</td>
+        <td>Present decisively (military)</td>
+        <td>Aorist active imperative of παρίστημι; military term — to place at the disposal of a commanding officer, to report for duty under authority; contrasted with present imperative παριστάνετε (stop the ongoing pattern); decisive, informed, volitional, subordinate</td>
+      </tr>
+      <tr>
+        <td>ὅπλα</td>
+        <td>Weapons</td>
+        <td>Military instruments of warfare — not vessels, not tools, not offerings. The members of the body are weapons under command; deployed either as ὅπλα ἀδικίας (weapons of unrighteousness) to sin or ὅπλα δικαιοσύνης (weapons of righteousness) to God; no neutral deployment</td>
+      </tr>
+      <tr>
+        <td>νεκροὺς τῇ ἁμαρτίᾳ</td>
+        <td>Dead to sin</td>
+        <td>Positional truth — not experiential death or insensitivity to temptation; the sin nature's legal authority to reign has been broken at the cross; the mastery is ended; what remains is the sin nature's continued presence and pressure, not its right to command</td>
+      </tr>
+      <tr>
+        <td>ζῶντας τῷ θεῷ</td>
+        <td>Alive to God</td>
+        <td>The positive counterpart of the reckoning; the eternal life imputed at salvation operative in the present moment; the human spirit created by regeneration fully functional in fellowship with God; reckoned simultaneously with death to sin — both held together by the same knowing and the same reckoning</td>
+      </tr>
+      <tr>
+        <td>ἐν Χριστῷ Ἰησοῦ</td>
+        <td>In Christ Jesus</td>
+        <td>The positional sphere within which both the death to sin and the life to God are operative; not a mystical location but the judicial position established by the fourth and fifth imputations at salvation; the ground on which the reckoning stands and the authority under which the παρίστημι is made</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Cross-References</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Reference</th>
+        <th>Content</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Romans 4:3–5</td>
+        <td>λογίζομαι as the crediting of righteousness to Abraham — the same accounting term used in Romans 6:11 for the believer's self-reckoning; establishes the word's consistent meaning across the epistle</td>
+      </tr>
+      <tr>
+        <td>Romans 6:2–9</td>
+        <td>The know stage — oἴδατε three times; the positional truth content that the reckoning draws from; death to sin, crucifixion of the old self, resurrection life</td>
+      </tr>
+      <tr>
+        <td>Galatians 2:20</td>
+        <td>Paul's first-person testimony of the know-reckon-yield sequence: crucified with Christ (know), no longer I who live (reckon), life I live in the flesh by faith (present)</td>
+      </tr>
+      <tr>
+        <td>2 Timothy 2:3–4</td>
+        <td>The good soldier who does not entangle himself in civilian pursuits — the military frame of reference for the παρίστημι life; the commanding officer's approval as the operational objective</td>
+      </tr>
+      <tr>
+        <td>1 Corinthians 9:24–27</td>
+        <td>The athletic frame of reference — run to obtain the prize, discipline the body, keep it under control; the Greek games as primary vocabulary of trained volitional excellence under the discipline of a fixed objective</td>
+      </tr>
+      <tr>
+        <td>Ephesians 6:11–17</td>
+        <td>The full military apparatus — πανοπλία (full armor), ὅπλα language continued; the spiritual warfare context in which the know-reckon-yield sequence operates; the believer as a soldier fully equipped and reporting for duty</td>
+      </tr>
+      <tr>
+        <td>Philippians 4:11–13</td>
+        <td>The reckoning applied to circumstances — I have learned, in whatever state, to be content; the same λογίζομαι discipline applied to the testing situations that the sin nature and the cosmic system generate</td>
+      </tr>
+      <tr>
+        <td>1 John 1:9</td>
+        <td>The rebound prerequisite — confession restoring the filling; the on/off switch for the entire know-reckon-yield operational system; without the filling, the know cannot be received, the reckoning cannot be objective, the παρίστημι cannot be executed</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="divider">✦</div>
+
+  <p style="font-size: 0.82rem; color: var(--muted); text-align: center;">Romans 6:11–13 &nbsp;·&nbsp; Epistle-Oriented Doctrinal Exegesis &nbsp;·&nbsp; Romans Road Commentary</p>
+
+  <footer>
+    All Scripture quotations from the ESV unless otherwise noted. Greek text from NA28. &nbsp;·&nbsp;
+    <a href="https://commentary.intelligencereport.info/illuminations.html">Illuminations</a> &nbsp;·&nbsp;
+    <a href="https://commentary.intelligencereport.info">Romans Road Commentary</a> &nbsp;·&nbsp;
+    <a href="https://lessons.intelligencereport.info">Spiritual Growth Lessons</a><br>
+    © 2026 John David Wilbourn
+  </footer>
+
+</div>
+</body>
+</html>
