@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Confession — Romans Road Commentary</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --crimson:    #7a1a1a;
+    --gold:       #b8972a;
+    --gold-lt:    #d4b84a;
+    --ink:        #1a1410;
+    --ink-soft:   #4a3f35;
+    --parchment:  #f8f3ec;
+    --parch-dark: #ede4d6;
+    --white:      #fffdf9;
+    --rule:       #c4a96e;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'EB Garamond', Georgia, serif;
+    background: var(--parchment);
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.85;
+  }
+
+  /* ── MASTHEAD ─────────────────────────────────────────────────── */
+  .masthead {
+    background: var(--ink);
+    color: var(--parchment);
+    text-align: center;
+    padding: 70px 40px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .masthead::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(180,155,80,0.04) 60px, rgba(180,155,80,0.04) 61px),
+      repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(180,155,80,0.04) 60px, rgba(180,155,80,0.04) 61px);
+  }
+
+  .masthead-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  .series-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  .masthead h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 18px;
+  }
+
+  .rule-gold {
+    width: 80px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 20px;
+  }
+
+  .masthead .subtitle {
+    font-size: 1.05rem;
+    color: rgba(248,243,236,0.75);
+    max-width: 580px;
+    margin: 0 auto;
+    font-style: italic;
+  }
+
+  /* ── NAV ──────────────────────────────────────────────────────── */
+  .vol-nav {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    background: var(--parch-dark);
+    border-bottom: 1px solid var(--rule);
+    flex-wrap: wrap;
+  }
+
+  .vol-nav a {
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding: 12px 18px;
+    border-right: 1px solid var(--rule);
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+
+  .vol-nav a:first-child { border-left: 1px solid var(--rule); }
+  .vol-nav a:hover { color: var(--crimson); }
+  .vol-nav a.active { color: var(--crimson); }
+
+  /* ── PAGE BODY ────────────────────────────────────────────────── */
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 60px 30px 100px;
+  }
+
+  .page p {
+    margin-bottom: 1.6rem;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: var(--ink-soft);
+  }
+
+  .page p:first-child {
+    font-size: 1.15rem;
+    color: var(--ink);
+  }
+
+  /* Drop cap on first paragraph */
+  .page p:first-child::first-letter {
+    font-family: 'Cinzel', serif;
+    font-size: 3.8rem;
+    font-weight: 700;
+    color: var(--crimson);
+    float: left;
+    line-height: 0.75;
+    margin-right: 0.08em;
+    margin-top: 0.1em;
+    padding-bottom: 0.05em;
+  }
+
+  /* Section divider matching site style */
+  .section-rule {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 3rem 0;
+  }
+
+  .section-rule::before,
+  .section-rule::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .section-rule-ornament {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  /* Inline italics and emphasis */
+  .page em {
+    font-style: italic;
+    color: var(--ink);
+  }
+
+  /* Pull quote styling for the Ruth passage */
+  .pull {
+    border-left: 3px solid var(--crimson);
+    padding: 0.75rem 1.5rem;
+    margin: 2rem 0;
+    background: var(--parch-dark);
+  }
+
+  .pull p {
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--ink);
+    margin-bottom: 0;
+  }
+
+  /* ── FOOTER ───────────────────────────────────────────────────── */
+  footer {
+    background: var(--ink);
+    color: rgba(248,243,236,0.6);
+    text-align: center;
+    padding: 40px 20px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+  }
+
+  footer a {
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  @media (max-width: 600px) {
+    .masthead { padding: 50px 24px 44px; }
+    .page { padding: 40px 20px 80px; }
+    .vol-nav a { padding: 10px 12px; font-size: 0.72rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── MASTHEAD ──────────────────────────────────────────────────── -->
+<div class="masthead">
+  <div class="masthead-inner">
+    <div class="series-label">Romans Road Commentary</div>
+    <h1>Confession</h1>
+    <div class="rule-gold"></div>
+    <div class="subtitle">our heart is restless until it rests in Thee</div>
+  </div>
+</div>
+
+<!-- ── NAV ──────────────────────────────────────────────────────── -->
+<nav class="vol-nav">
+  <a href="index.html">Home</a>
+  <a href="Romans_Road.html">Volume I</a>
+  <a href="Romans_Road_2.html">Volume II</a>
+  <a href="Romans_Road_3.html">Volume III</a>
+  <a href="Romans_Road_4.html">Volume IV</a>
+  <a href="Romans_Road_5.html">Volume V</a>
+  <a href="illuminations.html">Illuminations</a>
+  <a href="search.html">Search</a>
+  <a href="greek-guide.html">Greek Guide</a>
+  <a href="20260424_002_confession.html" class="active">Confession</a>
+</nav>
+
+<!-- ── PAGE BODY ─────────────────────────────────────────────────── -->
+<div class="page">
+
+  <p>There is a thread running through human history that does not break.</p>
+
+  <p>It runs through the confession of Peter on the road to Caesarea Philippi — <em>You are the Christ, the Son of the living God</em> — and it runs through the declaration of a man nailing ninety-five theses to a door in Wittenberg because the Word of God had gotten loose inside him and he could no longer contain it within the institutions that claimed to own it. It runs through the letters of Ignatius written on the road to his own execution, through the careful systematic labor of Lewis Sperry Chafer who opened the doctrines of grace to a generation that had nearly lost them, through the verse-by-verse discipline of R.B. Thieme Jr. who put the Greek text back in the hands of the believer and refused to apologize for the rigor it required.</p>
+
+  <p>The thread is the Word. Not the institution. Not the tradition, though tradition has sometimes carried it faithfully. Not the denomination, though denominations have sometimes protected it. The Word itself — living, active, sharper than any two-edged sword — finding its way into the hands and minds and spirits of fallen human beings who were then used, despite themselves, to carry it forward into the next moment of history.</p>
+
+  <p>We stand inside that thread. This commentary is an expression of it.</p>
+
+  <p>A word about that "we." There is no team behind this work in the institutional sense. But every human being who has ever carried a piece of truth forward — faithfully or haltingly, within the covenant line or outside it, in a language I speak or one I had to learn — has contributed something to the understanding that shapes these pages. The "we" is not editorial. It is theological. It is the acknowledgment that no one arrives at understanding alone, and that this work, whatever it is, belongs to the body of Christ across time far more than it belongs to the person who wrote it. This is not about the writer. It is about you — the reader, the believer, the one the Spirit is already teaching before these words arrive.</p>
+
+  <div class="section-rule"><span class="section-rule-ornament">✦</span></div>
+
+  <p>What drives this work is not novelty. The text of Romans is not new. Paul wrote it in the middle of the first century to a community of believers in the capital of the world that then was, and it has been read, studied, preached, argued over, and metabolized by the body of Christ for two thousand years. Augustine found his life changed by a single passage of it. Luther found the entire Reformation latent in one verse. Generations of scholars have given their working lives to its Greek construction, its rhetorical architecture, its theological weight.</p>
+
+  <p>We are not adding to that. We are working within it.</p>
+
+  <p>What we bring to this exegetical exposition is a commitment to the Greek text as the primary authority, and a willingness to follow it where it leads without seeking permission from any institution to do so. This is not arrogance. It is the inheritance of every believer in the Church Age — the same inheritance Paul himself was articulating when he wrote to the Romans. The Spirit of God indwells the believer. The Word of God is available to the believer. The mind renewed by doctrine can apprehend what the text actually says. That is not a special claim. That is the system working as it was designed to work.</p>
+
+  <p>What it requires is discipline. It requires the kind of labor that does not look for shortcuts — sitting with the Greek, tracing the argument across chapters, refusing to flatten the distinctions the text itself insists upon. Paul is a precise thinker and a careful writer. The four Greek conditional classes are not interchangeable. The aorist is not the imperfect. The distinctions carry theological weight that the English translations, however good, inevitably compress. This commentary attempts to hold those distinctions open and let them speak.</p>
+
+  <div class="section-rule"><span class="section-rule-ornament">✦</span></div>
+
+  <p>We are also shaped by history — by theology, culture, and progressive revelation that do not apologize for their own existence. They simply are. And we are in them.</p>
+
+  <p>The human witness of God's work in creation and revelation is not confined to the pages of Scripture, even though Scripture alone carries the authority of God-breathed truth. God has never been truly absent or silent in human history. The long period between the closing of the Old Testament canon and the voice of John the Baptist crying in the wilderness was not four hundred years of divine absence. It was four hundred years of God working in human consciousness through every means available to Him — including the conscience He placed in every image-bearer, including the general revelation written into the creation itself, including the hunger for transcendence that surfaces in every human culture without exception.</p>
+
+  <p>I have studied that witness seriously. Not to find alternatives to the Gospel — there are none — but to understand the vessel into which the Gospel arrived. The cultural and philosophical world of the first century did not appear from nowhere. The Greek mind that Paul engaged on the Areopagus had been prepared by centuries of philosophical labor. The Jewish mind that received the apostolic proclamation had been shaped by the Septuagint, by the synagogue, by the Second Temple literature that surrounded and interpreted the Hebrew Scriptures. The Roman world that provided the infrastructure of the early church's expansion had its own relationship to law, to justice, to the question of what the gods owe to man and man owes to the gods.</p>
+
+  <p>Paul knew all of this. He quotes pagan poets without apology. He reasons from creation to the knowledge of God without treating that knowledge as illegitimate simply because it arrived outside the covenant line. Romans 1 and 2 together establish that the image of God in man produces a real, if incomplete and insufficient, witness to the truth. That witness does not save. But it is real, and a commentary on Romans that ignores the human world into which Paul was speaking will miss dimensions of what Paul was actually doing.</p>
+
+  <div class="section-rule"><span class="section-rule-ornament">✦</span></div>
+
+  <p>The great reformers understood this. Luther did not arrive at <em>sola fide</em> in a cultural vacuum. The printing press existed. The Greek New Testament of Erasmus had arrived on his desk at precisely the right moment. The political fracture of the Holy Roman Empire created the conditions under which a truth that had always been in the text could finally break through into history with sufficient force to hold. Jesus controls history for His own purposes, and He uses those conditions through human free will and moral agency — under the tutelage of the Holy Spirit, and sometimes through raw human will apart from the Spirit, but always with Divine Providence holding ultimate sway. The infrastructure was prepared before the doctrine was released, because that is how progressive revelation works: the truth breaks through when the vessel is ready to receive it and the conditions exist to carry it forward.</p>
+
+  <p>We believe that is still how it works. The Word of God is not exhausted. The Spirit of God is not finished teaching. The body of Christ in the Church Age has access to the full canon of Scripture and the permanent indwelling of the Holy Spirit — resources that no previous generation of believers possessed in the same form or to the same degree. What is required is the willingness to do the work. To sit with the text. To follow the argument. To let the Greek say what it says and trust the Spirit to make it land where it is supposed to land.</p>
+
+  <p>That is what this commentary attempts to do with the book of Romans.</p>
+
+  <div class="section-rule"><span class="section-rule-ornament">✦</span></div>
+
+  <p>The thread does not run only through the expected names.</p>
+
+  <p>There is a Moabite woman in it. She had no covenant standing, no priestly lineage, no claim on the God of Israel except what she had witnessed through the life of another woman — a woman named Naomi, who had lost everything and said so plainly, who told her daughters-in-law to go home because she had nothing left to give them. One of them went. The other stayed.</p>
+
+  <div class="pull">
+    <p>Where you go I will go. Where you die I will die. The Lord do so to me and more also if anything but death parts me from you.</p>
+  </div>
+
+  <p>That was not sentiment. That was a volitional commitment made with incomplete knowledge of the cost, on the basis of a witness that had been enough — the life of one faithful woman, stripped of everything, still carrying the name of the God she served.</p>
+
+  <p>Ruth the Moabite ends up in the genealogy of Jesus in Matthew 1. God honored what she had and what she did with it. She did not have the law. She did not have the prophets. She had Naomi. And she followed that witness all the way to Boaz, all the way into the covenant, all the way into the line through which the Word would eventually enter the world in flesh. The thread runs through her too. It has always run through unexpected vessels. That is the point.</p>
+
+  <div class="section-rule"><span class="section-rule-ornament">✦</span></div>
+
+  <p>Romans is Paul's most systematic and complete theological statement. It is also his most personal — written by a man who had been on both sides of the argument he was making, who knew from the inside what it cost to surrender the righteousness that comes from the law in exchange for the righteousness that comes through faith. The argument moves from the universal human condition before God, through the failure of both Gentile and Jew to meet the standard of divine righteousness, to the stunning declaration of justification by faith alone — and then it does not stop there. It presses into sanctification, into the agonizing question of Israel's place in the plan of God, into the practical shape of a life lived inside the grace that has been declared.</p>
+
+  <p>It is a complete world. And it rewards the kind of careful, unhurried attention that the pressures of contemporary life conspire against.</p>
+
+  <p>This commentary is written for the believer who is willing to slow down. Who suspects that the text has more in it than the Sunday sermon has delivered. Who is not satisfied with the English translation alone and wants to know what the Greek is actually doing. Who has enough formation to ask serious questions and enough humility to let the text answer them rather than confirming what was already believed coming in.</p>
+
+  <p>We have tried to write for that reader. Not to impress, not to display the apparatus of scholarship for its own sake, but to open the text in the way a good teacher opens a text — so that the student eventually does not need the teacher anymore, because the Spirit has taken over the instruction.</p>
+
+  <p>That is, after all, what Paul was working toward. And what every faithful witness in the long thread of human history has been working toward since Peter made his confession on the road to Caesarea Philippi.</p>
+
+  <p>The thread holds. The Word endures. Come and see what it says.</p>
+
+</div>
+
+<!-- ── FOOTER ──────────────────────────────────────────────────── -->
+<footer>
+  <a href="index.html">Romans Road Commentary</a> &nbsp;·&nbsp;
+  <a href="https://lessons.intelligencereport.info">Spiritual Growth Lessons</a> &nbsp;·&nbsp;
+  © 2026 John David Wilbourn
+</footer>
+
+</body>
+</html>
