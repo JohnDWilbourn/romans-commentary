@@ -34,7 +34,9 @@
         { label: 'All Illuminations',         url: '/illuminations.html' },
         { label: 'Romans 1:16–17',             url: '/illuminations/romans_1_16-17.html' },
         { label: 'Forty Things at Salvation',  url: '/illuminations/forty_things.html' },
-        { label: 'Chapter 33 — φθόνος/φόνος', url: '/illuminations/chapter_33.html' },
+        { label: 'Chapter 33 — φθόνος/φόνος',     url: '/illuminations/chapter_33.html' },
+        { label: 'Know, Reckon, Yield',            url: '/illuminations/know_reckon_yield.html' },
+        { label: 'Eternal Security — Ten Approaches', url: '/illuminations/eternal_security.html' },
       ]
     },
     {
@@ -42,6 +44,10 @@
       items: [
         { label: 'Guide to the Greek NT', url: '/greek-guide.html' },
       ]
+    },
+    {
+      label: 'Confession',
+      url: '/20260424_002_confession.html'
     },
     {
       label: 'Search',
