@@ -17,6 +17,8 @@
         { label: 'Romans — Volume III', url: '/Romans_Road_3.html' },
         { label: 'Romans — Volume IV',  url: '/Romans_Road_4.html' },
         { label: 'Romans — Volume V',   url: '/Romans_Road_5.html' },
+        { label: 'Romans — Volume VI',  url: '/Romans_Road_6.html' },
+        { label: 'Romans — Volume VII', url: '/Romans_Road_7.html' },
         // { label: 'Gospel of John — Volume I', url: '/John_1.html' },
       ]
     },
