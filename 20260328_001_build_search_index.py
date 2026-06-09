@@ -21,14 +21,34 @@ from html.parser import HTMLParser
 
 HTML_FILES = [
     {
-        "file": "20260319_003_Romans_Road.html",
+        "file": "Romans_Road.html",
         "vol": "vol1",
         "vol_label": "Volume I — Romans 1",
     },
     {
-        "file": "20260321_001_Romans_Road_2.html",
+        "file": "Romans_Road_2.html",
         "vol": "vol2",
-        "vol_label": "Volume II — Romans 2–3",
+        "vol_label": "Volume II — Romans 2",
+    },
+    {
+        "file": "Romans_Road_3.html",
+        "vol": "vol3",
+        "vol_label": "Volume III — Romans 3",
+    },
+    {
+        "file": "Romans_Road_4.html",
+        "vol": "vol4",
+        "vol_label": "Volume IV — Romans 4",
+    },
+    {
+        "file": "Romans_Road_5.html",
+        "vol": "vol5",
+        "vol_label": "Volume V — Romans 5",
+    },
+    {
+        "file": "Romans_Road_6.html",
+        "vol": "vol6",
+        "vol_label": "Volume VI — Romans 6",
     },
     {
         "file": "Romans_Road_7.html",
