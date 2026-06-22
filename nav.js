@@ -49,7 +49,7 @@
     },
     {
       label: 'Confession',
-      url: '/20260424_002_confession.html'
+      url: '/confession.html'
     },
     {
       label: 'Search',
