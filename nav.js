@@ -31,9 +31,9 @@
     },
     {
       label: 'Illuminations',
-      url: '/illuminations.html',
+      url: '/illuminations/illuminations.html',
       items: [
-        { label: 'All Illuminations',         url: '/illuminations.html' },
+        { label: 'All Illuminations',         url: '/illuminations/illuminations.html' },
         { label: 'Romans 1:16–17',             url: '/illuminations/romans_1_16-17.html' },
         { label: 'Forty Things at Salvation',  url: '/illuminations/forty_things.html' },
         { label: 'Chapter 33 — φθόνος/φόνος',     url: '/illuminations/chapter_33.html' },
@@ -57,7 +57,7 @@
     },
     {
       label: 'Home',
-      url: '/index.html'
+      url: 'https://home.intelligencereport.info/'
     },
   ];
 
