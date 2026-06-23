@@ -59,6 +59,26 @@
     }
 
     .top-bar-links a:hover { color: var(--gold); }
+    .top-bar-links li.dropdown { position: relative; }
+    .top-bar-links .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--ink);
+      border: 1px solid #3a2e1a;
+      list-style: none;
+      padding: 0.5rem 0;
+      min-width: 150px;
+      z-index: 10;
+    }
+    .top-bar-links li.dropdown:hover .dropdown-menu { display: block; }
+    .top-bar-links .dropdown-menu li { padding: 0; }
+    .top-bar-links .dropdown-menu a {
+      display: block;
+      padding: 0.5rem 1.2rem;
+      white-space: nowrap;
+    }
 
     /* ── Hero ── */
     .hero {
@@ -270,15 +290,19 @@
 
   <!-- Top bar -->
   <nav class="top-bar">
-    <a class="top-bar-brand" href="index.html">Romans Road</a>
+    <a class="top-bar-brand" href="https://home.intelligencereport.info/">Home</a>
     <ul class="top-bar-links">
-      <li><a href="Romans_Road.html">Volume I</a></li>
-      <li><a href="Romans_Road_2.html">Volume II</a></li>
-      <li><a href="Romans_Road_3.html">Volume III</a></li>
-      <li><a href="Romans_Road_4.html">Volume IV</a></li>
-      <li><a href="Romans_Road_5.html">Volume V</a></li>
-      <li><a href="Romans_Road_6.html">Volume VI</a></li>
-      <li><a href="Romans_Road_7.html">Volume VII</a></li>
+      <li class="dropdown"><a href="#">Volumes</a>
+        <ul class="dropdown-menu">
+          <li><a href="Romans_Road.html">Volume I</a></li>
+          <li><a href="Romans_Road_2.html">Volume II</a></li>
+          <li><a href="Romans_Road_3.html">Volume III</a></li>
+          <li><a href="Romans_Road_4.html">Volume IV</a></li>
+          <li><a href="Romans_Road_5.html">Volume V</a></li>
+          <li><a href="Romans_Road_6.html">Volume VI</a></li>
+          <li><a href="Romans_Road_7.html">Volume VII</a></li>
+        </ul>
+      </li>
       <li><a href="https://lessons.intelligencereport.info/index.html">Growth Lessons</a></li>
       <li><a href="illuminations/illuminations.html">Illuminations</a></li>
       <li><a href="search.html">Search</a></li>
