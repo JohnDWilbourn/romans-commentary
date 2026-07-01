@@ -55,6 +55,11 @@ HTML_FILES = [
         "vol": "vol7",
         "vol_label": "Volume VII — Romans 7",
     },
+    {
+        "file": "Romans_Road_8.html",
+        "vol": "vol8",
+        "vol_label": "Volume VIII — Romans 8",
+    },
 ]
 
 OUTPUT_FILE = "search-index.json"

@@ -12,13 +12,14 @@
     {
       label: 'Commentary',
       items: [
-        { label: 'Romans — Volume I',   url: '/Romans_Road.html' },
-        { label: 'Romans — Volume II',  url: '/Romans_Road_2.html' },
-        { label: 'Romans — Volume III', url: '/Romans_Road_3.html' },
-        { label: 'Romans — Volume IV',  url: '/Romans_Road_4.html' },
-        { label: 'Romans — Volume V',   url: '/Romans_Road_5.html' },
-        { label: 'Romans — Volume VI',  url: '/Romans_Road_6.html' },
-        { label: 'Romans — Volume VII', url: '/Romans_Road_7.html' },
+        { label: 'Romans — Volume I',    url: '/Romans_Road.html' },
+        { label: 'Romans — Volume II',   url: '/Romans_Road_2.html' },
+        { label: 'Romans — Volume III',  url: '/Romans_Road_3.html' },
+        { label: 'Romans — Volume IV',   url: '/Romans_Road_4.html' },
+        { label: 'Romans — Volume V',    url: '/Romans_Road_5.html' },
+        { label: 'Romans — Volume VI',   url: '/Romans_Road_6.html' },
+        { label: 'Romans — Volume VII',  url: '/Romans_Road_7.html' },
+        { label: 'Romans — Volume VIII', url: '/Romans_Road_8.html' },
         // { label: 'Gospel of John — Volume I', url: '/John_1.html' },
       ]
     },
@@ -71,16 +72,12 @@
 
   // ── SITE NAV INJECTOR ──────────────────────────────────────
   function initSiteNav() {
-    // Don't inject twice
     if (document.getElementById('site-top-nav')) return;
-
-    // Landing page already has a horizontal .top-bar; avoid duplicate nav
     if (document.querySelector('.landing-wrap')) return;
 
     const nav = document.createElement('nav');
     nav.id = 'site-top-nav';
 
-    // Determine current path for active highlighting
     const currentPath = window.location.pathname.replace(/\/$/, '') || '/index.html';
 
     const ul = document.createElement('ul');
@@ -112,11 +109,9 @@
         });
         li.appendChild(dropdown);
 
-        // Toggle on click
         btn.addEventListener('click', (e) => {
           e.stopPropagation();
           const open = li.classList.contains('open');
-          // Close all
           ul.querySelectorAll('.site-nav-dropdown').forEach(d => {
             d.classList.remove('open');
             d.querySelector('button').setAttribute('aria-expanded', 'false');
@@ -128,7 +123,6 @@
         });
 
       } else {
-        // Simple link
         const a = document.createElement('a');
         a.href = section.url;
         a.textContent = section.label;
@@ -141,7 +135,6 @@
       ul.appendChild(li);
     });
 
-    // Close dropdowns on outside click
     document.addEventListener('click', () => {
       ul.querySelectorAll('.site-nav-dropdown').forEach(d => {
         d.classList.remove('open');
@@ -151,8 +144,6 @@
     });
 
     nav.appendChild(ul);
-
-    // Inject at top of body
     document.body.insertBefore(nav, document.body.firstChild);
 
     updateSiteTopNavHeight();
