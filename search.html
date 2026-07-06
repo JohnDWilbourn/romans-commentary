@@ -403,6 +403,9 @@
   <button class="filter-btn" data-filter="vol3">Volume III</button>
   <button class="filter-btn" data-filter="vol4">Volume IV</button>
   <button class="filter-btn" data-filter="vol5">Volume V</button>
+  <button class="filter-btn" data-filter="vol6">Volume VI</button>
+  <button class="filter-btn" data-filter="vol7">Volume VII</button>
+  <button class="filter-btn" data-filter="vol8">Volume VIII</button>
   <button class="filter-btn" data-filter="greek">Greek</button>
   <button class="filter-btn" data-filter="hebrew">Hebrew</button>
   <button class="filter-btn" data-filter="verse">Verse Refs</button>
@@ -425,7 +428,10 @@
       <div class="facet-item" data-facet="vol" data-val="vol2">Volume II <span class="facet-count" id="fc-vol2">—</span></div>
       <div class="facet-item" data-facet="vol" data-val="vol3">Volume III <span class="facet-count" id="fc-vol3">—</span></div>
       <div class="facet-item" data-facet="vol" data-val="vol4">Volume IV <span class="facet-count" id="fc-vol4">—</span></div>
-      <div class="facet-item" data-facet="vol" data-val="vol5">Volume V <span class="facet-count" id="fc-vol5">—</span></div>
+      <div class="facet-item" data-facet="vol" data-val="vol5">Volume V    <span class="facet-count" id="fc-vol5">—</span></div>
+      <div class="facet-item" data-facet="vol" data-val="vol6">Volume VI   <span class="facet-count" id="fc-vol6">—</span></div>
+      <div class="facet-item" data-facet="vol" data-val="vol7">Volume VII  <span class="facet-count" id="fc-vol7">—</span></div>
+      <div class="facet-item" data-facet="vol" data-val="vol8">Volume VIII <span class="facet-count" id="fc-vol8">—</span></div>
     </div>
     <div class="facet-group">
       <div class="facet-title">Script</div>
@@ -455,11 +461,14 @@
 'use strict';
 
 function volumeMeta(vol) {
-  if (vol === 'vol1') return { label: 'Volume I', file: 'Romans_Road.html' };
-  if (vol === 'vol2') return { label: 'Volume II', file: 'Romans_Road_2.html' };
-  if (vol === 'vol3') return { label: 'Volume III', file: 'Romans_Road_3.html' };
-  if (vol === 'vol4') return { label: 'Volume IV', file: 'Romans_Road_4.html' };
-  if (vol === 'vol5') return { label: 'Volume V',  file: 'Romans_Road_5.html' };
+  if (vol === 'vol1') return { label: 'Volume I',    file: 'Romans_Road.html' };
+  if (vol === 'vol2') return { label: 'Volume II',   file: 'Romans_Road_2.html' };
+  if (vol === 'vol3') return { label: 'Volume III',  file: 'Romans_Road_3.html' };
+  if (vol === 'vol4') return { label: 'Volume IV',   file: 'Romans_Road_4.html' };
+  if (vol === 'vol5') return { label: 'Volume V',    file: 'Romans_Road_5.html' };
+  if (vol === 'vol6') return { label: 'Volume VI',   file: 'Romans_Road_6.html' };
+  if (vol === 'vol7') return { label: 'Volume VII',  file: 'Romans_Road_7.html' };
+  if (vol === 'vol8') return { label: 'Volume VIII', file: 'Romans_Road_8.html' };
   return { label: 'Volume I', file: 'Romans_Road.html' };
 }
 
@@ -537,9 +546,14 @@ function snippet(text, terms, maxLen = 240) {
 // ── SEARCH CORE ────────────────────────────────────────────────
 function search(q) {
   if (!q.trim() || INDEX.length === 0) return [];
-  const qLower  = q.toLowerCase().trim();
+
+  // Quoted phrase -- strip quotes, enforce exact substring match only
+  const phraseMatch = /^[\u201C\u201D"](.+)[\u201C\u201D"]$/.exec(q.trim());
+  const exactPhrase = phraseMatch ? phraseMatch[1].toLowerCase().trim() : null;
+
+  const qLower  = (exactPhrase || q).toLowerCase().trim();
   const terms   = qLower.split(/\s+/).filter(t => t.length > 1);
-  const types   = detectQueryType(q);
+  const types   = detectQueryType(exactPhrase ? qLower : q);
   const results = [];
 
   for (const rec of INDEX) {
@@ -549,6 +563,9 @@ function search(q) {
     if (activeFilter === 'vol3'    && rec.vol !== 'vol3')   continue;
     if (activeFilter === 'vol4'    && rec.vol !== 'vol4')   continue;
     if (activeFilter === 'vol5'    && rec.vol !== 'vol5')   continue;
+    if (activeFilter === 'vol6'    && rec.vol !== 'vol6')   continue;
+    if (activeFilter === 'vol7'    && rec.vol !== 'vol7')   continue;
+    if (activeFilter === 'vol8'    && rec.vol !== 'vol8')   continue;
     if (activeFilter === 'greek'   && !rec.greek)           continue;
     if (activeFilter === 'hebrew'  && !rec.hebrew)          continue;
     if (activeFilter === 'verse'   && !rec.verses?.length)  continue;
@@ -585,8 +602,14 @@ function search(q) {
       else if (rec.definition?.toLowerCase().includes(qLower)) score += 30;
     }
 
-    // All-terms phrase match
-    if (score === 0) {
+    // Quoted exact phrase -- hard filter, no partial credit
+    if (exactPhrase) {
+      if (searchText.includes(exactPhrase)) score += 80;
+      else continue;
+    }
+
+    // All-terms phrase match (unquoted only)
+    if (!exactPhrase && score === 0) {
       const allMatch = terms.every(t => searchText.includes(t));
       if (allMatch) score += terms.length > 1 ? 50 : 20;
       else {
@@ -712,7 +735,7 @@ function renderResults(results, q) {
 
 // ── FACET COUNTS ───────────────────────────────────────────────
 function updateFacetCounts(results) {
-  const counts = { all: results.length, heading: 0, blockquote: 0, body: 0, vol1: 0, vol2: 0, vol3: 0, vol4: 0, vol5: 0, greek: 0, hebrew: 0 };
+  const counts = { all: results.length, heading: 0, blockquote: 0, body: 0, vol1: 0, vol2: 0, vol3: 0, vol4: 0, vol5: 0, vol6: 0, vol7: 0, vol8: 0, greek: 0, hebrew: 0 };
   results.forEach(({ rec }) => {
     if (counts[rec.kind] !== undefined) counts[rec.kind]++;
     if (counts[rec.vol]  !== undefined) counts[rec.vol]++;
@@ -729,6 +752,9 @@ function updateFacetCounts(results) {
   document.getElementById('fc-vol3').textContent    = counts.vol3;
   document.getElementById('fc-vol4').textContent    = counts.vol4;
   document.getElementById('fc-vol5').textContent    = counts.vol5;
+  document.getElementById('fc-vol6').textContent    = counts.vol6;
+  document.getElementById('fc-vol7').textContent    = counts.vol7;
+  document.getElementById('fc-vol8').textContent    = counts.vol8;
   document.getElementById('fc-greek').textContent   = counts.greek;
   document.getElementById('fc-hebrew').textContent  = counts.hebrew;
 }
