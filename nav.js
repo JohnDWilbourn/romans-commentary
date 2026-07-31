@@ -32,9 +32,9 @@
     },
     {
       label: 'Illuminations',
-      url: '/illuminations/illuminations.html',
+      url: '/illuminations/',
       items: [
-        { label: 'All Illuminations',         url: '/illuminations/illuminations.html' },
+        { label: 'All Illuminations',         url: '/illuminations/' },
         { label: 'Romans 1:16–17',             url: '/illuminations/romans_1_16-17.html' },
         { label: 'Forty Things at Salvation',  url: '/illuminations/forty_things.html' },
         { label: 'Chapter 33 — φθόνος/φόνος',     url: '/illuminations/chapter_33.html' },

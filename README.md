@@ -82,6 +82,9 @@ romans-commentary-git/
 ├── Romans_Road.html            ← Volume I (Romans 1, 35 chapters)
 ├── Romans_Road_2.html          ← Volume II (Romans 2, 18 chapters)
 ├── Romans_Road_3.html          ← Volume III (Romans 3, 34 chapters)
+├── Romans_Road_4.html          ← Volume IV (Romans 4, 19 chapters)
+├── Romans_Road_5.html          ← Volume V (Romans 5, 52 chapters)
+├── Romans_Road_6.html          ← Volume VI (Romans 6, 50 chapters)
 ├── illuminations.html          ← Illuminations index
 ├── illuminations/
 │   ├── romans_1_16-17.html
@@ -191,23 +194,27 @@ Planned lessons:
 
 ---
 
-## What Needs Doing (Current State — April 3, 2026)
+## Current State — May 28, 2026
 
-1. **Site nav** — top nav injected by nav.js is rendering as vertical list, not horizontal bar. CSS likely not applied correctly. Fix: verify `site-nav.css` contents are in `style.css`.
+**Published:**
+- Volumes I–VI live at commentary.intelligencereport.info
+- Isaiah 53 live at isaiah.intelligencereport.info
+- Spiritual Growth Lessons live at lessons.intelligencereport.info
+- Bread of Life master landing page at bible.intelligencereport.info (new)
 
-2. **Lessons not in nav** — need URL structure for lessons.intelligencereport.info pages before adding to SITE_NAV config.
+**In progress:**
+- Romans 7 — transcription running (458_0232–458_0264)
+- search-index.json needs rebuild to include Volume VI
+- nav.js Volume VI entry added May 28 2026
 
-3. **Search broken** — `search.html` layout is empty with misplaced input. `search-index.json` needs full rebuild from all three volumes. Both need to be rewritten from scratch.
+**Pipeline scripts current location:**
+All pipeline scripts in `/home/johndavid/Projects/My Book/Instructions/`
+See `PUBLISH.md` in this repo for the complete step-by-step publication workflow.
 
-4. **Romans 3 remaining chapters** — 17 chapters still to complete in the docx.
-
-5. **Romans 4** — 20 transcripts ready (`458_0108.txt–458_0127.txt`), `process_transcripts.py` pipeline ready, API key must be set via `export ANTHROPIC_API_KEY=...`
-
-6. **Romans 2 docx** — 83 of 318 pages hard-styled, remainder soft/mixed. Needs completion before HTML regeneration.
-
-7. **Vol I and Vol II nav** — need Volume III link added (was done via sed but may have been lost in restore).
-
-8. **index.html** — needs Volume III card and site-wide framing as content grows beyond Romans.
+**Known bugs fixed:**
+- build_chapter.py heading1() now uses doc.add_heading(level=1) — fixed May 2026
+- docx_to_html_patch.py strips duplicate glossary paragraph after table
+- 20260520_005_repair_heading1.py repairs Heading1 styles on combined docx
 
 ---
 
