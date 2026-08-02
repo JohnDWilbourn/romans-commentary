@@ -116,9 +116,47 @@
   .doc-btn .btn-label { display: none; }
 }
 
+  .top-bar {
+    background: var(--ink, #1a1410);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 48px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .top-bar-brand {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gold, #b8973a);
+    text-decoration: none;
+  }
+  .top-bar-links { list-style: none; display: flex; gap: 1.75rem; }
+  .top-bar-links a {
+    color: rgba(244,236,216,0.85);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+  .top-bar-links a:hover { opacity: 1; color: var(--gold, #b8973a); }
 </style>
 </head>
 <body>
+<nav class="top-bar">
+  <a class="top-bar-brand" href="https://home.intelligencereport.info">Temple Door</a>
+  <ul class="top-bar-links">
+    <li><a href="https://study.intelligencereport.info/">Study Hall</a></li>
+    <li><a href="https://commentary.intelligencereport.info/illuminations/">Home</a></li>
+    <li><a href="https://commentary.intelligencereport.info/greek-guide.html">Guide to the Greek NT</a></li>
+    <li><a href="https://commentary.intelligencereport.info/search.html">Search</a></li>
+  </ul>
+</nav>
 <div class="wrap">
 
   <header class="masthead">
