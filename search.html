@@ -469,6 +469,7 @@ function volumeMeta(vol) {
   if (vol === 'vol6') return { label: 'Volume VI',   file: 'Romans_Road_6.html' };
   if (vol === 'vol7') return { label: 'Volume VII',  file: 'Romans_Road_7.html' };
   if (vol === 'vol8') return { label: 'Volume VIII', file: 'Romans_Road_8.html' };
+  if (vol === 'illumination') return { label: 'Illumination', file: null };
   return { label: 'Volume I', file: 'Romans_Road.html' };
 }
 
@@ -569,6 +570,7 @@ function search(q) {
     if (activeFilter === 'greek'   && !rec.greek)           continue;
     if (activeFilter === 'hebrew'  && !rec.hebrew)          continue;
     if (activeFilter === 'verse'   && !rec.verses?.length)  continue;
+    if (activeFilter === 'illumination' && rec.vol !== 'illumination') continue;
     if (activeFilter === 'glossary'&& rec.kind !== 'glossary') continue;
 
     // Facet filters
@@ -684,8 +686,10 @@ function renderResults(results, q) {
 
     for (const { rec, terms } of grp) {
       const { label: vol, file } = volumeMeta(rec.vol);
-      const anchor   = rec.section_id || rec.chapter_id || '';
-      const href     = anchor ? `${file}#${encodeURIComponent(anchor)}` : file;
+      const anchor   = rec.anchor || rec.subsection_id || rec.section_id || rec.chapter_id || '';
+      const href     = rec.vol === 'illumination'
+        ? (anchor ? `${rec.url}#${encodeURIComponent(anchor)}` : rec.url)
+        : (anchor ? `${file}#${encodeURIComponent(anchor)}` : file);
       const chapter  = rec.chapter || '';
       const section  = rec.section || '';
 
