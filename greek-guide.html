@@ -139,6 +139,7 @@ blockquote cite{display:block;font-style:normal;font-size:0.82rem;color:var(--go
     <h1>Guide to the Greek New Testament</h1>
     <div class="rule-gold"></div>
     <div class="subtitle">Grammar, usage, and the exegetical tools that make this commentary possible — illustrated with live examples drawn from the text itself.</div>
+    <div style="margin-top:22px;"><a href="rom-nt-greek-guide.html" style="font-family:'Cinzel',serif;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid rgba(184,151,42,0.4);padding:7px 16px;border-radius:2px;white-space:nowrap;">NT Greek Usage Guide &rarr;</a></div>
   </div>
 </div>
 
@@ -170,6 +171,11 @@ blockquote cite{display:block;font-style:normal;font-size:0.82rem;color:var(--go
 
   <!-- MAIN CONTENT -->
   <main class="content">
+
+    <div style="margin-bottom:32px;padding:16px 20px;background:var(--parch-dk);border-left:3px solid var(--gold);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <span style="font-family:'EB Garamond',serif;font-size:1rem;color:var(--ink-soft);font-style:italic;">For detailed grammatical analysis with live examples from Romans 1–8, see the comprehensive NT Greek Usage Guide.</span>
+      <a href="rom-nt-greek-guide.html" style="font-family:'Cinzel',serif;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid rgba(184,151,42,0.4);padding:7px 16px;border-radius:2px;white-space:nowrap;">NT Greek Usage Guide &rarr;</a>
+    </div>
 
     <!-- I. WHY GREEK -->
     <div class="section" id="why-greek">
@@ -226,6 +232,7 @@ blockquote cite{display:block;font-style:normal;font-size:0.82rem;color:var(--go
     <!-- III. EIGHT CASES -->
     <div class="section" id="cases">
       <h2 class="section-title"><span class="section-num">III.</span>The Eight-Case System</h2>
+      <p style="margin-bottom:16px;"><a href="rom-nt-greek-guide.html" style="font-family:'Cinzel',serif;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid rgba(184,151,42,0.4);padding:7px 16px;border-radius:2px;white-space:nowrap;">NT Greek Usage Guide &rarr;</a> — Live examples from Romans drawn from every case, verbal aspect, and grammatical construction.</p>
       <p>Traditional Greek grammars describe five cases: nominative, genitive, dative, accusative, and vocative. Wallace's <em>Greek Grammar Beyond the Basics</em> uses an eight-case system that distinguishes functions which the five-case system conflates under a single label. The additional three cases — ablative, locative, and instrumental — are not new forms. They share endings with the genitive and dative respectively. What distinguishes them is <em>function</em>, and function is what drives meaning.</p>
       <p>This distinction matters exegetically. When the five-case system labels something as a genitive, it leaves open a range of possible relationships. When the eight-case system identifies it as an ablative — the case of separation and source — the doctrinal content narrows precisely.</p>
 
@@ -395,6 +402,7 @@ blockquote cite{display:block;font-style:normal;font-size:0.82rem;color:var(--go
 // ── TOC ACTIVE HIGHLIGHT ────────────────────────────────────────────────────
 const sections = document.querySelectorAll('.section[id]');
 const tocLinks = document.querySelectorAll('#toc-list a');
+const desktopLayout = window.matchMedia('(min-width: 781px)');
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -402,7 +410,9 @@ const observer = new IntersectionObserver(entries => {
       const active = document.querySelector(`#toc-list a[href="#${entry.target.id}"]`);
       if (active) {
         active.classList.add('active');
-        active.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        if (desktopLayout.matches) {
+          active.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
       }
     }
   });
