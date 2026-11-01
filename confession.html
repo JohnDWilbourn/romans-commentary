@@ -16,6 +16,7 @@
     --parch-dark: #ede4d6;
     --white:      #fffdf9;
     --rule:       #c4a96e;
+    --gold-dim:   #8a7129;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -88,30 +89,49 @@
   }
 
   /* ── NAV ──────────────────────────────────────────────────────── */
-  .vol-nav {
-    display: flex;
-    justify-content: center;
-    gap: 0;
+  .site-nav {
     background: var(--parch-dark);
     border-bottom: 1px solid var(--rule);
+    padding: 0.8rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     flex-wrap: wrap;
+    gap: 0.4rem 2rem;
   }
 
-  .vol-nav a {
+  .site-nav .nav-site {
     font-family: 'Cinzel', serif;
-    font-size: 0.78rem;
-    letter-spacing: 0.1em;
-    color: var(--ink-soft);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
     text-decoration: none;
-    padding: 12px 18px;
-    border-right: 1px solid var(--rule);
-    transition: color 0.2s;
     white-space: nowrap;
   }
 
-  .vol-nav a:first-child { border-left: 1px solid var(--rule); }
-  .vol-nav a:hover { color: var(--crimson); }
-  .vol-nav a.active { color: var(--crimson); }
+  .site-nav .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem 2rem;
+  }
+
+  .site-nav .nav-links a {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    opacity: 0.7;
+    padding: 0.3rem 0;
+    white-space: nowrap;
+    transition: opacity 0.2s, color 0.2s;
+  }
+
+  .site-nav .nav-site:hover,
+  .site-nav .nav-links a:hover { opacity: 1; color: var(--crimson); }
 
   /* ── PAGE BODY ────────────────────────────────────────────────── */
   .page {
@@ -127,13 +147,13 @@
     color: var(--ink-soft);
   }
 
-  .page p:first-child {
+  .page > p:first-child {
     font-size: 1.15rem;
     color: var(--ink);
   }
 
   /* Drop cap on first paragraph */
-  .page p:first-child::first-letter {
+  .page > p:first-child::first-letter {
     font-family: 'Cinzel', serif;
     font-size: 3.8rem;
     font-weight: 700;
@@ -191,6 +211,19 @@
     margin-bottom: 0;
   }
 
+  .pull .lord { font-variant: small-caps; letter-spacing: 0.03em; }
+
+  .pull .pull-ref {
+    display: block;
+    margin-top: 0.6rem;
+    font-family: 'Cinzel', serif;
+    font-style: normal;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+  }
+
   /* ── FOOTER ───────────────────────────────────────────────────── */
   footer {
     background: var(--ink);
@@ -210,11 +243,24 @@
   @media (max-width: 600px) {
     .masthead { padding: 50px 24px 44px; }
     .page { padding: 40px 20px 80px; }
-    .vol-nav a { padding: 10px 12px; font-size: 0.72rem; }
+    .site-nav { padding: 0.7rem 1rem; gap: 0.3rem 1rem; }
+    .site-nav .nav-site { font-size: 0.76rem; letter-spacing: 0.14em; }
+    .site-nav .nav-links { gap: 0.1rem 1.1rem; }
+    .site-nav .nav-links a { font-size: 0.66rem; letter-spacing: 0.12em; }
   }
 </style>
 </head>
 <body>
+
+<!-- ── NAV ──────────────────────────────────────────────────────── -->
+<nav class="site-nav" aria-label="Site">
+  <a class="nav-site" href="https://commentary.intelligencereport.info/">Romans Road</a>
+  <div class="nav-links">
+    <a href="https://lessons.intelligencereport.info">Spiritual Growth Lessons</a>
+    <a href="https://illuminations.intelligencereport.info/">Illuminations</a>
+    <a href="https://home.intelligencereport.info">Temple Door</a>
+  </div>
+</nav>
 
 <!-- ── MASTHEAD ──────────────────────────────────────────────────── -->
 <div class="masthead">
@@ -226,26 +272,12 @@
   </div>
 </div>
 
-<!-- ── NAV ──────────────────────────────────────────────────────── -->
-<nav class="vol-nav">
-  <a href="https://home.intelligencereport.info/">Home</a>
-  <a href="Romans_Road.html">Volume I</a>
-  <a href="Romans_Road_2.html">Volume II</a>
-  <a href="Romans_Road_3.html">Volume III</a>
-  <a href="Romans_Road_4.html">Volume IV</a>
-  <a href="Romans_Road_5.html">Volume V</a>
-  <a href="illuminations/">Illuminations</a>
-  <a href="search.html">Search</a>
-  <a href="greek-guide.html">Greek Guide</a>
-  <a href="confession.html" class="active">Confession</a>
-</nav>
-
 <!-- ── PAGE BODY ─────────────────────────────────────────────────── -->
 <div class="page">
 
   <p>There is a thread running through human history that does not break.</p>
 
-  <p>It runs through the confession of Peter on the road to Caesarea Philippi — <em>You are the Christ, the Son of the living God</em> — and it runs through the declaration of a man nailing ninety-five theses to a door in Wittenberg because the Word of God had gotten loose inside him and he could no longer contain it within the institutions that claimed to own it. It runs through the letters of Ignatius written on the road to his own execution, through the careful systematic labor of Lewis Sperry Chafer who opened the doctrines of grace to a generation that had nearly lost them, through the verse-by-verse discipline of R.B. Thieme Jr. who put the Greek text back in the hands of the believer and refused to apologize for the rigor it required.</p>
+  <p>It runs through the confession of Peter on the road to Caesarea Philippi — <em>You are the Christ, the Son of the living God</em> — and it runs through the letters of Ignatius written on the road to his own execution. It runs through the declaration of a man issuing ninety-five theses from Wittenberg because the Word of God had gotten loose inside him and he could no longer contain it within the institutions that claimed to own it. It runs through the careful systematic labor of Lewis Sperry Chafer who opened the doctrines of grace to a generation that had nearly lost them, through the verse-by-verse discipline of R.B. Thieme Jr. who put the Greek text back in the hands of the believer and refused to apologize for the rigor it required.</p>
 
   <p>The thread is the Word. Not the institution. Not the tradition, though tradition has sometimes carried it faithfully. Not the denomination, though denominations have sometimes protected it. The Word itself — living, active, sharper than any two-edged sword — finding its way into the hands and minds and spirits of fallen human beings who were then used, despite themselves, to carry it forward into the next moment of history.</p>
 
@@ -275,7 +307,7 @@
 
   <div class="section-rule"><span class="section-rule-ornament">✦</span></div>
 
-  <p>The great reformers understood this. Luther did not arrive at <em>sola fide</em> in a cultural vacuum. The printing press existed. The Greek New Testament of Erasmus had arrived on his desk at precisely the right moment. The political fracture of the Holy Roman Empire created the conditions under which a truth that had always been in the text could finally break through into history with sufficient force to hold. Jesus controls history for His own purposes, and He uses those conditions through human free will and moral agency — under the tutelage of the Holy Spirit, and sometimes through raw human will apart from the Spirit, but always with Divine Providence holding ultimate sway. The infrastructure was prepared before the doctrine was released, because that is how progressive revelation works: the truth breaks through when the vessel is ready to receive it and the conditions exist to carry it forward.</p>
+  <p>The great reformers understood this. Luther did not arrive at <em>sola fide</em> in a cultural vacuum. The printing press had already made it possible for a text to cross Europe faster than any hand-copied page had ever travelled. Erasmus put the Greek New Testament into print in 1516, in the very years Luther was lecturing through Romans. The political fracture of the Holy Roman Empire created the conditions under which a truth that had always been in the text could finally break through into history with sufficient force to hold. Jesus controls history for His own purposes, and He uses those conditions through human free will and moral agency — under the tutelage of the Holy Spirit, and sometimes through raw human will apart from the Spirit, but always with Divine Providence holding ultimate sway. The infrastructure was prepared before the doctrine was released, because that is how progressive revelation works: the truth breaks through when the vessel is ready to receive it and the conditions exist to carry it forward.</p>
 
   <p>We believe that is still how it works. The Word of God is not exhausted. The Spirit of God is not finished teaching. The body of Christ in the Church Age has access to the full canon of Scripture and the permanent indwelling of the Holy Spirit — resources that no previous generation of believers possessed in the same form or to the same degree. What is required is the willingness to do the work. To sit with the text. To follow the argument. To let the Greek say what it says and trust the Spirit to make it land where it is supposed to land.</p>
 
@@ -288,7 +320,7 @@
   <p>There is a Moabite woman in it. She had no covenant standing, no priestly lineage, no claim on the God of Israel except what she had witnessed through the life of another woman — a woman named Naomi, who had lost everything and said so plainly, who told her daughters-in-law to go home because she had nothing left to give them. One of them went. The other stayed.</p>
 
   <div class="pull">
-    <p>Where you go I will go. Where you die I will die. The Lord do so to me and more also if anything but death parts me from you.</p>
+    <p>Where you go I will go, and where you lodge I will lodge. Your people shall be my people, and your God my God. Where you die I will die, and there will I be buried. May the <span class="lord">Lord</span> do so to me and more also if anything but death parts me from you.<span class="pull-ref">Ruth 1:16–17 (ESV)</span></p>
   </div>
 
   <p>That was not sentiment. That was a volitional commitment made with incomplete knowledge of the cost, on the basis of a witness that had been enough — the life of one faithful woman, stripped of everything, still carrying the name of the God she served.</p>
@@ -303,7 +335,7 @@
 
   <p>This commentary is written for the believer who is willing to slow down. Who suspects that the text has more in it than the Sunday sermon has delivered. Who is not satisfied with the English translation alone and wants to know what the Greek is actually doing. Who has enough formation to ask serious questions and enough humility to let the text answer them rather than confirming what was already believed coming in.</p>
 
-  <p>We have tried to write for that reader. Not to impress, not to display the apparatus of scholarship for its own sake, but to open the text in the way a good teacher opens a text — so that the student eventually does not need the teacher anymore, because the Spirit has taken over the instruction.</p>
+  <p>I have tried to write for that reader. Not to impress, not to display the apparatus of scholarship for its own sake, but to open the text in the way a good teacher opens a text — so that the reader, learning and teaching at once, eventually does not need the teacher anymore, because the Spirit has taken over the instruction.</p>
 
   <p>That is, after all, what Paul was working toward. And what every faithful witness in the long thread of human history has been working toward since Peter made his confession on the road to Caesarea Philippi.</p>
 
