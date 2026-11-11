@@ -406,6 +406,8 @@
   <button class="filter-btn" data-filter="vol6">Volume VI</button>
   <button class="filter-btn" data-filter="vol7">Volume VII</button>
   <button class="filter-btn" data-filter="vol8">Volume VIII</button>
+  <button class="filter-btn" data-filter="vol12">Volume XII</button>
+  <button class="filter-btn" data-filter="vol13">Volume XIII</button>
   <button class="filter-btn" data-filter="greek">Greek</button>
   <button class="filter-btn" data-filter="hebrew">Hebrew</button>
   <button class="filter-btn" data-filter="verse">Verse Refs</button>
@@ -432,6 +434,8 @@
       <div class="facet-item" data-facet="vol" data-val="vol6">Volume VI   <span class="facet-count" id="fc-vol6">—</span></div>
       <div class="facet-item" data-facet="vol" data-val="vol7">Volume VII  <span class="facet-count" id="fc-vol7">—</span></div>
       <div class="facet-item" data-facet="vol" data-val="vol8">Volume VIII <span class="facet-count" id="fc-vol8">—</span></div>
+      <div class="facet-item" data-facet="vol" data-val="vol12">Volume XII <span class="facet-count" id="fc-vol12">—</span></div>
+      <div class="facet-item" data-facet="vol" data-val="vol13">Volume XIII <span class="facet-count" id="fc-vol13">—</span></div>
     </div>
     <div class="facet-group">
       <div class="facet-title">Script</div>
@@ -469,6 +473,8 @@ function volumeMeta(vol) {
   if (vol === 'vol6') return { label: 'Volume VI',   file: 'Romans_Road_6.html' };
   if (vol === 'vol7') return { label: 'Volume VII',  file: 'Romans_Road_7.html' };
   if (vol === 'vol8') return { label: 'Volume VIII', file: 'Romans_Road_8.html' };
+  if (vol === 'vol12') return { label: 'Volume XII', file: 'Romans_Road_12.html' };
+  if (vol === 'vol13') return { label: 'Volume XIII', file: 'Romans_Road_13.html' };
   if (vol === 'illumination') return { label: 'Illumination', file: null };
   return { label: 'Volume I', file: 'Romans_Road.html' };
 }
@@ -567,6 +573,8 @@ function search(q) {
     if (activeFilter === 'vol6'    && rec.vol !== 'vol6')   continue;
     if (activeFilter === 'vol7'    && rec.vol !== 'vol7')   continue;
     if (activeFilter === 'vol8'    && rec.vol !== 'vol8')   continue;
+    if (activeFilter === 'vol12'   && rec.vol !== 'vol12')  continue;
+    if (activeFilter === 'vol13'   && rec.vol !== 'vol13')  continue;
     if (activeFilter === 'greek'   && !rec.greek)           continue;
     if (activeFilter === 'hebrew'  && !rec.hebrew)          continue;
     if (activeFilter === 'verse'   && !rec.verses?.length)  continue;
@@ -739,7 +747,7 @@ function renderResults(results, q) {
 
 // ── FACET COUNTS ───────────────────────────────────────────────
 function updateFacetCounts(results) {
-  const counts = { all: results.length, heading: 0, blockquote: 0, body: 0, vol1: 0, vol2: 0, vol3: 0, vol4: 0, vol5: 0, vol6: 0, vol7: 0, vol8: 0, greek: 0, hebrew: 0 };
+  const counts = { all: results.length, heading: 0, blockquote: 0, body: 0, vol1: 0, vol2: 0, vol3: 0, vol4: 0, vol5: 0, vol6: 0, vol7: 0, vol8: 0, vol12: 0, vol13: 0, greek: 0, hebrew: 0 };
   results.forEach(({ rec }) => {
     if (counts[rec.kind] !== undefined) counts[rec.kind]++;
     if (counts[rec.vol]  !== undefined) counts[rec.vol]++;
@@ -759,6 +767,8 @@ function updateFacetCounts(results) {
   document.getElementById('fc-vol6').textContent    = counts.vol6;
   document.getElementById('fc-vol7').textContent    = counts.vol7;
   document.getElementById('fc-vol8').textContent    = counts.vol8;
+  document.getElementById('fc-vol12').textContent   = counts.vol12;
+  document.getElementById('fc-vol13').textContent   = counts.vol13;
   document.getElementById('fc-greek').textContent   = counts.greek;
   document.getElementById('fc-hebrew').textContent  = counts.hebrew;
 }
