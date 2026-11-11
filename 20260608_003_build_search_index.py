@@ -9,9 +9,10 @@ Usage:
     python3 20260328_001_build_search_index.py
 
 Output:
-    search-index.json (overwrites existing)
+    search-index.json    (Volumes I-VIII; overwrites existing)
+    search-index-2.json  (Volumes IX and later; overwrites existing)
 
-Note: this overwrites the whole index, including illumination entries.
+Note: this overwrites search-index.json, including its illumination entries.
 Run 20260912_003_build_illuminations_index.py afterwards to re-append them.
 """
 
@@ -69,6 +70,11 @@ HTML_FILES = [
         "vol_label": "Volume IX — Romans 9",
     },
     {
+        "file": "Romans_Road_10.html",
+        "vol": "vol10",
+        "vol_label": "Volume X — Romans 10",
+    },
+    {
         "file": "Romans_Road_12.html",
         "vol": "vol12",
         "vol_label": "Volume XII — Romans 12",
@@ -80,7 +86,9 @@ HTML_FILES = [
     },
 ]
 
-OUTPUT_FILE = "search-index.json"
+OUTPUT_FILE = "search-index.json"        # Volumes I-VIII (illuminations get appended here)
+OUTPUT_FILE_2 = "search-index-2.json"    # Volumes IX and later
+PART1_VOLS = {"vol1", "vol2", "vol3", "vol4", "vol5", "vol6", "vol7", "vol8"}
 
 # ── Unicode range detection ────────────────────────────────────────────────────
 
@@ -292,10 +300,12 @@ def build_index():
         all_entries.extend(parser.entries)
         print(f"  {fpath}: {len(parser.entries)} entries extracted")
 
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        json.dump(all_entries, f, ensure_ascii=False, separators=(',', ':'))
-
-    print(f"\nDone. {len(all_entries)} total entries written to {OUTPUT_FILE}")
+    part1 = [e for e in all_entries if e["vol"] in PART1_VOLS]
+    part2 = [e for e in all_entries if e["vol"] not in PART1_VOLS]
+    for path, part in ((OUTPUT_FILE, part1), (OUTPUT_FILE_2, part2)):
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(part, f, ensure_ascii=False, separators=(',', ':'))
+    print(f"\nDone. {len(part1)} entries -> {OUTPUT_FILE}, {len(part2)} entries -> {OUTPUT_FILE_2}")
 
 
 if __name__ == "__main__":
