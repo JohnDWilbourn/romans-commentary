@@ -10,6 +10,9 @@ Usage:
 
 Output:
     search-index.json (overwrites existing)
+
+Note: this overwrites the whole index, including illumination entries.
+Run 20260912_003_build_illuminations_index.py afterwards to re-append them.
 """
 
 import json
@@ -54,6 +57,26 @@ HTML_FILES = [
         "file": "Romans_Road_7.html",
         "vol": "vol7",
         "vol_label": "Volume VII — Romans 7",
+    },
+    {
+        "file": "Romans_Road_8.html",
+        "vol": "vol8",
+        "vol_label": "Volume VIII — Romans 8",
+    },
+    {
+        "file": "Romans_Road_9.html",
+        "vol": "vol9",
+        "vol_label": "Volume IX — Romans 9",
+    },
+    {
+        "file": "Romans_Road_12.html",
+        "vol": "vol12",
+        "vol_label": "Volume XII — Romans 12",
+    },
+    {
+        "file": "Romans_Road_13.html",
+        "vol": "vol13",
+        "vol_label": "Volume XIII — Romans 13",
     },
 ]
 
@@ -270,7 +293,7 @@ def build_index():
         print(f"  {fpath}: {len(parser.entries)} entries extracted")
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        json.dump(all_entries, f, ensure_ascii=False, indent=2)
+        json.dump(all_entries, f, ensure_ascii=False, separators=(',', ':'))
 
     print(f"\nDone. {len(all_entries)} total entries written to {OUTPUT_FILE}")
 
