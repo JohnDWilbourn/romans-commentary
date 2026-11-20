@@ -75,6 +75,11 @@ HTML_FILES = [
         "vol_label": "Volume X — Romans 10",
     },
     {
+        "file": "Romans_Road_11.html",
+        "vol": "vol11",
+        "vol_label": "Volume XI — Romans 11",
+    },
+    {
         "file": "Romans_Road_12.html",
         "vol": "vol12",
         "vol_label": "Volume XII — Romans 12",
