@@ -85,14 +85,26 @@ romans-commentary-git/
 ├── Romans_Road_4.html          ← Volume IV (Romans 4, 19 chapters)
 ├── Romans_Road_5.html          ← Volume V (Romans 5, 52 chapters)
 ├── Romans_Road_6.html          ← Volume VI (Romans 6, 50 chapters)
+├── Romans_Road_7.html          ← Volume VII (Romans 7, 33 chapters)
+├── Romans_Road_8.html          ← Volume VIII (Romans 8, 77 chapters)
+├── Romans_Road_9.html          ← Volume IX (Romans 9, 72 chapters)
+├── Romans_Road_10.html         ← Volume X (Romans 10, 40 chapters)
+├── Romans_Road_11.html         ← Volume XI (Romans 11, 70 chapters)
+├── Romans_Road_12.html         ← Volume XII (Romans 12, 40 chapters)
+├── Romans_Road_13.html         ← Volume XIII (Romans 13, 35 chapters)
+├── Romans_Road_14.html         ← Volume XIV (Romans 14, 49 chapters)
+├── Romans_Road_15.html         ← Volume XV (Romans 15, 52 chapters)
+├── Romans_Road_16.html         ← Volume XVI (Romans 16, 37 chapters)
 ├── illuminations.html          ← Illuminations index
 ├── illuminations/
 │   ├── romans_1_16-17.html
 │   ├── chapter_33.html
 │   └── forty_things.html
 ├── greek-guide.html            ← Greek grammar reference
+├── rom-nt-greek-guide.html     ← NT Greek Usage Guide (Romans 1–16)
 ├── search.html                 ← Search page (needs rebuild)
-├── search-index.json           ← Search index (needs rebuild)
+├── search-index.json           ← Search index part 1 (Volumes I–VIII, illuminations)
+├── search-index-2.json         ← Search index part 2 (Volumes IX–XVI)
 ├── style.css                   ← Global stylesheet
 ├── nav.js                      ← All JavaScript including site nav
 ├── sw.js                       ← Service worker

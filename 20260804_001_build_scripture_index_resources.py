@@ -3,7 +3,7 @@
 20260804_001_build_scripture_index_resources.py
 Add Romans Road chapter references to scripture index Resources column.
 
-Scans all 8 processed Romans Road HTML volumes, extracts cited verses,
+Scans all 16 Romans Road HTML volumes, extracts cited verses,
 classifies as Level 1 (chapter-subtitle verse — bold link) or Level 2
 (body citation — plain link), then appends chapter links to the Resources
 column of each matching row in the scripture index.
@@ -33,6 +33,14 @@ VOLUMES = [
     ('Romans_Road_6.html', 'VI'),
     ('Romans_Road_7.html', 'VII'),
     ('Romans_Road_8.html', 'VIII'),
+    ('Romans_Road_9.html', 'IX'),
+    ('Romans_Road_10.html', 'X'),
+    ('Romans_Road_11.html', 'XI'),
+    ('Romans_Road_12.html', 'XII'),
+    ('Romans_Road_13.html', 'XIII'),
+    ('Romans_Road_14.html', 'XIV'),
+    ('Romans_Road_15.html', 'XV'),
+    ('Romans_Road_16.html', 'XVI'),
 ]
 
 # ── ESV URL parser ────────────────────────────────────────────────────────────
