@@ -89,6 +89,21 @@ HTML_FILES = [
         "vol": "vol13",
         "vol_label": "Volume XIII — Romans 13",
     },
+    {
+        "file": "Romans_Road_14.html",
+        "vol": "vol14",
+        "vol_label": "Volume XIV — Romans 14",
+    },
+    {
+        "file": "Romans_Road_15.html",
+        "vol": "vol15",
+        "vol_label": "Volume XV — Romans 15",
+    },
+    {
+        "file": "Romans_Road_16.html",
+        "vol": "vol16",
+        "vol_label": "Volume XVI — Romans 16",
+    },
 ]
 
 OUTPUT_FILE = "search-index.json"        # Volumes I-VIII (illuminations get appended here)
